@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AreTéCracy Hero - Design Reference</title>
+    <style>
+        /* Design Tokens */
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F9E076;
+            --gold-dark: #B4941F;
+            --electric-blue: #00F0FF;
+            --cyan-400: #22D3EE;
+            --cyan-500: #06B6D4;
+            --gray-900: #111827;
+            --gray-800: #1F2937;
+            --gray-700: #374151;
+            --gray-300: #D1D5DB;
+            --stone-900: #0C0A09;
+            --stone-800: #292524;
+            --stone-700: #44403C;
+            --stone-200: #E7E5E4;
+            --stone-100: #F5F5F4;
+            --stone-50: #FAFAF9;
+            --amber-200: #FDE68A;
+            --amber-100: #FEF3C7;
+            --white: #FFFFFF;
+            --black: #000000;
+            
+            /* Spacing */
+            --spacing-1: 0.25rem;  /* 4px */
+            --spacing-2: 0.5rem;   /* 8px */
+            --spacing-4: 1rem;     /* 16px */
+            --spacing-6: 1.5rem;   /* 24px */
+            --spacing-8: 2rem;     /* 32px */
+            --spacing-12: 3rem;    /* 48px */
+            --spacing-16: 4rem;    /* 64px */
+            --spacing-24: 6rem;    /* 96px */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--gray-900);
+            color: var(--white);
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: var(--spacing-4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: var(--spacing-20) var(--spacing-4);
+            text-align: center;
+        }
+        
+        .plaque-container {
+            max-width: 828px;
+            margin: 0 auto var(--spacing-12);
+            aspect-ratio: 4 / 1;
+            background: linear-gradient(135deg, var(--gray-800), var(--black));
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+        
+        .plaque-container::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(to right, rgba(6, 182, 212, 0.4), rgba(59, 130, 246, 0.5), rgba(6, 182, 212, 0.4));
+            border-radius: 12px;
+            filter: blur(8px);
+            z-index: -1;
+        }
+        
+        .logo-banner {
+            max-width: 1000px;
+            margin: 0 auto var(--spacing-10);
+            aspect-ratio: 21 / 9;
+            background: linear-gradient(135deg, var(--gray-800), var(--black));
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+        
+        .logo-banner::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: linear-gradient(to right, rgba(6, 182, 212, 0.4), rgba(59, 130, 246, 0.5), rgba(6, 182, 212, 0.4));
+            border-radius: 16px;
+            filter: blur(12px);
+            z-index: -1;
+        }
+        
+        .headline {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-6);
+        }
+        
+        .headline-main {
+            display: block;
+            margin-bottom: var(--spacing-2);
+        }
+        
+        .headline-gradient {
+            display: block;
+            background: linear-gradient(to right, var(--gold), var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subheadline {
+            font-size: 1.25rem;
+            color: var(--gray-300);
+            max-width: 672px;
+            margin: var(--spacing-4) auto 0;
+        }
+        
+        /* Accordion Triad Section */
+        .triad-section {
+            padding: var(--spacing-16) var(--spacing-4);
+            background-color: var(--gray-900);
+        }
+        
+        .triad-container {
+            max-width: 896px;
+            margin: 0 auto;
+        }
+        
+        .triad-header {
+            text-align: center;
+            margin-bottom: var(--spacing-12);
+        }
+        
+        .triad-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-4);
+        }
+        
+        .triad-description {
+            font-size: 1.25rem;
+            color: var(--gray-300);
+            max-width: 672px;
+            margin: 0 auto;
+        }
+        
+        .accordion-item {
+            background-color: var(--gray-800);
+            border: 1px solid var(--gray-700);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-4);
+            overflow: hidden;
+        }
+        
+        .accordion-item.open {
+            border-color: rgba(34, 211, 238, 0.5);
+            box-shadow: 0 10px 15px -3px rgba(34, 211, 238, 0.2);
+        }
+        
+        .accordion-button {
+            width: 100%;
+            padding: var(--spacing-5) var(--spacing-6);
+            background-color: var(--gray-800);
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .accordion-button:hover {
+            background-color: var(--gray-800);
+        }
+        
+        .accordion-headline {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--amber-200);
+        }
+        
+        .accordion-chevron {
+            color: var(--cyan-400);
+            transition: transform 0.3s;
+        }
+        
+        .accordion-item.open .accordion-chevron {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            padding: var(--spacing-5) var(--spacing-6);
+            border-top: 1px solid var(--gray-700);
+            background-color: rgba(31, 41, 55, 0.4);
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: var(--gray-200);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-4);
+            align-items: center;
+            margin-top: var(--spacing-12);
+        }
+        
+        .cta-primary {
+            padding: var(--spacing-4) var(--spacing-8);
+            background: linear-gradient(to right, var(--gold), var(--gold-dark));
+            color: var(--black);
+            font-weight: 700;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transition: box-shadow 0.3s;
+        }
+        
+        .cta-primary:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+        
+        .cta-secondary {
+            padding: var(--spacing-4) var(--spacing-8);
+            background: transparent;
+            color: var(--gold);
+            font-weight: 700;
+            border: 2px solid var(--gold);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-secondary:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        
+        @media (min-width: 640px) {
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .cta-primary,
+            .cta-secondary {
+                width: auto;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .headline {
+                font-size: 4.5rem;
+            }
+            
+            .triad-title {
+                font-size: 2.5rem;
+            }
+            
+            .accordion-headline {
+                font-size: 1.75rem;
+            }
+            
+            .accordion-button {
+                padding: var(--spacing-6) var(--spacing-8);
+            }
+            
+            .accordion-content {
+                padding: var(--spacing-6) var(--spacing-8);
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <!-- Plaque Placeholder -->
+            <div class="plaque-container">
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--gray-300);">
+                    Plaque Image (4:1 aspect, max 828px)
+                </div>
+            </div>
+            
+            <!-- Logo Banner Placeholder -->
+            <div class="logo-banner">
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--gray-300);">
+                    Logo Banner (21:9 aspect, max 1000px)
+                </div>
+            </div>
+            
+            <!-- Headline -->
+            <h1 class="headline">
+                <span class="headline-main">Real Democracy.</span>
+                <span class="headline-gradient">Virtue-Based. Scalable.</span>
+            </h1>
+            
+            <!-- Subheadline -->
+            <p class="subheadline">
+                A civic operating system for the new millennium. Built on classical first principles, powered by AI, designed to resist capture.
+            </p>
+        </div>
+    </div>
+    
+    <!-- Accordion Triad Section -->
+    <section class="triad-section">
+        <div class="triad-container">
+            <div class="triad-header">
+                <h2 class="triad-title">The Promise</h2>
+                <p class="triad-description">
+                    Three principles that define what AreTéCracy is—and what it isn't.
+                </p>
+            </div>
+            
+            <!-- Accordion Item 1 -->
+            <div class="accordion-item open">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <h3 class="accordion-headline">No Ruling Class.</h3>
+                    <span class="accordion-chevron">▼</span>
+                </button>
+                <div class="accordion-content">
+                    Citizens serve single terms, then return to private life. Service is a duty, not a career.
+                </div>
+            </div>
+            
+            <!-- Accordion Item 2 -->
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <h3 class="accordion-headline">Billionaires don't get extra votes.</h3>
+                    <span class="accordion-chevron">▼</span>
+                </button>
+                <div class="accordion-content">
+                    Wealth ≠ Weight. The principle of Isotímia ensures one person, one vote—regardless of wealth or status.
+                </div>
+            </div>
+            
+            <!-- Accordion Item 3 -->
+            <div class="accordion-item">
+                <button class="accordion-button" onclick="toggleAccordion(this)">
+                    <h3 class="accordion-headline">The Future Has a Vote.</h3>
+                    <span class="accordion-chevron">▼</span>
+                </button>
+                <div class="accordion-content">
+                    We stop stealing from the unborn. Long-term consequences are weighed before any law is passed.
+                </div>
+            </div>
+            
+            <!-- CTA Buttons -->
+            <div class="cta-buttons">
+                <button class="cta-primary">SEE THE BLUEPRINT →</button>
+                <button class="cta-secondary">SUPPORT THE MISSION</button>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        function toggleAccordion(button) {
+            const item = button.closest('.accordion-item');
+            const isOpen = item.classList.contains('open');
+            
+            // Close all items
+            document.querySelectorAll('.accordion-item').forEach(el => {
+                el.classList.remove('open');
+            });
+            
+            // Open clicked item if it wasn't open
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        }
+    </script>
+</body>
+</html>

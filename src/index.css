@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Always-visible scrollbars for Detail / Arcade Bloom card text area */
+.detail-card-scroll {
+  scrollbar-width: auto;
+  scrollbar-color: #a8a29e #e7e5e4;
+}
+.dark .detail-card-scroll {
+  scrollbar-color: #57534e #292524;
+}
+
+.detail-card-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.detail-card-scroll::-webkit-scrollbar-track {
+  background: #e7e5e4;
+  border-radius: 4px;
+}
+.dark .detail-card-scroll::-webkit-scrollbar-track {
+  background: #292524;
+}
+.detail-card-scroll::-webkit-scrollbar-thumb {
+  background: #a8a29e;
+  border-radius: 5px;
+  border: 2px solid #e7e5e4;
+}
+.dark .detail-card-scroll::-webkit-scrollbar-thumb {
+  background: #57534e;
+  border-color: #292524;
+}
+.detail-card-scroll::-webkit-scrollbar-thumb:hover {
+  background: #78716c;
+}
+.dark .detail-card-scroll::-webkit-scrollbar-thumb:hover {
+  background: #44403c;
+}
+
+/* Brushed metal panel (e.g. Pillars elevator sidebar) - 10-20% darker for better text contrast */
+.pillars-elevator-sidebar {
+  background: linear-gradient(
+    135deg,
+    #3d4a5a 0%,
+    #657589 12%,
+    #8f9dae 25%,
+    #657589 40%,
+    #3d4a5a 55%,
+    #252d3a 70%,
+    #3d4a5a 85%,
+    #657589 100%
+  );
+  background-size: 100% 200%;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    2px 0 8px rgba(0, 0, 0, 0.15);
+}
+/* Dark elevator panel gradient lightened ~10% for readability; darkest stop lightened another 10% */
+.dark .pillars-elevator-sidebar {
+  background: linear-gradient(
+    135deg,
+    #2f3845 0%,
+    #4a5868 15%,
+    #748395 30%,
+    #4a5868 50%,
+    #2f3845 70%,
+    #2a3040 85%,
+    #4a5868 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+    2px 0 12px rgba(0, 0, 0, 0.25);
+}
+/* Darker text in elevator panel (dark mode) */
+.dark .pillars-elevator-sidebar .elevator-panel-dark-text {
+  color: #000000;
+}
+/* Elevator menu items: +2pt font size */
+.pillars-elevator-sidebar .elevator-menu-item {
+  font-size: calc(1em + 2pt);
+}

@@ -1,0 +1,294 @@
+{
+  "$schema": "https://schemas.figma.com/v1/json",
+  "name": "AreTéCracy Design Tokens",
+  "version": "1.0.0",
+  "description": "Design tokens for Gemini Hero Sandbox - import into Figma/Framer",
+  
+  "colors": {
+    "gold": {
+      "value": "#D4AF37",
+      "type": "color",
+      "description": "Primary gold accent - used for CTAs, highlights"
+    },
+    "goldLight": {
+      "value": "#F9E076",
+      "type": "color",
+      "description": "Light gold - gradient end, hover states"
+    },
+    "goldDark": {
+      "value": "#B4941F",
+      "type": "color",
+      "description": "Dark gold - gradient start, shadows"
+    },
+    "electricBlue": {
+      "value": "#00F0FF",
+      "type": "color",
+      "description": "Electric cyan/blue - icons, accents, glows"
+    },
+    "cyan400": {
+      "value": "#22D3EE",
+      "type": "color",
+      "description": "Tailwind cyan-400 - active states, borders"
+    },
+    "cyan500": {
+      "value": "#06B6D4",
+      "type": "color",
+      "description": "Tailwind cyan-500 - light mode accents"
+    },
+    "deepBlue": {
+      "value": "#0A192F",
+      "type": "color",
+      "description": "Deep navy - backgrounds"
+    },
+    "marbleWhite": {
+      "value": "#F5F5F0",
+      "type": "color",
+      "description": "Marble white - light backgrounds"
+    },
+    "onyx": {
+      "value": "#121212",
+      "type": "color",
+      "description": "Near-black - dark backgrounds"
+    },
+    "charcoal": {
+      "value": "#1E1E1E",
+      "type": "color",
+      "description": "Charcoal - dark mode surfaces"
+    },
+    "gray900": {
+      "value": "#111827",
+      "type": "color",
+      "description": "Tailwind gray-900 - dark backgrounds"
+    },
+    "gray800": {
+      "value": "#1F2937",
+      "type": "color",
+      "description": "Tailwind gray-800 - dark surfaces"
+    },
+    "gray700": {
+      "value": "#374151",
+      "type": "color",
+      "description": "Tailwind gray-700 - borders, dividers"
+    },
+    "gray300": {
+      "value": "#D1D5DB",
+      "type": "color",
+      "description": "Tailwind gray-300 - light mode text"
+    },
+    "stone900": {
+      "value": "#0C0A09",
+      "type": "color",
+      "description": "Tailwind stone-900 - dark backgrounds"
+    },
+    "stone800": {
+      "value": "#292524",
+      "type": "color",
+      "description": "Tailwind stone-800 - dark surfaces"
+    },
+    "stone700": {
+      "value": "#44403C",
+      "type": "color",
+      "description": "Tailwind stone-700 - borders"
+    },
+    "stone200": {
+      "value": "#E7E5E4",
+      "type": "color",
+      "description": "Tailwind stone-200 - light mode text"
+    },
+    "stone100": {
+      "value": "#F5F5F4",
+      "type": "color",
+      "description": "Tailwind stone-100 - light backgrounds"
+    },
+    "stone50": {
+      "value": "#FAFAF9",
+      "type": "color",
+      "description": "Tailwind stone-50 - light mode backgrounds"
+    },
+    "amber200": {
+      "value": "#FDE68A",
+      "type": "color",
+      "description": "Tailwind amber-200 - dark mode text"
+    },
+    "amber100": {
+      "value": "#FEF3C7",
+      "type": "color",
+      "description": "Tailwind amber-100 - highlights"
+    },
+    "amber800": {
+      "value": "#92400E",
+      "type": "color",
+      "description": "Tailwind amber-800 - light mode accents"
+    },
+    "white": {
+      "value": "#FFFFFF",
+      "type": "color",
+      "description": "Pure white"
+    },
+    "black": {
+      "value": "#000000",
+      "type": "color",
+      "description": "Pure black"
+    }
+  },
+  
+  "spacing": {
+    "0": { "value": "0px" },
+    "1": { "value": "0.25rem", "description": "4px" },
+    "2": { "value": "0.5rem", "description": "8px" },
+    "3": { "value": "0.75rem", "description": "12px" },
+    "4": { "value": "1rem", "description": "16px" },
+    "5": { "value": "1.25rem", "description": "20px" },
+    "6": { "value": "1.5rem", "description": "24px" },
+    "8": { "value": "2rem", "description": "32px" },
+    "10": { "value": "2.5rem", "description": "40px" },
+    "12": { "value": "3rem", "description": "48px" },
+    "16": { "value": "4rem", "description": "64px" },
+    "20": { "value": "5rem", "description": "80px" },
+    "24": { "value": "6rem", "description": "96px" }
+  },
+  
+  "typography": {
+    "fontFamily": {
+      "serif": {
+        "value": "Georgia, serif",
+        "description": "Primary serif font - headings, body text"
+      },
+      "sans": {
+        "value": "system-ui, sans-serif",
+        "description": "System sans-serif - fallback"
+      },
+      "mono": {
+        "value": "monospace",
+        "description": "Monospace - code, technical text"
+      }
+    },
+    "fontSize": {
+      "xs": { "value": "0.75rem", "description": "12px" },
+      "sm": { "value": "0.875rem", "description": "14px" },
+      "base": { "value": "1rem", "description": "16px" },
+      "lg": { "value": "1.125rem", "description": "18px" },
+      "xl": { "value": "1.25rem", "description": "20px" },
+      "2xl": { "value": "1.5rem", "description": "24px" },
+      "3xl": { "value": "1.875rem", "description": "30px" },
+      "4xl": { "value": "2.25rem", "description": "36px" },
+      "5xl": { "value": "3rem", "description": "48px" },
+      "6xl": { "value": "3.75rem", "description": "60px" },
+      "7xl": { "value": "4.5rem", "description": "72px" }
+    },
+    "fontWeight": {
+      "normal": { "value": "400" },
+      "semibold": { "value": "600" },
+      "bold": { "value": "700" }
+    },
+    "lineHeight": {
+      "tight": { "value": "1.25" },
+      "normal": { "value": "1.5" },
+      "relaxed": { "value": "1.75" }
+    }
+  },
+  
+  "shadows": {
+    "sm": {
+      "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+      "description": "Small shadow"
+    },
+    "md": {
+      "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+      "description": "Medium shadow"
+    },
+    "lg": {
+      "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+      "description": "Large shadow"
+    },
+    "xl": {
+      "value": "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+      "description": "Extra large shadow"
+    },
+    "2xl": {
+      "value": "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+      "description": "2X large shadow"
+    },
+    "goldGlow": {
+      "value": "0 0 20px rgba(212, 175, 55, 0.3)",
+      "description": "Gold glow effect"
+    },
+    "goldGlowHover": {
+      "value": "0 0 30px rgba(212, 175, 55, 0.5)",
+      "description": "Gold glow hover state"
+    },
+    "cyanGlow": {
+      "value": "0 0 10px rgba(34, 211, 238, 0.6)",
+      "description": "Cyan glow effect"
+    }
+  },
+  
+  "borderRadius": {
+    "none": { "value": "0px" },
+    "sm": { "value": "0.125rem", "description": "2px" },
+    "md": { "value": "0.375rem", "description": "6px" },
+    "lg": { "value": "0.5rem", "description": "8px" },
+    "xl": { "value": "0.75rem", "description": "12px" },
+    "2xl": { "value": "1rem", "description": "16px" },
+    "full": { "value": "9999px", "description": "Fully rounded" }
+  },
+  
+  "breakpoints": {
+    "sm": { "value": "640px", "description": "Small devices" },
+    "md": { "value": "768px", "description": "Medium devices" },
+    "lg": { "value": "1024px", "description": "Large devices" },
+    "xl": { "value": "1280px", "description": "Extra large devices" },
+    "2xl": { "value": "1536px", "description": "2X large devices" }
+  },
+  
+  "gradients": {
+    "gold": {
+      "value": "linear-gradient(to right, #D4AF37, #B4941F)",
+      "description": "Gold gradient for buttons"
+    },
+    "goldLight": {
+      "value": "linear-gradient(to right, #D4AF37, #F9E076, #D4AF37)",
+      "description": "Gold gradient with light center"
+    },
+    "cyanBlue": {
+      "value": "linear-gradient(to right, rgba(6, 182, 212, 0.4), rgba(59, 130, 246, 0.5), rgba(6, 182, 212, 0.4))",
+      "description": "Cyan-blue glow gradient"
+    }
+  },
+  
+  "componentSpecs": {
+    "hero": {
+      "plaque": {
+        "maxWidth": "828px",
+        "aspectRatio": "4:1",
+        "description": "Marble plaque with kicker text"
+      },
+      "logoBanner": {
+        "maxWidth": "1000px",
+        "aspectRatio": "21:9",
+        "description": "Logo banner image"
+      }
+    },
+    "accordionTriad": {
+      "maxWidth": "1024px",
+      "itemPadding": "24px 32px",
+      "borderRadius": "8px",
+      "description": "Feature triad accordion component"
+    },
+    "buttons": {
+      "primary": {
+        "padding": "16px 32px",
+        "borderRadius": "2px",
+        "fontSize": "16px",
+        "fontWeight": "700"
+      },
+      "secondary": {
+        "padding": "16px 32px",
+        "borderRadius": "2px",
+        "borderWidth": "2px",
+        "fontSize": "16px",
+        "fontWeight": "700"
+      }
+    }
+  }
+}

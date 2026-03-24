@@ -15,7 +15,7 @@ export function Footer({ darkMode = true, onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={`py-8 border-t transition-colors duration-300 ${
+    <footer className={`py-4 border-t transition-colors duration-300 ${
       darkMode 
         ? 'bg-stone-900 border-stone-800 text-stone-300' 
         : 'bg-stone-50 border-stone-300 text-stone-700'

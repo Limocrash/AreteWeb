@@ -5,7 +5,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3001,
+    port: 3002,
     host: '0.0.0.0', // Listen on all interfaces (IPv4 and IPv6)
     open: true,
     cors: {

@@ -3,7 +3,7 @@
  * Settings opens the Settings modal; Legal/Privacy/Terms use in-app navigation.
  */
 
-import { Settings as SettingsIcon, FileText, Shield, Scale } from 'lucide-react';
+import { Settings as SettingsIcon, FileText, Shield, Scale, BookOpen } from 'lucide-react';
 import { RulesLine } from './RulesLine';
 
 interface EtcPageProps {
@@ -21,6 +21,25 @@ export function EtcPage({ darkMode, onNavigate, onOpenSettings }: EtcPageProps) 
         <h1 className="text-4xl md:text-5xl font-serif font-bold mb-8 text-center" style={{ fontFamily: 'Georgia, serif' }}>
           κ.τ.λ. (More)
         </h1>
+
+        {/* Glossary - moved from main nav */}
+        <section className="mb-10">
+          <h2 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-amber-200' : 'text-amber-800'}`} style={{ fontFamily: 'Georgia, serif' }}>
+            Content
+          </h2>
+          <button
+            onClick={() => onNavigate('glossary')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg border-2 transition-all duration-300 text-left ${
+              darkMode
+                ? 'border-stone-600 text-amber-100/90 hover:bg-stone-800/50 hover:border-stone-500'
+                : 'border-stone-300 text-stone-700 hover:bg-stone-50 hover:border-stone-400'
+            }`}
+            style={{ fontFamily: 'Georgia, serif' }}
+          >
+            <BookOpen className="w-5 h-5 flex-shrink-0" />
+            <span>Glossary</span>
+          </button>
+        </section>
 
         {/* Settings */}
         <section className="mb-10">

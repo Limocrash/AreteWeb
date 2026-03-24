@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown, Scale, Users, Clock, Eye, Handshake, RefreshCw, Hammer, MessageCircle, ChevronRight } from 'lucide-react';
+import { Scale, Users, Clock, Eye, Handshake, RefreshCw, Hammer, MessageCircle, ChevronRight } from 'lucide-react';
+import { DetailCard } from './DetailCard';
 
 interface FeatureTriadHybridProps {
   darkMode?: boolean;
@@ -9,41 +10,16 @@ interface FeatureTriadHybridProps {
 }
 
 const FeatureTriadHybrid = ({ darkMode = true, onNavigate, onNavigateToPillar }: FeatureTriadHybridProps) => {
-  const [openItems, setOpenItems] = useState<Set<string>>(new Set());
-  const [isMobile, setIsMobile] = useState(false);
+  const [selectedFeature, setSelectedFeature] = useState<typeof features[0] | null>(null);
+  const [cardOrigin, setCardOrigin] = useState<{ x: number; y: number } | null>(null);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
-      // On mobile: single-open accordion (start with none open)
-      // On desktop: allow multiple open (start with first one open)
-      if (mobile) {
-        setOpenItems(new Set());
-      } else {
-        setOpenItems(new Set(['no-politicians']));
-      }
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const toggleItem = (id: string) => {
-    setOpenItems(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        // On mobile: single-open (close others)
-        if (isMobile) {
-          next.clear();
-        }
-        next.add(id);
-      }
-      return next;
+  const handleCardClick = (e: React.MouseEvent, feature: typeof features[0]) => {
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    setCardOrigin({
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
     });
+    setSelectedFeature(feature);
   };
 
   const features = [
@@ -98,7 +74,7 @@ const FeatureTriadHybrid = ({ darkMode = true, onNavigate, onNavigateToPillar }:
   ];
 
   return (
-    <section className={`py-16 md:py-24 ${darkMode ? 'bg-gray-900' : 'bg-stone-50'}`}>
+    <section id="eight-ways" className={`py-16 md:py-24 ${darkMode ? 'bg-gray-900' : 'bg-stone-50'}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-6 md:mb-12">
@@ -110,133 +86,55 @@ const FeatureTriadHybrid = ({ darkMode = true, onNavigate, onNavigateToPillar }:
           <p className={`text-lg md:text-xl max-w-2xl mx-auto ${
             darkMode ? 'text-gray-300' : 'text-stone-700'
           }`}>
-            Tap or hover to explore each principle.
+            Click a principle to learn more.
           </p>
         </div>
 
-        {/* Responsive Layout: Grid on desktop (4x2), Stack on mobile */}
+        {/* Grid: title-only buttons, hover glow, click opens display card */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
-          {features.map((feature) => {
-            const isOpen = openItems.has(feature.id);
-            return (
-              <motion.div
-                key={feature.id}
-                initial={false}
-                onClick={() => toggleItem(feature.id)}
-                className={`
-                  relative cursor-pointer group transition-all duration-300 ease-in-out
-                  border rounded-lg overflow-hidden
-                  ${darkMode 
-                    ? `border-gray-800 bg-gray-900/50 backdrop-blur-sm ${
-                        isOpen 
-                          ? 'ring-1 ring-yellow-500/50 bg-gray-800/80' 
-                          : 'hover:bg-gray-800/50'
-                      }`
-                    : `border-stone-300 bg-white/50 ${
-                        isOpen 
-                          ? 'ring-1 ring-amber-500/50 bg-stone-50' 
-                          : 'hover:bg-stone-50'
-                      }`
+          {features.map((feature) => (
+            <button
+              key={feature.id}
+              type="button"
+              onClick={(e) => handleCardClick(e, feature)}
+              className={`
+                relative cursor-pointer group transition-all duration-300 ease-in-out
+                border rounded-lg p-4 md:p-5 flex items-center justify-between min-h-[80px] text-left
+                ${darkMode
+                  ? 'border-gray-800 bg-gray-900/50 hover:shadow-[0_0_20px_rgba(0,240,255,0.35)] hover:border-cyan-500/50'
+                  : 'border-stone-300 bg-white/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:border-amber-500/50'
+                }
+              `}
+            >
+              <div className="flex items-center gap-3 flex-1 min-w-0">
+                <div className={`
+                  p-2 rounded-full flex-shrink-0
+                  ${darkMode
+                    ? 'bg-gray-950 border border-gray-800 group-hover:border-cyan-500/50 text-cyan-400'
+                    : 'bg-stone-100 border border-stone-300 text-amber-600'
                   }
-                `}
-              >
-                {/* Header / Trigger */}
-                <div className="p-4 md:p-5 flex items-center justify-between min-h-[80px]">
-                  <div className="flex items-center gap-3 flex-1">
-                    <div className={`
-                      p-2 rounded-full transition-colors flex-shrink-0
-                      ${darkMode
-                        ? `bg-gray-950 border ${
-                            isOpen 
-                              ? 'border-yellow-500/30' 
-                              : 'border-gray-800 group-hover:border-gray-600'
-                          }`
-                        : `bg-stone-100 border ${
-                            isOpen 
-                              ? 'border-amber-500/30' 
-                              : 'border-stone-300 group-hover:border-stone-400'
-                          }`
-                      }
-                    `}>
-                      <div className={darkMode ? 'text-yellow-400' : 'text-amber-600'}>
-                        {feature.icon}
-                      </div>
-                    </div>
-                    <h3 className={`
-                      font-serif text-xl md:text-2xl leading-tight transition-colors flex-1
-                      ${darkMode
-                        ? isOpen 
-                          ? 'text-yellow-400' 
-                          : 'text-gray-200 group-hover:text-white'
-                        : isOpen 
-                          ? 'text-amber-600' 
-                          : 'text-stone-800 group-hover:text-stone-900'
-                      }
-                    `}>
-                      {feature.title}
-                    </h3>
-                  </div>
-                  
-                  {/* Chevron Indicator */}
-                  <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className={`ml-2 flex-shrink-0 ${
-                      darkMode ? 'text-cyan-400' : 'text-cyan-600'
-                    }`}
-                  >
-                    <ChevronDown size={20} />
-                  </motion.div>
+                `}>
+                  {feature.icon}
                 </div>
-
-                {/* Expandable Content */}
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="overflow-hidden"
-                    >
-                      <div className={`p-4 pt-0 text-base md:text-lg leading-relaxed border-t mt-2 ${
-                        darkMode
-                          ? 'text-gray-300 border-gray-800/50'
-                          : 'text-stone-700 border-stone-300/50'
-                      }`} style={{ fontFamily: 'Georgia, serif' }}>
-                        {feature.content}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                {/* Desktop Hover Hint */}
-                <div className="hidden md:block absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span className={`text-[10px] uppercase tracking-wider ${
-                    darkMode ? 'text-gray-500' : 'text-stone-500'
-                  }`}>
-                    {isOpen ? 'Close' : 'Expand'}
-                  </span>
-                </div>
-              </motion.div>
-            );
-          })}
+                <h3 className={`
+                  font-serif text-xl md:text-2xl leading-tight flex-1
+                  ${darkMode
+                    ? 'text-gray-200 group-hover:text-white'
+                    : 'text-stone-800 group-hover:text-stone-900'
+                  }
+                `}>
+                  {feature.title}
+                </h3>
+              </div>
+            </button>
+          ))}
         </div>
 
-        {/* Micro-trust footer */}
-        <div className="text-center mb-8">
-          <p className={`text-[10px] md:text-xs ${
-            darkMode ? 'text-gray-500' : 'text-stone-500'
-          }`}>
-            {isMobile ? 'Tap to explore' : 'Click or hover to explore'} the core principles.
-          </p>
-        </div>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
+        {/* CTA Buttons - matched height and alignment */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4 items-stretch">
           <button
             onClick={() => onNavigate?.('pillars')}
-            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#D4AF37] to-[#B4941F] text-black font-bold rounded-sm shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all flex items-center justify-center gap-2"
+            className="min-h-[52px] w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#D4AF37] to-[#B4941F] text-black font-bold rounded-sm shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all inline-flex items-center justify-center gap-2"
           >
             SEE THE BLUEPRINT <ChevronRight size={20} />
           </button>
@@ -244,12 +142,30 @@ const FeatureTriadHybrid = ({ darkMode = true, onNavigate, onNavigateToPillar }:
             href="https://www.patreon.com/aretecracy"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-8 py-4 border-2 border-[#D4AF37] text-[#D4AF37] font-bold rounded-sm hover:bg-[#D4AF37]/10 transition-all flex items-center justify-center gap-2"
+            className="min-h-[52px] w-full sm:w-auto px-8 py-4 border-2 border-[#D4AF37] text-[#D4AF37] font-bold rounded-sm hover:bg-[#D4AF37]/10 transition-all inline-flex items-center justify-center gap-2"
           >
             SUPPORT THE MISSION
           </a>
         </div>
       </div>
+
+      {/* Display card overlay on click */}
+      <AnimatePresence>
+        {selectedFeature && cardOrigin && (
+          <DetailCard
+            element={{ id: selectedFeature.id, name: selectedFeature.title }}
+            glossaryTerm={{ blurb: '' }}
+            contentBody={selectedFeature.content}
+            darkMode={darkMode ?? true}
+            cardOrigin={cardOrigin}
+            onClose={() => {
+              setSelectedFeature(null);
+              setCardOrigin(null);
+            }}
+            mode="triad"
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };

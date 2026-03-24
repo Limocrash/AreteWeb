@@ -697,10 +697,10 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
                   {!allPillarsComplete ? (
                     <>
                       <p className="text-lg md:text-xl leading-relaxed">
-                        The pediment cannot be placed until all pillars are completed.
+                        The pediment and roof cannot be placed until the foundation elements and all pillars are completed.
                       </p>
                       <p className={`text-sm mt-3 ${darkMode ? 'text-amber-200/80' : 'text-stone-600'}`}>
-                        Explore the Bedrock and Foundation levels to earn completion seals on each element; then return here.
+                        Explore the Bedrock, Foundation, and Pillar levels to earn all completion seals; then return here.
                       </p>
                     </>
                   ) : (

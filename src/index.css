@@ -85,3 +85,11 @@ html {
 .pillars-elevator-sidebar .elevator-menu-item {
   font-size: calc(1em + 2pt);
 }
+
+/* Blueprint landing: object-position controlled by aspect-ratio.
+   TRIANGULATION: Laptop (16:10) looked good with bottom; TV (16:9) looked worse with top.
+   Reverted to object-bottom for all - prioritize Generational Fairness (user: tops less critical).
+   If gap persists on TV, it may be layout/viewport related, not object-position. */
+.blueprint-landing-img {
+  object-position: bottom;
+}

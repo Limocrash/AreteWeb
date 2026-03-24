@@ -150,7 +150,7 @@ export function PillarsIntro({ darkMode, isReturningVisitor = false, onBeginCons
       transition={{ duration: 0.6 }}
       className="fixed top-16 left-0 right-0 bottom-0 z-40 flex overflow-x-hidden overflow-y-hidden"
     >
-      {/* Main content area - images + Begin Construction (no overlay) */}
+      {/* Main content area - images + Begin Tour (no overlay) */}
       <div className="flex-1 min-w-0 flex flex-col items-center justify-center relative overflow-hidden">
       {/* Camera descent: stacked strip (pediment → pillars → euthynteria) slides up as elevator goes down */}
       <div className="absolute inset-0 overflow-hidden">
@@ -299,7 +299,7 @@ export function PillarsIntro({ darkMode, isReturningVisitor = false, onBeginCons
         </button>
       </div>
 
-      {/* Euthynteria explanation + Begin Construction button */}
+      {/* Euthynteria explanation + Begin Tour button */}
       <AnimatePresence>
         {showButton && (
           <motion.div
@@ -322,7 +322,7 @@ export function PillarsIntro({ darkMode, isReturningVisitor = false, onBeginCons
               }`}
               style={{ fontFamily: 'Georgia, serif' }}
             >
-              Begin Construction
+              Begin Tour
             </button>
           </motion.div>
         )}

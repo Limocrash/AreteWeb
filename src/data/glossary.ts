@@ -229,7 +229,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     blurb: 'A citizen\'s initial policy proposal.',
     complexity: 2,
     category: 'process',
-    fullDescription: 'Initial Proposed Bill from Ekklesia\n\nFrom Greek: hypo (ὑπό, under) + thesis (θέσις, placing) = "foundation/supposition"\n\nA citizen\'s initial proposal for law or policy. The starting point of Nomothetēsis. Can come from any citizen, but must pass through:\n\n- Clarity check (is it comprehensible?)\n- Feasibility review (is it possible?)\n- Archegramma compliance (does it violate core principles?)'
+    fullDescription: 'Initial Proposed Bill from Ekklesia\n\nFrom Greek: hypo (ὑπό, under) + thesis (θέσις, placing) = "foundation/supposition"\n\nA citizen\'s initial proposal for law or policy. The starting point of Nomothesia. Can come from any citizen, but must pass through:\n\n- Clarity check (is it comprehensible?)\n- Feasibility review (is it possible?)\n- Archegramma compliance (does it violate core principles?)'
   },
   {
     id: 'isegoria',

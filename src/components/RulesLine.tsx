@@ -13,7 +13,7 @@ export function RulesLine({ darkMode, className = '' }: RulesLineProps) {
     <p
       className={`text-lg md:text-xl text-center tracking-wide ${className}`}
       style={{
-        fontFamily: 'Georgia, serif',
+        fontFamily: '"Crimson Text", "EB Garamond", "Georgia", "Times New Roman", serif',
         fontVariant: 'small-caps',
         letterSpacing: '0.05em',
         color: darkMode ? 'rgba(251, 191, 36, 0.85)' : 'rgb(87, 83, 78)',

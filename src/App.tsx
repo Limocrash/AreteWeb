@@ -9,14 +9,15 @@ import { GeminiHero } from './GeminiHero';
 import { PillarsIntro } from './components/PillarsIntro';
 import { PillarsMainView } from './components/PillarsMainView';
 import { HomeIntro } from './components/HomeIntro';
-import { RulesLine } from './components/RulesLine';
 import { EtcPage } from './components/EtcPage';
+import { BlueprintPage } from './components/BlueprintPage';
+import { BLUEPRINT_HUB_BUTTONS } from './data/blueprintHubs';
 import { getSkipWelcomeIntro, getSkipPillarsIntro } from './components/Settings';
 import { isReturningVisitor, markVisited } from './utils/templeProgress';
 
-// Parchment textures for background (all paths app-relative; served from this app's public)
-const lightParchment = 'https://images.unsplash.com/photo-1706271952285-01b5e3fc2d78?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvbGQlMjBwYXBlciUyMHRleHR1cmUlMjBiZWlnZXxlbnwxfHx8fDE3Njc1NzQ4NjF8MA&ixlib=rb-4.1.0&q=80&w=1080';
-const darkParchment = '/DarkmodeParchment.png';
+// Parchment textures for background (local files in public/images)
+const lightParchment = '/images/LightParchment.jpg';
+const darkParchment = '/images/DarkmodeParchment.png';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -27,7 +28,7 @@ export default function App() {
     const hash = window.location.hash;
     if (hash === '#/glossary') return 'glossary';
     if (hash === '#/pillars') return 'pillars';
-    if (hash === '#/about') return 'about';
+    if (hash.startsWith('#/blueprint')) return 'blueprint';
     if (hash === '#/etc') return 'etc';
     if (hash === '#/legal') return 'legal';
     if (hash === '#/privacy') return 'privacy';
@@ -36,6 +37,7 @@ export default function App() {
   };
 
   const [currentPage, setCurrentPage] = useState<string>(getPageFromUrl());
+  const [hash, setHash] = useState(() => (typeof window !== 'undefined' ? window.location.hash : ''));
   const [showPillarsIntro, setShowPillarsIntro] = useState(true);
   const [skipWelcomeIntro, setSkipWelcomeIntro] = useState(() => getSkipWelcomeIntro());
   const [skipPillarsIntro, setSkipPillarsIntro] = useState(() => getSkipPillarsIntro());
@@ -68,35 +70,36 @@ export default function App() {
     }
   }, [darkMode]);
 
-  // Handle browser back/forward buttons
+  // Handle browser back/forward and hash changes (e.g. blueprint landing vs hub)
   useEffect(() => {
-    const handlePopState = () => {
-      const page = getPageFromUrl();
-      setCurrentPage(page);
+    const sync = () => {
+      setCurrentPage(getPageFromUrl());
+      setHash(window.location.hash);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('popstate', sync);
+    window.addEventListener('hashchange', sync);
+    return () => {
+      window.removeEventListener('popstate', sync);
+      window.removeEventListener('hashchange', sync);
+    };
   }, []);
 
   // Navigation handler
   const handleNavigate = (page: string) => {
-    setCurrentPage(page);
-    
-    // Update URL hash to match the page
     const hashMap: Record<string, string> = {
       'home': '',
       'glossary': '#/glossary',
       'pillars': '#/pillars',
-      'about': '#/about',
+      'blueprint': '#/blueprint',
       'etc': '#/etc',
       'legal': '#/legal',
       'privacy': '#/privacy',
       'terms': '#/terms',
     };
-    
     const hash = hashMap[page] || '';
+    setCurrentPage(page);
+    setHash(hash);
     window.history.pushState({ page }, '', hash || window.location.pathname);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -147,10 +150,23 @@ export default function App() {
         />
       )}
 
-      {/* Page Content - top padding clears full nav (row 1 + row 2 with Login/Join); Pillars: cap height so no page scrollbar */}
+      {/* Page Content - Blueprint map hub: pt-[66px] so map starts below navbar Row 1; Blueprint landing: pt-[66px]; others: pt-[8rem] */}
       <div
-        className={`flex-1 min-w-0 overflow-x-hidden pt-[8rem] ${
+        className={`flex-1 min-w-0 overflow-x-hidden ${
+          currentPage === 'blueprint'
+            ? (() => {
+                const m = hash.match(/#\/blueprint\/([a-z-]+)/);
+                const hubId = m ? m[1] : null;
+                const hasMap = hubId && BLUEPRINT_HUB_BUTTONS.some((b) => b.id === hubId && b.hasMap);
+                return hasMap ? 'pt-[66px]' : 'pt-[66px]';
+              })()
+            : 'pt-[8rem]'
+        } ${
           currentPage === 'pillars' ? 'max-h-[100vh] overflow-y-hidden' : ''
+        } ${
+          currentPage === 'blueprint'
+            ? 'min-h-0 overflow-y-hidden flex flex-col'
+            : ''
         }`}
       >
         {currentPage === 'home' && (
@@ -218,21 +234,9 @@ export default function App() {
           />
         )}
 
-        {/* Other pages - placeholder (About / The Owl) */}
-        {currentPage === 'about' && (
-          <div className={`min-h-screen flex flex-col items-center justify-center py-16 ${
-            darkMode ? 'bg-gray-900 text-white' : 'bg-stone-50 text-stone-900'
-          }`}>
-            <div className="text-center">
-              <h1 className="text-5xl mb-6 font-serif">The Owl</h1>
-              <p className="text-xl max-w-2xl mx-auto mb-12">
-                Coming soon... (This page will be integrated next)
-              </p>
-            </div>
-            <div className="mt-auto py-12 text-center w-full max-w-2xl px-4">
-              <RulesLine darkMode={darkMode} />
-            </div>
-          </div>
+        {/* The Blueprint page - Ekklesia hub + process hubs */}
+        {currentPage === 'blueprint' && (
+          <BlueprintPage darkMode={darkMode} />
         )}
       </div>
 

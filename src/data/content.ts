@@ -5,10 +5,12 @@ import { parseContentFile, ContentFile } from '../utils/contentLoader';
 
 // Import all glossary markdown files
 // Using lazy loading to prevent hangs during dev server startup
-// Note: Markdown files may not exist in Gemini sandbox - gracefully handle missing files
+// Note: Markdown files may not exist in some environments - gracefully handle missing files
 const glossaryModules = import.meta.glob('../content/glossary/*.md', { 
   eager: false, // Lazy load to prevent hangs
-  as: 'raw' 
+  // Vite 7+: use query/import instead of deprecated `as: 'raw'`
+  query: '?raw',
+  import: 'default',
 }) as Record<string, () => Promise<string>>;
 
 // Cache for parsed content
@@ -41,10 +43,19 @@ async function loadGlossaryFile(id: string): Promise<ContentFile | undefined> {
       'homonia': 'homonoia', // Architecture uses 'homonia', file is homonoia.md
       'glaukos-mati': 'glauk-s-mati', // Architecture uses 'glaukos-mati', file is glauk-s-mati.md
       'thermansis': 'th-rmansis',     // Architecture uses 'thermansis', file is th-rmansis.md
-      'nomothetesis': 'nomothet-sis', // Architecture uses 'nomothetesis', file is nomothet-sis.md
+      'nomothesia': 'nomothet-sis', // Architecture/Blueprint uses 'nomothesia', glossary file is nomothet-sis.md
       'generational-fairness': 'generational-fairness-doctrine-gfd',
       'isotimia': 'isotim-a',         // Architecture uses 'isotimia', file is isotim-a.md
       'aletheia': 'al-theia',         // Architecture uses 'aletheia', file is al-theia.md
+      // Additional glossary-only ID ↔ filename mappings
+      'aretecracy': 'aret-cracy',
+      'four-aretai': 'aretai-the-four',
+      'four-isotes': 'is-t-s-the-four',
+      'jr-ekklesia': 'junior-ekklesia',
+      'klerosis': 'kl-r-sis',
+      'sentilea': 'sentilea-synteleia',
+      'atd': 'atd-automated-technological-dividend',
+      'graphe-paranomon': 'graph-paranomon',
     };
     
     const variation = idVariations[id];

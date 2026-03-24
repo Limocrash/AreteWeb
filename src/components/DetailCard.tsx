@@ -786,14 +786,15 @@ export function DetailCard({
                       onClose();
                     }}
                     type="button"
-                    className={`py-2.5 px-6 rounded-full transition-all duration-300 flex items-center justify-center gap-2 shadow-lg cursor-pointer ${
+                    className={`rounded-full transition-all duration-300 flex items-center justify-center gap-2 shadow-lg cursor-pointer ${
                       darkMode
                         ? 'bg-stone-700/80 text-amber-200 hover:bg-stone-600 border border-stone-600'
                         : 'bg-white/90 text-stone-700 hover:bg-stone-100 border border-stone-300'
                     } hover:scale-105`}
                     style={{ 
                       fontFamily: 'Georgia, serif', 
-                      fontSize: '0.9rem',
+                      fontSize: '2.5cqi',
+                      padding: '1cqi 2.5cqi',
                     }}
                   >
                     {isTriadMode ? '← Back' : isGlossaryMode ? 'Back to Glossary' : 'Back to Pillars'}

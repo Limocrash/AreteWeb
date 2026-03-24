@@ -1,7 +1,7 @@
 ---
 id: nomothet-sis
 name: "Nomothetēsis"
-greekName: "Νομοθέτησις"
+greekName: "Νομοθεσία"
 blurb: "The lawmaking pathway from citizen idea to enacted law."
 complexity: 2
 category: concept

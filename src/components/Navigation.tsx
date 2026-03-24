@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Home, BookOpen, Columns3, Users, Info, MoreHorizontal, Sun, Moon } from 'lucide-react';
+import { Home, Columns3, Info, MoreHorizontal, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
 import { Settings } from './Settings';
 const logoWordmark = import.meta.env.BASE_URL + "images/logo-wordmark.png";
@@ -17,9 +17,8 @@ interface NavigationProps {
 
 const navItems = [
   { id: 'home', label: 'Home', icon: Home },
-  { id: 'about', label: 'The Owl', icon: Info },
+  { id: 'blueprint', label: 'The Blueprint', icon: Info },
   { id: 'pillars', label: 'The Pillars', icon: Columns3 },
-  { id: 'glossary', label: 'Glossary', icon: BookOpen },
   { id: 'etc', label: 'κ.τ.λ. (More)', icon: MoreHorizontal },
 ];
 
@@ -55,11 +54,11 @@ export function Navigation(props: NavigationProps) {
             : 'bg-white border-slate-200 shadow-lg'
         }`}
       >
-        <div className="flex items-center justify-between h-14 md:h-16">
+        <div className="flex items-center justify-between h-14">
           {/* Logo - Home Button */}
           <button
             onClick={() => onNavigate('home')}
-            className={`flex items-center h-full py-2 px-3 md:px-4 rounded-lg transition-all duration-300 ${
+            className={`flex items-center h-full py-2 px-3 rounded-lg transition-all duration-300 ${
               currentPage === 'home'
                 ? darkMode
                   ? 'bg-gray-800/50'
@@ -79,7 +78,7 @@ export function Navigation(props: NavigationProps) {
                 alt="AreTéCracy"
                 onLoad={() => setLogoLoaded(true)}
                 onError={() => setLogoError(true)}
-                className={`h-8 md:h-10 w-auto transition-all duration-300 ${
+                className={`h-8 w-auto transition-all duration-300 ${
                   !logoLoaded ? 'opacity-0' : 'opacity-100'
                 } hover:scale-105`}
                 style={{ border: darkMode ? '1px solid #0a0a0a' : 'none' }}
@@ -87,7 +86,7 @@ export function Navigation(props: NavigationProps) {
                 fetchpriority="high"
               />
             ) : (
-              <span className={`text-lg md:text-xl font-bold ${
+              <span className={`text-lg font-bold ${
                 darkMode ? 'text-amber-300' : 'text-slate-800'
               }`} style={{ fontFamily: '"Trebuchet MS", "Trebuchet", "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif' }}>
                 AreTéCracy
@@ -96,7 +95,7 @@ export function Navigation(props: NavigationProps) {
           </button>
 
           {/* Navigation Items - Compact horizontal layout (no theme, settings, login here) */}
-          <div className="flex items-center gap-1 md:gap-2">
+          <div className="flex items-center gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentPage === item.id;
@@ -107,7 +106,7 @@ export function Navigation(props: NavigationProps) {
                   onClick={() => {
                     onNavigate(item.id);
                   }}
-                  className={`relative flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 rounded-lg transition-all duration-300 ${
+                  className={`relative flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-300 ${
                     isActive
                       ? darkMode
                         ? 'text-amber-200'
@@ -127,16 +126,12 @@ export function Navigation(props: NavigationProps) {
                     } : {})
                   }}
                 >
-                  <Icon className={`w-4 h-4 md:w-5 md:h-5 ${
+                  <Icon className={`w-4 h-4 ${
                     isActive 
                       ? 'opacity-80' 
                       : ''
                   }`} />
-                  <span className={`text-sm md:text-base font-semibold whitespace-nowrap ${
-                    isActive 
-                      ? 'opacity-90' 
-                      : ''
-                  }`}>
+                  <span className={`font-semibold whitespace-nowrap ${isActive ? 'opacity-90' : ''}`} style={{ fontSize: 'var(--nav-item-font)' }}>
                     {item.label}
                   </span>
                 </button>
@@ -187,7 +182,7 @@ export function Navigation(props: NavigationProps) {
               // Placeholder: wire to auth when ready
               console.log('Login clicked');
             }}
-            className={`px-4 py-2 rounded-lg text-sm font-semibold border-2 transition-all duration-300 ${
+            className={`px-4 py-2 rounded-lg font-semibold border-2 transition-all duration-300 ${
               darkMode
                 ? 'border-cyan-400/60 text-cyan-200 hover:bg-cyan-500/20'
                 : 'border-slate-400 text-slate-700 hover:bg-slate-100'
@@ -195,6 +190,7 @@ export function Navigation(props: NavigationProps) {
             style={{
               fontFamily: '"Trebuchet MS", "Trebuchet", "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif',
               backgroundColor: darkMode ? '#0a0a0a' : '#ffffff',
+              fontSize: 'var(--nav-item-font)',
             }}
             aria-label="Login"
           >
@@ -205,8 +201,8 @@ export function Navigation(props: NavigationProps) {
               // Placeholder: wire to Patreon or auth when ready
               window.open('https://www.patreon.com/aretecracy', '_blank');
             }}
-            className="px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 text-black border-2 border-[#D4AF37] hover:border-[#F9E076] opacity-100"
-            style={{ fontFamily: '"Trebuchet MS", "Trebuchet", "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif', backgroundColor: joinHover ? '#F9E076' : '#D4AF37' }}
+            className="px-4 py-2 rounded-lg font-semibold transition-all duration-300 text-black border-2 border-[#D4AF37] hover:border-[#F9E076] opacity-100"
+            style={{ fontFamily: '"Trebuchet MS", "Trebuchet", "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif', backgroundColor: joinHover ? '#F9E076' : '#D4AF37', fontSize: 'var(--nav-item-font)' }}
             onMouseEnter={() => setJoinHover(true)}
             onMouseLeave={() => setJoinHover(false)}
             aria-label="Join Us"

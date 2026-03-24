@@ -58,6 +58,20 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar }: 
       {/* Hero Section */}
       <header className="relative pt-20 pb-8 lg:pt-24 lg:pb-12 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          {/* Top tagline above logo */}
+          <p
+            className="mb-4 md:mb-5 tracking-wide text-[1.75rem] md:text-[2rem]"
+            style={{
+              fontFamily: '"Crimson Text", "EB Garamond", "Georgia", "Times New Roman", serif',
+              fontWeight: 600,
+              fontVariant: 'small-caps',
+              letterSpacing: '0.05em',
+              color: darkMode ? 'rgba(251, 191, 36, 0.9)' : 'rgb(87, 83, 78)',
+            }}
+          >
+            IT&apos;S TIME TO UPGRADE TO A WHOLE NEW OS.
+          </p>
+
           {/* Logo Banner (no dimming) */}
           <div className="mb-10 md:mb-12 relative mx-auto max-w-5xl">
             {/* Blue glow under banner edges */}
@@ -89,9 +103,6 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar }: 
             className="text-2xl md:text-4xl font-bold tracking-tight mb-0 max-w-5xl mx-auto"
             style={{ fontFamily: '"Trebuchet MS", "Trebuchet", "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif' }}
           >
-            <span className="block mb-2">
-              It's not the leaders—it's the system. It was <span className="font-bold uppercase">BUILT</span> this way.
-            </span>
             <span className="block mb-2 md:whitespace-nowrap">
               Are you ready for <span className="underline">real</span>, CITIZEN-RUN democracy?
             </span>

@@ -57,7 +57,7 @@ export function HomeIntro({ darkMode, onComplete, onOpenSettings }: HomeIntroPro
         transition={{ duration: 1.2 }}
         className="fixed inset-0 z-[100] flex items-center justify-center"
         style={{
-          backgroundImage: darkMode ? 'url(/DarkmodeParchment.png)' : 'url(https://images.unsplash.com/photo-1706271952285-01b5e3fc2d78?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvbGQlMjBwYXBlciUyMHRleHR1cmUlMjBiZWlnZXxlbnwxfHx8fDE3Njc1NzQ4NjF8MA&ixlib=rb-4.1.0&q=80&w=1080)',
+          backgroundImage: darkMode ? 'url(/images/DarkmodeParchment.png)' : 'url(/images/LightParchment.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

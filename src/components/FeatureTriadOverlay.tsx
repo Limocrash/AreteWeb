@@ -108,7 +108,7 @@ export function FeatureTriadOverlay({ darkMode = true, onNavigate, onNavigateToP
                 onClick={(e) => handleTileClick(item, e)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`text-left p-4 md:p-6 lg:p-8 rounded-lg border-2 transition-all duration-300 relative overflow-hidden flex items-center ${
+                className={`text-left p-4 md:p-6 lg:p-8 rounded-lg border-2 transition-all duration-300 relative overflow-hidden flex items-center min-w-0 ${
                   darkMode
                     // Make dark-mode tiles fully opaque instead of translucent
                     ? 'bg-[#020617] border-gray-700 hover:border-cyan-500 hover:bg-[#020617]'
@@ -130,7 +130,7 @@ export function FeatureTriadOverlay({ darkMode = true, onNavigate, onNavigateToP
                     : 'bg-gradient-to-r from-cyan-400/50 via-cyan-500/70 to-cyan-400/50'
                 } blur-md -z-10`} />
                 
-                <h3 className={`text-xl md:text-2xl lg:text-3xl font-bold transition-all duration-300 ${
+                <h3 className={`text-xl md:text-2xl lg:text-3xl font-bold transition-all duration-300 min-w-0 break-words ${
                   darkMode 
                     ? 'text-stone-50 group-hover:text-stone-100' 
                     : 'text-slate-900 group-hover:text-slate-800'

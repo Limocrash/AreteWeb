@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, X, Filter, BookOpen, Check } from 'lucide-react';
+import { Search, X, Filter, BookOpen } from 'lucide-react';
 import { glossaryTerms, GlossaryTerm, searchTerms } from '../data/glossary';
 import { DetailCard } from './DetailCard';
 import { RulesLine } from './RulesLine';
@@ -126,17 +126,30 @@ export function GlossaryPage({ darkMode, onNavigateToPillar }: GlossaryPageProps
               darkMode ? 'text-cyan-300/70' : 'text-cyan-600/70'
             }`}
           >
-            <Check 
-              className={`w-4 h-4 ${
-                darkMode ? 'text-cyan-400' : 'text-cyan-600'
-              }`}
-              style={{
-                filter: darkMode 
-                  ? 'drop-shadow(0 0 6px rgba(34, 211, 238, 0.8))'
-                  : 'drop-shadow(0 0 4px rgba(6, 182, 212, 0.6))'
-              }}
-              strokeWidth={3}
-            />
+            <div className="relative w-5 h-5 shrink-0 flex items-center justify-center">
+              <div
+                className={`absolute inset-0 z-0 rounded-full blur ${
+                  darkMode ? 'bg-cyan-400/40' : 'bg-cyan-600/30'
+                }`}
+                style={{
+                  width: '200%',
+                  height: '200%',
+                  top: '-50%',
+                  left: '-50%'
+                }}
+              />
+              <img
+                src={completionFeatherSrc}
+                alt=""
+                role="presentation"
+                className="relative z-10 w-5 h-5 object-contain"
+                style={{
+                  filter: darkMode
+                    ? 'drop-shadow(0 0 6px rgba(34, 211, 238, 0.8)) drop-shadow(0 0 12px rgba(34, 211, 238, 0.4))'
+                    : 'drop-shadow(0 0 4px rgba(6, 182, 212, 0.6)) drop-shadow(0 0 8px rgba(6, 182, 212, 0.3))'
+                }}
+              />
+            </div>
             <span style={{ fontFamily: 'Georgia, serif' }}>
               = You've read this term (syncs with Pillars page)
             </span>

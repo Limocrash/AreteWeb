@@ -1,8 +1,8 @@
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Home, Columns3, Info, MoreHorizontal, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
 import { Settings } from './Settings';
-const logoWordmark = import.meta.env.BASE_URL + "images/logo-wordmark.png";
+const logoWordmark = import.meta.env.BASE_URL + 'images/logo-wordmark.png';
 
 interface NavigationProps {
   darkMode: boolean;
@@ -14,7 +14,6 @@ interface NavigationProps {
   onSkipPrefChange?: () => void;
 }
 
-
 const navItems = [
   { id: 'home', label: 'Home', icon: Home },
   { id: 'blueprint', label: 'The Blueprint', icon: Info },
@@ -23,7 +22,6 @@ const navItems = [
 ];
 
 export function Navigation(props: NavigationProps) {
-  // Guard against undefined props (can happen during HMR or strict mode)
   if (!props) {
     console.warn('Navigation component received undefined props');
     return null;
@@ -35,7 +33,6 @@ export function Navigation(props: NavigationProps) {
   const [internalSettingsOpen, setInternalSettingsOpen] = useState(false);
   const [joinHover, setJoinHover] = useState(false);
   
-  // Use external control if provided, otherwise internal
   const settingsOpen = externalSettingsOpen !== undefined ? externalSettingsOpen : internalSettingsOpen;
   const setSettingsOpen = onSettingsChange || setInternalSettingsOpen;
 
@@ -46,7 +43,6 @@ export function Navigation(props: NavigationProps) {
       transition={{ type: 'spring', damping: 20, stiffness: 150 }}
       className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300"
     >
-      {/* Row 1: Main nav - solid background, nav items only */}
       <div
         className={`w-full px-4 sm:px-6 lg:px-8 border-b-2 transition-colors duration-300 ${
           darkMode
@@ -55,17 +51,12 @@ export function Navigation(props: NavigationProps) {
         }`}
       >
         <div className="flex items-center justify-between h-14">
-          {/* Logo - Home Button */}
           <button
             onClick={() => onNavigate('home')}
             className={`flex items-center h-full py-2 px-3 rounded-lg transition-all duration-300 ${
               currentPage === 'home'
-                ? darkMode
-                  ? 'bg-gray-800/50'
-                  : 'bg-stone-100'
-                : darkMode
-                  ? 'hover:bg-gray-800/30'
-                  : 'hover:bg-stone-50'
+                ? darkMode ? 'bg-gray-800/50' : 'bg-stone-100'
+                : darkMode ? 'hover:bg-gray-800/30' : 'hover:bg-stone-50'
             }`}
             style={darkMode ? { border: '1px solid #0a0a0a' } : {}}
             aria-label="Home"
@@ -73,7 +64,7 @@ export function Navigation(props: NavigationProps) {
             {!logoError ? (
               <img
                 src={logoWordmark}
-                srcSet={`${import.meta.env.BASE_URL || "/"}images/logo-wordmark-small.webp 200w, ${import.meta.env.BASE_URL || "/"}images/logo-wordmark-medium.webp 400w, ${import.meta.env.BASE_URL || "/"}images/logo-wordmark-large.webp 800w`}
+                srcSet={`${import.meta.env.BASE_URL}images/logo-wordmark-small.webp 200w, ${import.meta.env.BASE_URL}images/logo-wordmark-medium.webp 400w, ${import.meta.env.BASE_URL}images/logo-wordmark-large.webp 800w`}
                 sizes="(max-width: 600px) 120px, 160px"
                 alt="AreTéCracy"
                 onLoad={() => setLogoLoaded(true)}
@@ -83,7 +74,7 @@ export function Navigation(props: NavigationProps) {
                 } hover:scale-105`}
                 style={{ border: darkMode ? '1px solid #0a0a0a' : 'none' }}
                 loading="eager"
-                fetchpriority="high"
+                fetchPriority="high"
               />
             ) : (
               <span className={`text-lg font-bold ${
@@ -94,23 +85,17 @@ export function Navigation(props: NavigationProps) {
             )}
           </button>
 
-          {/* Navigation Items - Compact horizontal layout (no theme, settings, login here) */}
           <div className="flex items-center gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentPage === item.id;
-              
               return (
                 <button
                   key={item.id}
-                  onClick={() => {
-                    onNavigate(item.id);
-                  }}
+                  onClick={() => onNavigate(item.id)}
                   className={`relative flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-300 ${
                     isActive
-                      ? darkMode
-                        ? 'text-amber-200'
-                        : 'text-slate-800'
+                      ? darkMode ? 'text-amber-200' : 'text-slate-800'
                       : darkMode
                         ? 'text-amber-100 hover:bg-gray-800/50 hover:text-[#69dcff]'
                         : 'text-slate-600 hover:bg-slate-50 hover:text-blue-600'
@@ -126,11 +111,7 @@ export function Navigation(props: NavigationProps) {
                     } : {})
                   }}
                 >
-                  <Icon className={`w-4 h-4 ${
-                    isActive 
-                      ? 'opacity-80' 
-                      : ''
-                  }`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'opacity-80' : ''}`} />
                   <span className={`font-semibold whitespace-nowrap ${isActive ? 'opacity-90' : ''}`} style={{ fontSize: 'var(--nav-item-font)' }}>
                     {item.label}
                   </span>
@@ -141,9 +122,7 @@ export function Navigation(props: NavigationProps) {
         </div>
       </div>
 
-      {/* Row 2: Sub-bar - transparent, theme left, Login | Join Us right (overlays content) */}
       <div className="w-full px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between bg-transparent">
-        {/* Theme toggle - current theme = dimmed, switch-to = highlighted */}
         <div className="flex items-center gap-1">
           {onDarkModeChange && (
             <>
@@ -155,7 +134,6 @@ export function Navigation(props: NavigationProps) {
                     : 'bg-amber-100/90 text-[#7c2d12] border-amber-500 hover:bg-amber-200'
                 }`}
                 aria-label="Light mode"
-                title="Light mode"
               >
                 <Sun className="w-5 h-5" />
               </button>
@@ -167,7 +145,6 @@ export function Navigation(props: NavigationProps) {
                     : 'bg-[#b45309] text-white border-[#7c2d12] hover:bg-[#c05621]'
                 }`}
                 aria-label="Dark mode"
-                title="Dark mode"
               >
                 <Moon className="w-5 h-5" />
               </button>
@@ -175,13 +152,9 @@ export function Navigation(props: NavigationProps) {
           )}
         </div>
 
-        {/* Login | Join Us - right */}
         <div className="flex items-center gap-2">
           <button
-            onClick={() => {
-              // Placeholder: wire to auth when ready
-              console.log('Login clicked');
-            }}
+            onClick={() => console.log('Login clicked')}
             className={`px-4 py-2 rounded-lg font-semibold border-2 transition-all duration-300 ${
               darkMode
                 ? 'border-cyan-400/60 text-cyan-200 hover:bg-cyan-500/20'
@@ -197,10 +170,7 @@ export function Navigation(props: NavigationProps) {
             Login
           </button>
           <button
-            onClick={() => {
-              // Placeholder: wire to Patreon or auth when ready
-              window.open('https://www.patreon.com/aretecracy', '_blank');
-            }}
+            onClick={() => window.open('https://www.patreon.com/aretecracy', '_blank')}
             className="px-4 py-2 rounded-lg font-semibold transition-all duration-300 text-black border-2 border-[#D4AF37] hover:border-[#F9E076] opacity-100"
             style={{ fontFamily: '"Trebuchet MS", "Trebuchet", "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif', backgroundColor: joinHover ? '#F9E076' : '#D4AF37', fontSize: 'var(--nav-item-font)' }}
             onMouseEnter={() => setJoinHover(true)}
@@ -212,7 +182,6 @@ export function Navigation(props: NavigationProps) {
         </div>
       </div>
       
-      {/* Settings Modal */}
       <Settings
         darkMode={darkMode}
         isOpen={settingsOpen}

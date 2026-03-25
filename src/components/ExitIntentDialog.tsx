@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 interface ExitIntentDialogProps {
   darkMode: boolean;
@@ -23,15 +23,12 @@ export function ExitIntentDialog({ darkMode, onClose, onGoToEightWays }: ExitInt
       aria-labelledby="exit-dialog-title"
       aria-describedby="exit-dialog-desc"
     >
-      {/* Backdrop */}
       <button
         type="button"
         onClick={onClose}
         className="absolute inset-0 bg-black/60 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-inset"
         aria-label="Close dialog"
       />
-
-      {/* Card */}
       <div
         className={`relative w-full max-w-lg rounded-xl shadow-2xl border-2 p-6 md:p-8 text-left ${
           darkMode
@@ -50,14 +47,12 @@ export function ExitIntentDialog({ darkMode, onClose, onGoToEightWays }: ExitInt
         >
           <span className="text-xl leading-none">×</span>
         </button>
-
         <h2 id="exit-dialog-title" className="text-xl font-bold mb-4 pr-8">
           Before you go…
         </h2>
         <p id="exit-dialog-desc" className={`text-base md:text-lg mb-6 ${darkMode ? 'text-gray-300' : 'text-stone-700'}`}>
           We noticed you left without looking at how AreTéCracy is different from anything you've seen before… How about: &quot;No Politicians. Not even one,&quot; or &quot;$1 Billion still gets just one vote,&quot; or &quot;The future gets a vote, too?&quot; Aren't you curious to know more?
         </p>
-
         <div className="flex flex-col sm:flex-row gap-3">
           <a
             href="#eight-ways"

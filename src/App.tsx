@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { Toaster } from 'sonner';
 import { Navigation } from './components/Navigation';
@@ -16,23 +16,22 @@ import { getSkipWelcomeIntro, getSkipPillarsIntro } from './components/Settings'
 import { isReturningVisitor, markVisited } from './utils/templeProgress';
 
 // Parchment textures for background (local files in public/images)
-const lightParchment = '/images/LightParchment.jpg';
-const darkParchment = '/images/DarkmodeParchment.png';
+const lightParchment = import.meta.env.BASE_URL + 'images/LightParchment.jpg';
+const darkParchment = import.meta.env.BASE_URL + 'images/DarkmodeParchment.png';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   
-  // Helper function to get page from URL
   const getPageFromUrl = (): string => {
-    const hash = window.location.hash;
-    if (hash === '#/glossary') return 'glossary';
-    if (hash === '#/pillars') return 'pillars';
-    if (hash.startsWith('#/blueprint')) return 'blueprint';
-    if (hash === '#/etc') return 'etc';
-    if (hash === '#/legal') return 'legal';
-    if (hash === '#/privacy') return 'privacy';
-    if (hash === '#/terms') return 'terms';
+    const h = window.location.hash;
+    if (h === '#/glossary') return 'glossary';
+    if (h === '#/pillars') return 'pillars';
+    if (h.startsWith('#/blueprint')) return 'blueprint';
+    if (h === '#/etc') return 'etc';
+    if (h === '#/legal') return 'legal';
+    if (h === '#/privacy') return 'privacy';
+    if (h === '#/terms') return 'terms';
     return 'home';
   };
 
@@ -42,7 +41,6 @@ export default function App() {
   const [skipWelcomeIntro, setSkipWelcomeIntro] = useState(() => getSkipWelcomeIntro());
   const [skipPillarsIntro, setSkipPillarsIntro] = useState(() => getSkipPillarsIntro());
 
-  // Home intro: show on first visit only (unless skip is set)
   const [showHomeIntro, setShowHomeIntro] = useState(() => {
     if (typeof window === 'undefined') return false;
     const seen = localStorage.getItem('heroInvocationSeen');
@@ -54,14 +52,12 @@ export default function App() {
     setSkipPillarsIntro(getSkipPillarsIntro());
   };
 
-  // Show PillarsIntro when navigating to pillars; skip if user turned off future intros
   useEffect(() => {
     if (currentPage === 'pillars') {
       setShowPillarsIntro(!skipPillarsIntro);
     }
   }, [currentPage, skipPillarsIntro]);
 
-  // Sync dark mode to document class for global CSS variables
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -70,7 +66,6 @@ export default function App() {
     }
   }, [darkMode]);
 
-  // Handle browser back/forward and hash changes (e.g. blueprint landing vs hub)
   useEffect(() => {
     const sync = () => {
       setCurrentPage(getPageFromUrl());
@@ -85,7 +80,6 @@ export default function App() {
     };
   }, []);
 
-  // Navigation handler
   const handleNavigate = (page: string) => {
     const hashMap: Record<string, string> = {
       'home': '',
@@ -97,16 +91,15 @@ export default function App() {
       'privacy': '#/privacy',
       'terms': '#/terms',
     };
-    const hash = hashMap[page] || '';
+    const newHash = hashMap[page] || '';
     setCurrentPage(page);
-    setHash(hash);
-    window.history.pushState({ page }, '', hash || window.location.pathname);
+    setHash(newHash);
+    window.history.pushState({ page }, '', newHash || window.location.pathname);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleNavigateToPillar = (pillarId: string) => {
-    console.log(`Navigate to pillar: ${pillarId}`);
-    // In a real implementation, this would open the pillar detail card
+  const handleNavigateToPillar = (_pillarId: string) => {
+    // Placeholder: opens pillar detail card
   };
 
   const handleHomeIntroComplete = () => {
@@ -118,19 +111,15 @@ export default function App() {
 
   return (
     <div className={`min-h-screen flex flex-col relative ${darkMode ? 'dark' : ''}`}>
-      {/* Parchment Background */}
       <div className="fixed inset-0 -z-10">
         <img 
-          // Use light parchment in light mode and the darker PNG in dark mode.
           src={darkMode ? darkParchment : lightParchment}
           alt="Parchment background" 
           className="w-full h-full object-cover transition-opacity duration-500"
         />
-        {/* Debug mode: remove the overlay entirely */}
         <div className="absolute inset-0 bg-transparent" />
       </div>
 
-      {/* Navigation Bar */}
       <Navigation
         darkMode={darkMode}
         currentPage={currentPage}
@@ -141,7 +130,6 @@ export default function App() {
         onSkipPrefChange={refreshSkipPrefs}
       />
 
-      {/* Home Intro Overlay */}
       {showHomeIntro && currentPage === 'home' && (
         <HomeIntro
           darkMode={darkMode}
@@ -150,7 +138,6 @@ export default function App() {
         />
       )}
 
-      {/* Page Content - Blueprint map hub: pt-[66px] so map starts below navbar Row 1; Blueprint landing: pt-[66px]; others: pt-[8rem] */}
       <div
         className={`flex-1 min-w-0 overflow-x-hidden ${
           currentPage === 'blueprint'
@@ -162,11 +149,9 @@ export default function App() {
               })()
             : 'pt-[8rem]'
         } ${
-          currentPage === 'pillars' ? 'max-h-[100vh] overflow-y-hidden' : ''
+          currentPage === 'pillars' ? 'max-h-[100vh] min-h-0 overflow-y-hidden' : ''
         } ${
-          currentPage === 'blueprint'
-            ? 'min-h-0 overflow-y-hidden flex flex-col'
-            : ''
+          currentPage === 'blueprint' ? 'min-h-0 overflow-y-hidden flex flex-col' : ''
         }`}
       >
         {currentPage === 'home' && (
@@ -185,7 +170,6 @@ export default function App() {
           </div>
         )}
         
-        {/* Legal Pages */}
         {(currentPage === 'legal' || currentPage === 'privacy' || currentPage === 'terms') && (
           <LegalPage 
             darkMode={darkMode}
@@ -193,7 +177,6 @@ export default function App() {
           />
         )}
         
-        {/* Glossary Page */}
         {currentPage === 'glossary' && (
           <GlossaryPage 
             darkMode={darkMode}
@@ -201,7 +184,6 @@ export default function App() {
           />
         )}
 
-        {/* Pillars Page: main view always mounted (so it lays out during intro); intro as overlay when showing */}
         {currentPage === 'pillars' && (
           <>
             <PillarsMainView
@@ -225,7 +207,6 @@ export default function App() {
           </>
         )}
         
-        {/* κ.τ.λ. (More) page - Settings + Legal/Privacy/Terms */}
         {currentPage === 'etc' && (
           <EtcPage
             darkMode={darkMode}
@@ -234,18 +215,15 @@ export default function App() {
           />
         )}
 
-        {/* The Blueprint page - Ekklesia hub + process hubs */}
         {currentPage === 'blueprint' && (
           <BlueprintPage darkMode={darkMode} />
         )}
       </div>
 
-      {/* Footer - hidden on Pillars so page is exactly 100vh and elevator has no scrollbar */}
       {currentPage !== 'pillars' && (
         <Footer darkMode={darkMode} onNavigate={handleNavigate} />
       )}
 
-      {/* Toast notifications (completion seal award, etc.) */}
       <Toaster
         theme={darkMode ? 'dark' : 'light'}
         position="bottom-center"

@@ -148,28 +148,29 @@ export function PillarsIntro({ darkMode, isReturningVisitor = false, onBeginCons
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-16 left-0 right-0 bottom-0 z-40 flex overflow-x-hidden overflow-y-hidden"
+      className="fixed top-16 left-0 right-0 bottom-0 z-40 flex min-w-0 overflow-x-hidden overflow-y-hidden"
     >
-      {/* Main content area - images + Begin Tour (no overlay) */}
-      <div className="flex-1 min-w-0 flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Main content area - images + Begin Tour (no overlay); min-w-0 so Firefox zoom cannot expand from image intrinsic width */}
+      <div className="flex-1 min-w-0 w-0 flex flex-col items-center justify-center relative overflow-hidden">
       {/* Camera descent: stacked strip (pediment → pillars → euthynteria) slides up as elevator goes down */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden min-w-0">
         <motion.div
-          className="flex flex-col"
+          className="flex flex-col w-full min-w-0 max-w-full"
           style={{ height: '300vh' }}
           initial={{ y: 0 }}
           animate={{ y: `${descentProgress * -200}vh` }}
           transition={{ duration: 0.05 }}
         >
           {/* 1. Roof / Pediment (Poseidon) */}
-          <div className="relative h-screen w-full flex-shrink-0">
+          <div className="relative h-screen w-full min-w-0 max-w-full flex-shrink-0 overflow-hidden">
             <img
               src={pedimentSrc}
               srcSet={pedimentSrcSet}
               sizes="100vw"
               alt="Temple pediment"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full max-w-full h-full min-w-0 object-cover"
               loading="eager"
+              style={{ maxWidth: '100%' }}
             />
             <div
               className={`absolute inset-0 ${
@@ -180,14 +181,15 @@ export function PillarsIntro({ darkMode, isReturningVisitor = false, onBeginCons
             />
           </div>
           {/* 2. Pillars (architecture) */}
-          <div className="relative h-screen w-full flex-shrink-0">
+          <div className="relative h-screen w-full min-w-0 max-w-full flex-shrink-0 overflow-hidden">
             <img
               src={pillarsSrc}
               srcSet={pillarsSrcSet}
               sizes="100vw"
               alt="Temple pillars"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full max-w-full h-full min-w-0 object-cover"
               loading="eager"
+              style={{ maxWidth: '100%' }}
             />
             <div
               className={`absolute inset-0 ${
@@ -198,14 +200,15 @@ export function PillarsIntro({ darkMode, isReturningVisitor = false, onBeginCons
             />
           </div>
           {/* 3. Bedrock (euthynteria) */}
-          <div className="relative h-screen w-full flex-shrink-0">
+          <div className="relative h-screen w-full min-w-0 max-w-full flex-shrink-0 overflow-hidden">
             <img
               src={bedrockSrc}
               srcSet={bedrockSrcSet}
               sizes="100vw"
               alt="Euthynteria – bedrock of Isotímia"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full max-w-full h-full min-w-0 object-cover"
               loading="eager"
+              style={{ maxWidth: '100%' }}
             />
             <div
               className={`absolute inset-0 ${
@@ -334,7 +337,7 @@ export function PillarsIntro({ darkMode, isReturningVisitor = false, onBeginCons
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        className="pillars-elevator-sidebar w-44 md:w-52 flex-shrink-0 flex flex-col items-center py-6 px-3 gap-4 border-l border-gray-600/50"
+        className="pillars-elevator-sidebar w-44 md:w-52 flex-shrink-0 min-w-0 flex flex-col items-center py-6 px-3 gap-4 border-l border-gray-600/50"
       >
         <div className="flex flex-col items-center w-full gap-1">
           <span className="text-[10px] md:text-xs font-bold leading-tight text-center elevator-menu-item elevator-panel-dark-text">

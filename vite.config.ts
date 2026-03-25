@@ -6,14 +6,14 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3002,
-    host: '0.0.0.0', // Listen on all interfaces (IPv4 and IPv6)
+    host: '0.0.0.0',
     open: true,
     cors: {
       origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
       credentials: true,
     },
   },
-  base: '/',
-  // Use this app's own public folder only (no parent paths). Clone/deploy-safe.
+  // Use '/AreteWeb/' for GitHub Pages (project site); '/' for local dev
+  base: process.env.GITHUB_ACTIONS ? '/AreteWeb/' : '/',
   publicDir: path.resolve(__dirname, 'public'),
 });

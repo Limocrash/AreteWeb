@@ -21,12 +21,9 @@ export interface ContentMetadata {
 
 export interface ContentFile {
   metadata: ContentMetadata;
-  body: string; // Markdown content body
+  body: string;
 }
 
-/**
- * Parse YAML frontmatter and markdown body from a content file
- */
 export function parseContentFile(content: string): ContentFile {
   const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
   const match = content.match(frontmatterRegex);
@@ -38,7 +35,6 @@ export function parseContentFile(content: string): ContentFile {
   const frontmatter = match[1];
   const body = match[2].trim();
 
-  // Parse YAML frontmatter (simple parser for basic key-value pairs)
   const metadata: Partial<ContentMetadata> = {};
   const lines = frontmatter.split('\n');
 
@@ -47,15 +43,14 @@ export function parseContentFile(content: string): ContentFile {
     if (colonIndex === -1) continue;
 
     const key = line.slice(0, colonIndex).trim();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let value: any = line.slice(colonIndex + 1).trim();
 
-    // Remove quotes if present
     if ((value.startsWith('"') && value.endsWith('"')) || 
         (value.startsWith("'") && value.endsWith("'"))) {
       value = value.slice(1, -1);
     }
 
-    // Parse arrays
     if (value.startsWith('[') && value.endsWith(']')) {
       const arrayContent = value.slice(1, -1).trim();
       if (arrayContent === '') {
@@ -63,20 +58,19 @@ export function parseContentFile(content: string): ContentFile {
       } else {
         value = arrayContent
           .split(',')
-          .map(item => item.trim().replace(/^["']|["']$/g, ''))
-          .filter(item => item.length > 0);
+          .map((item: string) => item.trim().replace(/^["']|["']$/g, ''))
+          .filter((item: string) => item.length > 0);
       }
     }
 
-    // Parse booleans
     if (value === 'true') value = true;
     if (value === 'false') value = false;
 
-    // Parse numbers
-    if (/^\d+$/.test(value)) {
+    if (typeof value === 'string' && /^\d+$/.test(value)) {
       value = parseInt(value, 10);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (metadata as any)[key] = value;
   }
 
@@ -86,14 +80,8 @@ export function parseContentFile(content: string): ContentFile {
   };
 }
 
-/**
- * Load a content file dynamically (for runtime loading)
- * Note: In Vite, we need to use import.meta.glob for static analysis
- */
 export async function loadContentFile(path: string): Promise<ContentFile> {
   try {
-    // For Vite, we'll use import.meta.glob in the component
-    // This is a placeholder for the actual implementation
     const response = await fetch(path);
     const content = await response.text();
     return parseContentFile(content);
@@ -102,11 +90,6 @@ export async function loadContentFile(path: string): Promise<ContentFile> {
   }
 }
 
-/**
- * Get all glossary content files (build-time)
- * This will be populated by a build script or Vite's import.meta.glob
- */
 export function getAllGlossaryContent(): Record<string, ContentFile> {
-  // This will be populated at build time or via import.meta.glob
   return {};
 }

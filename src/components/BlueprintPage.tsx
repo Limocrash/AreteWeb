@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { loadBlueprintHubContent, loadBlueprintHotspotContent, blueprintHubs } from '../data/blueprint';
-import { BLUEPRINT_HUB_BUTTONS, BLUEPRINT_LANDING_ASPECT_RATIO, NOMOTHETESIS_MAP_ASPECT_RATIO } from '../data/blueprintHubs';
+import { BLUEPRINT_HUB_BUTTONS, BLUEPRINT_LANDING_ASPECT_RATIO, NOMOTHESIA_MAP_ASPECT_RATIO } from '../data/blueprintHubs';
 import { DetailCard } from './DetailCard';
 import { MarkdownContent } from './MarkdownContent';
 import type { ContentFile } from '../utils/contentLoader';
@@ -47,7 +47,7 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
     setHotspotCardOrigin(null);
   }, [hubId]);
 
-  // Load content: ekklesia bloom, nomothetesis hotspot, or hub overview
+  // Load content: ekklesia bloom, nomothesia hotspot, or hub overview
   useEffect(() => {
     if (pnyxBloomOpen) {
       let cancelled = false;
@@ -62,10 +62,10 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
       setContent(null);
       return;
     }
-    if (hubId === 'nomothetesis' && selectedHotspotId) {
+    if (hubId === 'nomothesia' && selectedHotspotId) {
       let cancelled = false;
       setLoading(true);
-      loadBlueprintHotspotContent('nomothetesis', selectedHotspotId)
+      loadBlueprintHotspotContent('nomothesia', selectedHotspotId)
         .then((data) => { if (!cancelled) setContent(data ?? null); })
         .catch(() => { if (!cancelled) setContent(null); })
         .finally(() => { if (!cancelled) setLoading(false); });
@@ -103,14 +103,14 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
     }
   }, [hubId, pnyxBloomOpen]);
 
-  // Hub page (not landing) - scroll-together: background, map, overlays, and card all in one unit
+  // Hub page (not landing)
   if (hubId && !pnyxBloomOpen) {
     const hub = BLUEPRINT_HUB_BUTTONS.find((b) => b.id === hubId);
     const hubLabel = hub?.label ?? hubId;
     const hasMap = hub?.hasMap ?? false;
 
-    // Nomothetesis: fit viewport so diagram is visible on load; full scroll via object-contain
-    const useScrollLayout = hasMap && hubId === 'nomothetesis';
+    // Nomothesia: fit viewport so diagram is visible on load
+    const useScrollLayout = hasMap && hubId === 'nomothesia';
 
     return (
       <div
@@ -118,7 +118,7 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
           darkMode ? 'text-amber-100' : 'text-stone-900'
         }`}
       >
-        {/* BlueprintMap-BG overlay - only for hub with map; sits above app background, below content */}
+        {/* BlueprintMap-BG overlay - only for hub with map */}
         {useScrollLayout && (
           <div
             className="fixed left-0 right-0 bottom-0 z-0"
@@ -132,7 +132,6 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
             />
           </div>
         )}
-        {/* Single scroll unit: canvas fits viewport so diagram visible on load; uses --navbar-total (110px) per docs/BLUEPRINT_MAPS_LAYOUT_SPEC.md */}
         <div
           className={`relative w-full ${useScrollLayout ? 'pb-[var(--navbar-total)]' : ''}`}
           style={{
@@ -141,12 +140,11 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
             maxHeight: useScrollLayout ? 'calc(100vh - var(--navbar-total, 110px) - 6rem)' : undefined,
           }}
         >
-          {/* Background layer - NOT fixed, scrolls with content */}
           <div className={`absolute inset-0 ${useScrollLayout ? 'flex items-center justify-center' : ''}`}>
             {useScrollLayout ? (
               <div
                 className="relative h-full max-w-full [container-type:size]"
-                style={{ aspectRatio: NOMOTHETESIS_MAP_ASPECT_RATIO }}
+                style={{ aspectRatio: NOMOTHESIA_MAP_ASPECT_RATIO }}
               >
                 <img
                   src={`${base}images/blueprint/blueprint-background-large.webp`}
@@ -172,10 +170,10 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
                   }`}
                   aria-hidden
                 />
-                {/* Hotspot overlay - coordinates match map (1200x769) */}
+                {/* Hotspot overlay */}
                 <div className="absolute inset-0 pointer-events-none">
                   <div className="relative w-full h-full pointer-events-auto">
-                    {(blueprintHubs.find((h) => h.id === 'nomothetesis')?.hotspots ?? [])
+                    {(blueprintHubs.find((h) => h.id === 'nomothesia')?.hotspots ?? [])
                       .filter((h): h is typeof h & { leftPercent: number; topPercent: number } => 
                         h.leftPercent != null && h.topPercent != null
                       )
@@ -239,7 +237,7 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
             )}
           </div>
 
-          {/* Content at top so visible on load */}
+          {/* Content */}
           <div className="absolute inset-0 flex flex-col items-start py-12 px-4 sm:px-6 lg:px-8 pointer-events-none">
             <div className="mb-6 flex items-center gap-4 pointer-events-auto">
               <button
@@ -315,7 +313,7 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
           </div>
         </div>
 
-        {/* Nomothesia hotspot cards - Glossary-style DetailCard bloom */}
+        {/* Nomothesia hotspot cards */}
         {useScrollLayout && selectedHotspotId && hotspotCardOrigin && content?.metadata?.id === selectedHotspotId && (
           <AnimatePresence>
               <DetailCard
@@ -341,12 +339,11 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
     );
   }
 
-  // Landing: scrollable, full image via object-contain. Image extends under Row 2 (pt uses --navbar-row1). Page scrolls when image taller than viewport.
+  // Landing
   return (
     <div
       className={`relative min-h-0 ${darkMode ? 'text-amber-100' : 'text-stone-900'}`}
     >
-      {/* Container: natural height from aspect-ratio; object-contain = full image, scroll when needed */}
       <div className={`relative z-0 w-full ${darkMode ? 'bg-stone-900' : 'bg-stone-200'}`}>
         <div
           className="relative w-full bg-stone-900"
@@ -366,7 +363,6 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
             }`}
             aria-hidden
           />
-          {/* Hotspots in same container as image - aligned at all aspect ratios */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="relative w-full h-full pointer-events-auto">
               {BLUEPRINT_HUB_BUTTONS.map((btn) => (
@@ -379,7 +375,6 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
                   left: `${btn.leftPercent}%`,
                   top: `${btn.topPercent}%`,
                   fontSize: 'var(--map-overlay-font)',
-                  // Beveled / clickable look: white/light bg, darker border (sienna-ish)
                   ...(darkMode
                     ? {
                         backgroundColor: 'rgba(146, 64, 14, 0.95)',
@@ -400,7 +395,6 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
             ))}
             </div>
           </div>
-          {/* Label - locked to image, same coordinate space as hotspots; top at or below middle of Row 2 */}
           <div
             className="absolute left-1/2 -translate-x-1/2 top-[3%] pointer-events-none"
             style={{ fontFamily: 'Georgia, serif' }}
@@ -424,7 +418,7 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
         </div>
       </div>
 
-      {/* Pnyx bloom overlay - Pillars instruction style: white bg, black text, sienna border */}
+      {/* Pnyx bloom overlay */}
       <AnimatePresence>
         {pnyxBloomOpen && (
           <motion.div

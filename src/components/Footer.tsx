@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface FooterProps {
   darkMode?: boolean;
   onNavigate?: (page: string) => void;

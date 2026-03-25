@@ -1,5 +1,5 @@
 // Pillars page after intro: level-specific content (message / pillars image / euthynteria) + elevator sidebar.
-// Opens at bottom (Bedrock) so the intro’s “you can’t build the roof first” makes sense.
+// Opens at bottom (Bedrock) so the intro's "you can't build the roof first" makes sense.
 
 import { useState, useEffect, useRef } from 'react';
 import { TempleArchitecture } from './TempleArchitecture';
@@ -78,7 +78,7 @@ export function PillarsMainView({ darkMode, onNavigateToPillar, introVisible = f
   }, [floorIndex]);
 
   return (
-    <div className="flex h-[calc(100vh-8rem)] w-full min-w-0 overflow-hidden">
+    <div className="flex h-[calc(100vh-8rem)] w-full min-w-0 min-h-0 overflow-hidden">
       {/* Main content - scrollable */}
       <div
         ref={contentScrollRef}
@@ -96,7 +96,7 @@ export function PillarsMainView({ darkMode, onNavigateToPillar, introVisible = f
         </div>
       </div>
 
-      {/* Elevator sidebar - fills available height, no scroll; extra top padding so "Architekton Elevator" clears nav buttons */}
+      {/* Elevator sidebar - fills available height; extra top padding so "Architekton Elevator" clears nav buttons */}
       <aside className="pillars-elevator-sidebar w-44 md:w-52 flex-shrink-0 h-full flex flex-col items-center pt-6 pb-4 px-3 gap-2 border-l border-gray-600/50 overflow-hidden">
         <div className="flex flex-col items-center w-full gap-1 flex-shrink-0">
           <span className="text-[10px] md:text-xs font-bold leading-tight text-center elevator-menu-item elevator-panel-dark-text">
@@ -107,7 +107,8 @@ export function PillarsMainView({ darkMode, onNavigateToPillar, introVisible = f
           </span>
         </div>
 
-        <div className="flex flex-col gap-1 w-full flex-1 min-h-0 overflow-hidden">
+        {/* Levels list — overflow-y-auto so it scrolls rather than clips on short viewports */}
+        <div className="flex flex-col gap-1 w-full flex-1 min-h-0 overflow-y-auto">
           {PILLAR_LEVELS.map((level, idx) => {
             const isCurrent = idx === floorIndex;
             return (

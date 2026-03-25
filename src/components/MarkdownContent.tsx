@@ -29,41 +29,17 @@ export function MarkdownContent({ content, className = '', darkMode = false, fon
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          // Customize heading styles
-          h1: ({ node, ...props }) => (
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 mt-6 first:mt-0" {...props} />
-          ),
-          h2: ({ node, ...props }) => (
-            <h2 className="text-2xl md:text-3xl font-bold mb-3 mt-6" {...props} />
-          ),
-          h3: ({ node, ...props }) => (
-            <h3 className="text-xl md:text-2xl font-semibold mb-2 mt-5" {...props} />
-          ),
-          h4: ({ node, ...props }) => (
-            <h4 className="text-lg md:text-xl font-semibold mb-2 mt-4" {...props} />
-          ),
-          h5: ({ node, ...props }) => (
-            <h5 className="text-base md:text-lg font-semibold mb-2 mt-3 italic" {...props} />
-          ),
-          h6: ({ node, ...props }) => (
-            <h6 className="text-sm md:text-base font-semibold mb-2 mt-3 italic" {...props} />
-          ),
-          // Customize paragraph styles
-          p: ({ node, ...props }) => (
-            <p className="mb-4 leading-relaxed" {...props} />
-          ),
-          // Customize list styles
-          ul: ({ node, ...props }) => (
-            <ul className="list-disc list-inside mb-4 space-y-2 ml-4" {...props} />
-          ),
-          ol: ({ node, ...props }) => (
-            <ol className="list-decimal list-inside mb-4 space-y-2 ml-4" {...props} />
-          ),
-          li: ({ node, ...props }) => (
-            <li className="leading-relaxed" {...props} />
-          ),
-          // Customize blockquote styles
-          blockquote: ({ node, ...props }) => (
+          h1: ({ ...props }) => <h1 className="text-3xl md:text-4xl font-bold mb-4 mt-6 first:mt-0" {...props} />,
+          h2: ({ ...props }) => <h2 className="text-2xl md:text-3xl font-bold mb-3 mt-6" {...props} />,
+          h3: ({ ...props }) => <h3 className="text-xl md:text-2xl font-semibold mb-2 mt-5" {...props} />,
+          h4: ({ ...props }) => <h4 className="text-lg md:text-xl font-semibold mb-2 mt-4" {...props} />,
+          h5: ({ ...props }) => <h5 className="text-base md:text-lg font-semibold mb-2 mt-3 italic" {...props} />,
+          h6: ({ ...props }) => <h6 className="text-sm md:text-base font-semibold mb-2 mt-3 italic" {...props} />,
+          p: ({ ...props }) => <p className="mb-4 leading-relaxed" {...props} />,
+          ul: ({ ...props }) => <ul className="list-disc list-inside mb-4 space-y-2 ml-4" {...props} />,
+          ol: ({ ...props }) => <ol className="list-decimal list-inside mb-4 space-y-2 ml-4" {...props} />,
+          li: ({ ...props }) => <li className="leading-relaxed" {...props} />,
+          blockquote: ({ ...props }) => (
             <blockquote 
               className={`border-l-4 pl-4 py-2 my-4 italic ${
                 darkMode 
@@ -73,16 +49,9 @@ export function MarkdownContent({ content, className = '', darkMode = false, fon
               {...props} 
             />
           ),
-          // Customize strong/bold
-          strong: ({ node, ...props }) => (
-            <strong className="font-bold" {...props} />
-          ),
-          // Customize emphasis/italic
-          em: ({ node, ...props }) => (
-            <em className="italic" {...props} />
-          ),
-          // Customize links
-          a: ({ node, ...props }) => (
+          strong: ({ ...props }) => <strong className="font-bold" {...props} />,
+          em: ({ ...props }) => <em className="italic" {...props} />,
+          a: ({ ...props }) => (
             <a 
               className="underline hover:no-underline transition-colors" 
               target="_blank" 
@@ -90,8 +59,8 @@ export function MarkdownContent({ content, className = '', darkMode = false, fon
               {...props} 
             />
           ),
-          // Customize code
-          code: ({ node, inline, ...props }: any) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          code: ({ inline, ...props }: any) => {
             if (inline) {
               return (
                 <code 
@@ -106,12 +75,9 @@ export function MarkdownContent({ content, className = '', darkMode = false, fon
             }
             return <code {...props} />;
           },
-          // Customize horizontal rule
-          hr: ({ node, ...props }) => (
+          hr: ({ ...props }) => (
             <hr 
-              className={`my-6 border-t ${
-                darkMode ? 'border-stone-700' : 'border-stone-300'
-              }`}
+              className={`my-6 border-t ${darkMode ? 'border-stone-700' : 'border-stone-300'}`}
               {...props} 
             />
           ),

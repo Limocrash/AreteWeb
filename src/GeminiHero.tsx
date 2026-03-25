@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { FeatureTriadOverlay } from './components/FeatureTriadOverlay';
 import { ExitIntentDialog } from './components/ExitIntentDialog';
 import { RulesLine } from './components/RulesLine';
@@ -9,7 +9,7 @@ interface GeminiHeroProps {
   onNavigateToPillar?: (pillarId: string) => void;
 }
 
-export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar }: GeminiHeroProps) {
+export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar: _onNavigateToPillar }: GeminiHeroProps) {
   const [bannerLoaded, setBannerLoaded] = useState(false);
   const [clickedScrollPrompt, setClickedScrollPrompt] = useState(false);
   const [scrolledToEightWays, setScrolledToEightWays] = useState(false);
@@ -43,10 +43,10 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar }: 
     return () => document.removeEventListener('mouseout', handleExitIntent);
   }, [clickedScrollPrompt, scrolledToEightWays]);
 
-  // Reference parent's public images folder (works in dev, you can copy later if needed for production)
-  const bannerSmall = `/images/logo-banner-small.webp`;
-  const bannerMed = `/images/logo-banner-medium.webp`;
-  const bannerLg = `/images/logo-banner-large.webp`;
+  const base = import.meta.env.BASE_URL;
+  const bannerSmall = `${base}images/logo-banner-small.webp`;
+  const bannerMed = `${base}images/logo-banner-medium.webp`;
+  const bannerLg = `${base}images/logo-banner-large.webp`;
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${
@@ -72,9 +72,8 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar }: 
             IT&apos;S TIME TO UPGRADE TO A WHOLE NEW OS.
           </p>
 
-          {/* Logo Banner (no dimming) */}
+          {/* Logo Banner */}
           <div className="mb-10 md:mb-12 relative mx-auto max-w-5xl">
-            {/* Blue glow under banner edges */}
             <div className="absolute -inset-3 bg-gradient-to-r from-cyan-500/60 via-blue-500/70 to-cyan-500/60 rounded-lg blur-xl -z-10" aria-hidden="true"></div>
             <div className="relative overflow-hidden rounded-lg shadow-2xl">
               <div className="aspect-[21/9] bg-gradient-to-br from-gray-800 to-black flex items-center justify-center relative overflow-hidden">
@@ -90,7 +89,7 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar }: 
                     bannerLoaded ? "opacity-100" : "opacity-0 absolute"
                   }`}
                   loading="eager"
-                  fetchpriority="high"
+                  fetchPriority="high"
                   decoding="async"
                   onLoad={() => setBannerLoaded(true)}
                 />
@@ -111,7 +110,7 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar }: 
               style={{
                 color: darkMode ? '#00F0FF' : '#0891b2',
                 fontFamily: '"Crimson Text", "EB Garamond", "Georgia", "Times New Roman", serif',
-                fontWeight: 600, // Semibold for stronger presence
+                fontWeight: 600,
               }}
             >
               WE ARE.{' '}
@@ -131,9 +130,8 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar }: 
             A civic operating system for the new millennium. Built on 2,000-year-old classic first principles, focused on virtue, powered by AI, and designed to resist — and <span className="font-bold uppercase">RESET</span> — everything you're seeing today.
           </p>
 
-            {/* Hero CTAs */}
+          {/* Hero CTAs */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            {/* FIND OUT MORE - primary, scrolls to arcade */}
             <button
               onClick={() => {
                 setClickedScrollPrompt(true);
@@ -150,7 +148,6 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar }: 
               <span className="inline-block" aria-hidden="true">↓</span>
             </button>
 
-            {/* JOIN US - gold/assertive */}
             <button
               onClick={() => window.open('https://www.patreon.com/aretecracy', '_blank')}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-base md:text-lg transition-all duration-300 shadow-lg hover:scale-105 bg-[#D4AF37] text-black hover:bg-[#F9E076] border-2 border-[#D4AF37] hover:border-[#F9E076]"
@@ -162,12 +159,11 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar }: 
         </div>
       </header>
 
-      {/* Feature Triad - Overlay Version */}
+      {/* Feature Triad */}
       <div className="relative">
         <FeatureTriadOverlay 
           darkMode={darkMode}
           onNavigate={onNavigate}
-          onNavigateToPillar={onNavigateToPillar}
         />
       </div>
 
@@ -193,6 +189,15 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar }: 
           </div>
         </div>
       </section>
+
+      {/* Exit Intent Dialog */}
+      {showExitDialog && (
+        <ExitIntentDialog
+          darkMode={darkMode}
+          onClose={() => setShowExitDialog(false)}
+          onGoToEightWays={goToEightWays}
+        />
+      )}
     </div>
   );
 }

@@ -272,14 +272,14 @@ export const glossaryTerms: GlossaryTerm[] = [
     fullDescription: 'Equal Standing Under Law\n\nFrom Greek: isos (ἴσος, equal) + nomos (νόμος, law)\n\nOne of the three original pillars of Athenian democracy: equal standing under the law. In AreTéCracy, one of the Four Isótēs.\n\nSame rules apply to everyone—rich or poor, powerful or ordinary. Justice cannot be bought, inherited, or corporatized.\n\nIf the four Isótēs are the foundation pedestals beneath the pillars of AreTéCracy, then Isonomia is the cornerstone pedestal. If that cornerstone cracks, the whole structure tilts toward those who can afford to rig the game.\n\nThink of government as a system running on an operating system written in a programming language called laws. The pleonektai and minotaurs are the hackers. They exploit loopholes, find privilege escalation vulnerabilities, and create different rules for those with money and power. Isonomia is the security architecture that says: No exploits. No root access for sale. Same code executes for everyone.\n\nThere are three domains:\n\n1. Justice - No two-tier legal system, proportional consequences (day-fines), equal access to competent defense\n2. Political Rights - No corporate personhood, no money as speech, executives personally liable for corporate crimes\n3. Commons - Law cannot enclose survival stack or cultural commons as private tollbooths\n\nJust as in IsoEudaimonia there is no "too big to fail," under Isonomia there is no "too big to prosecute."'
   },
   {
-    id: 'isopoliteia',
-    name: 'Isopoliteia',
-    greekName: 'Ἰσοπολιτεία',
-    blurb: 'Equal citizenship: rights, duties, access.',
+    id: 'isarchia',
+    name: 'Isarchia',
+    greekName: 'Ἰσαρχία',
+    blurb: 'Equal command: equal ability and obligation to serve in governance.',
     complexity: 1,
     category: 'equality',
     hasFullPage: true,
-    fullDescription: 'Equal citizenship\n\nFrom Greek: isos (ἴσος, equal) + politeia (πολιτεία, citizenship)\n\nOne of the Four Isótēs. Same rights, duties, and civic access for all citizens. Citizenship is reciprocal obligation, not passive status.\n\nKey concepts:\n\n- Sortition (selection by lot for civic roles)\n- Dokimazo (vetting for competence, not wealth)\n- Universal civic education (Paideia)\n- Equal access to governance roles (no permanent political class)'
+    fullDescription: 'Equal Command\n\nFrom Greek: isos (ἴσος, equal) + archē (ἀρχή, rule/governance/command)\n\nOne of the Four Isótēs. The equal ability and obligation of every citizen to participate in and serve the governance of the polis. Isarchia is distinct from the Attic concept of Isokratia (equal power) and more specific than Isopoliteia (equal citizenship) because it emphasizes not just equal rights but equal responsibility — the duty to serve when called.\n\nKey concepts:\n\n- Sortition (selection by lot for civic roles)\n- Dokimazo (vetting for competence, not wealth)\n- Misthos (civic pay, so that serving is possible for all)\n- No permanent political class — every citizen is eligible and obligated'
   },
   {
     id: 'four-isotes',
@@ -289,7 +289,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     complexity: 1,
     category: 'equality',
     hasFullPage: true,
-    fullDescription: '#### The Four Equalities\n\nFrom Greek: isos (ἴσος, equal) + -tēs (-της, forming abstract nouns)\n\nThe four equalities that institutionalize Isotimía into structural guarantees. These are the "foundation pedestals" supporting all AreTéCracy systems.\n\n1. Isegoria (Ἰσηγορία) - Equal voice: Right to speak and be heard in civic deliberation\n2. Isonomia (Ἰσονομία) - Equal law: Same rules apply to everyone, justice cannot be bought\n3. Isopoliteia (Ἰσοπολιτεία) - Equal citizenship: Rights and duties distributed equally\n4. IsoEudaimonia (Ἰσοευδαιμονία) - Equal flourishing: Material conditions enabling genuine participation'
+    fullDescription: '#### The Four Equalities\n\nFrom Greek: isos (ἴσος, equal) + -tēs (-της, forming abstract nouns)\n\nThe four equalities that institutionalize Isotimía into structural guarantees. These are the "foundation pedestals" supporting all AreTéCracy systems.\n\n1. Isegoria (Ἰσηγορία) - Equal voice: Right to speak and be heard in civic deliberation\n2. Isonomia (Ἰσονομία) - Equal law: Same rules apply to everyone, justice cannot be bought\n3. Isarchia (Ἰσαρχία) - Equal command: Equal ability and obligation to serve in governance\n4. IsoEudaimonia (Ἰσοευδαιμονία) - Equal flourishing: Material conditions enabling genuine participation'
   },
   {
     id: 'isotimia',
@@ -299,7 +299,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     complexity: 1,
     category: 'concept',
     hasFullPage: true,
-    fullDescription: 'Equal Standing\n\nFrom Greek: isos (ἴσος, equal) + timē (τιμή, honor / worth / standing)\n\nThe foundational principle that every citizen has the same civic worth and the same right to shape the shared world—not equal outcomes, but equal standing and access to self‑governance.\n\nIsotimía is the bedrock beneath the Four Isótēs (Isegoria, Isonomia, Isopoliteia, IsoEudaimonia), and that bedrock\'s geology, or mineral makeup, are the Four Aretai (PRC, Philotimo, Sonder, Alētheia).\n\nWithout Isotimía, human rights disintegrate and people with less wealth or status are quietly treated as less real.\n\nComposed of: The Four Aretai (virtues that create equal standing)  \nInstitutionalized through: The Four Isótēs (structural guarantees)'
+    fullDescription: 'Equal Standing\n\nFrom Greek: isos (ἴσος, equal) + timē (τιμή, honor / worth / standing)\n\nThe foundational principle that every citizen has the same civic worth and the same right to shape the shared world—not equal outcomes, but equal standing and access to self‑governance.\n\nIsotimía is the bedrock beneath the Four Isótēs (Isegoria, Isonomia, Isarchia, IsoEudaimonia), and that bedrock\'s geology, or mineral makeup, are the Four Aretai (PRC, Philotimo, Sonder, Alētheia).\n\nWithout Isotimía, human rights disintegrate and people with less wealth or status are quietly treated as less real.\n\nComposed of: The Four Aretai (virtues that create equal standing)  \nInstitutionalized through: The Four Isótēs (structural guarantees)'
   },
   {
     id: 'jr-ekklesia',

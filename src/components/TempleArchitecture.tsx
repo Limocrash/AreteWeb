@@ -18,193 +18,54 @@ interface TempleArchitectureProps {
   darkMode: boolean;
   onNavigateToPillar?: (pillarId: string) => void;
   currentFloor?: number;
-  /** When true, Roof/Pediment show "coming soon"; when false, show "complete pillars first" */
   allPillarsComplete?: boolean;
 }
 
-// Data for the Four Isótēs (Equalities) - the black plaques
-// Calculated from pixel-perfect coordinates: imageWidth=896, imageHeight=1200
 const isotesData = [
-  {
-    id: 'isonomia',
-    name: 'Isonomia',
-    subtitle: 'Equal Standing Under Law',
-    description: 'The principle that all citizens stand equal before the law, regardless of wealth, status, or background. No one is above the law; no one is beneath its protection.',
-    position: { 
-      left: `${(122/896)*100}%`,
-      top: `${(1021/1200)*100}%`,
-      width: `${(154/896)*100}%`,
-      height: `${(113/1200)*100}%`
-    }
-  },
-  {
-    id: 'isegoria',
-    name: 'Isegoria',
-    subtitle: 'Equal Right to be Heard',
-    description: 'Every citizen has the equal right to speak in the assembly, to voice concerns, and to participate in public discourse. Democracy requires that all voices have the opportunity to be heard.',
-    position: { 
-      left: `${(294/896)*100}%`,
-      top: `${(1021/1200)*100}%`,
-      width: `${(154/896)*100}%`,
-      height: `${(113/1200)*100}%`
-    }
-  },
-  {
-    id: 'isopoliteia',
-    name: 'Isopoliteia',
-    subtitle: 'Equal Standing in Conduct of Polis',
-    description: 'The right to participate fully in the governance of the city-state. Citizens have equal standing in deliberation, voting, and shaping the future of their community.',
-    position: { 
-      left: `${(462/896)*100}%`,
-      top: `${(1021/1200)*100}%`,
-      width: `${(154/896)*100}%`,
-      height: `${(113/1200)*100}%`
-    }
-  },
-  {
-    id: 'isoeudaimonia',
-    name: 'IsoEudaimonia',
-    subtitle: 'Equal Right to Flourish',
-    description: 'Beyond mere survival, every citizen deserves the opportunity to flourish—to pursue happiness, develop their potential, and live a life of meaning and dignity.',
-    position: { 
-      left: `${(631/896)*100}%`,
-      top: `${(1021/1200)*100}%`,
-      width: `${(154/896)*100}%`,
-      height: `${(113/1200)*100}%`
-    }
-  }
+  { id: 'isonomia', name: 'Isonomia', subtitle: 'Equal Standing Under Law', description: 'The principle that all citizens stand equal before the law, regardless of wealth, status, or background. No one is above the law; no one is beneath its protection.', position: { left: `${(122/896)*100}%`, top: `${(1021/1200)*100}%`, width: `${(154/896)*100}%`, height: `${(113/1200)*100}%` } },
+  { id: 'isegoria', name: 'Isegoria', subtitle: 'Equal Right to be Heard', description: 'Every citizen has the equal right to speak in the assembly, to voice concerns, and to participate in public discourse. Democracy requires that all voices have the opportunity to be heard.', position: { left: `${(294/896)*100}%`, top: `${(1021/1200)*100}%`, width: `${(154/896)*100}%`, height: `${(113/1200)*100}%` } },
+  { id: 'isarchia', name: 'Isarchia', subtitle: 'Equal Right and Obligation to Participate in Governance', description: 'The equal ability and obligation of every citizen to participate in and serve the governance of the polis. Not just equal rights, but equal responsibility — the duty to serve when called.', position: { left: `${(462/896)*100}%`, top: `${(1021/1200)*100}%`, width: `${(154/896)*100}%`, height: `${(113/1200)*100}%` } },
+  { id: 'isoeudaimonia', name: 'IsoEudaimonia', subtitle: 'Equal Right to Flourish', description: 'Beyond mere survival, every citizen deserves the opportunity to flourish—to pursue happiness, develop their potential, and live a life of meaning and dignity.', position: { left: `${(631/896)*100}%`, top: `${(1021/1200)*100}%`, width: `${(154/896)*100}%`, height: `${(113/1200)*100}%` } }
 ];
 
-// Data for the Euthynteria image - Four Isótēs and Four Aretai
-// Image size: 2816 x 1536 pixels
 const euthynteriaIsotesData = [
-  {
-    id: 'isonomia',
-    name: 'Isonomia',
-    position: {
-      left: `${(473/2816)*100}%`,
-      top: `${(270/1536)*100}%`,
-      width: `${(437/2816)*100}%`,
-      height: `${(270/1536)*100}%`
-    }
-  },
-  {
-    id: 'isegoria',
-    name: 'Isegoria',
-    position: {
-      left: `${(957/2816)*100}%`,
-      top: `${(270/1536)*100}%`,
-      width: `${(437/2816)*100}%`,
-      height: `${(270/1536)*100}%`
-    }
-  },
-  {
-    id: 'isopoliteia',
-    name: 'Isopoliteia',
-    position: {
-      left: `${(1432/2816)*100}%`,
-      top: `${(270/1536)*100}%`,
-      width: `${(437/2816)*100}%`,
-      height: `${(270/1536)*100}%`
-    }
-  },
-  {
-    id: 'isoeudaimonia',
-    name: 'IsoEudaimonia',
-    position: {
-      left: `${(1906/2816)*100}%`,
-      top: `${(270/1536)*100}%`,
-      width: `${(437/2816)*100}%`,
-      height: `${(270/1536)*100}%`
-    }
-  }
+  { id: 'isonomia', name: 'Isonomia', position: { left: `${(473/2816)*100}%`, top: `${(270/1536)*100}%`, width: `${(437/2816)*100}%`, height: `${(270/1536)*100}%` } },
+  { id: 'isegoria', name: 'Isegoria', position: { left: `${(957/2816)*100}%`, top: `${(270/1536)*100}%`, width: `${(437/2816)*100}%`, height: `${(270/1536)*100}%` } },
+  { id: 'isarchia', name: 'Isarchia', position: { left: `${(1432/2816)*100}%`, top: `${(270/1536)*100}%`, width: `${(437/2816)*100}%`, height: `${(270/1536)*100}%` } },
+  { id: 'isoeudaimonia', name: 'IsoEudaimonia', position: { left: `${(1906/2816)*100}%`, top: `${(270/1536)*100}%`, width: `${(437/2816)*100}%`, height: `${(270/1536)*100}%` } }
 ];
 
-// Data for the Four Aretai (Virtues)
 const aretaiData = [
-  {
-    id: 'sonder',
-    name: 'Sonder',
-    subtitle: 'Recognition of Others\' Inner Lives',
-    description: 'The profound realization that every person you pass has a life as vivid and complex as your own. Sonder is the empathetic understanding that every citizen has hopes, dreams, struggles, and stories—recognizing the full humanity in others.',
-    position: {
-      left: `${(198/2816)*100}%`,
-      top: `${(786/1536)*100}%`,
-      width: `${(507/2816)*100}%`,
-      height: `${(189/1536)*100}%`
-    }
-  },
-  {
-    id: 'philotimo',
-    name: 'Philotimo',
-    subtitle: 'Love of Honor & Civic Pride',
-    description: 'A uniquely Greek concept meaning "love of honor" or "friend of honor." Philotimo embodies doing right by your community not for personal gain, but because you love being an honorable member of your society. It\'s civic virtue made personal.',
-    position: {
-      left: `${(837/2816)*100}%`,
-      top: `${(786/1536)*100}%`,
-      width: `${(507/2816)*100}%`,
-      height: `${(189/1536)*100}%`
-    }
-  },
-  {
-    id: 'prc',
-    name: 'Plato\'s "Roll Call"',
-    subtitle: 'The Duty to Participate',
-    description: 'The duty to participate in governance or be ruled by those worse. Based on Plato\'s Republic 347c: "The greatest penalty for refusing to rule is to be ruled by someone worse."',
-    position: {
-      left: `${(1476/2816)*100}%`,
-      top: `${(786/1536)*100}%`,
-      width: `${(507/2816)*100}%`,
-      height: `${(189/1536)*100}%`
-    }
-  },
-  {
-    id: 'aletheia',
-    name: 'Alētheia',
-    subtitle: 'Truth & Unconcealment',
-    description: 'Ancient Greek concept of truth as "unconcealment" or "disclosure"—not just factual accuracy, but the revealing of reality as it truly is. Alētheia demands intellectual honesty, the courage to face uncomfortable truths, and the wisdom to see through deception.',
-    position: {
-      left: `${(2109/2816)*100}%`,
-      top: `${(786/1536)*100}%`,
-      width: `${(507/2816)*100}%`,
-      height: `${(189/1536)*100}%`
-    }
-  }
+  { id: 'sonder', name: 'Sonder', subtitle: 'Recognition of Others\' Inner Lives', description: 'The profound realization that every person you pass has a life as vivid and complex as your own. Sonder is the empathetic understanding that every citizen has hopes, dreams, struggles, and stories—recognizing the full humanity in others.', position: { left: `${(198/2816)*100}%`, top: `${(786/1536)*100}%`, width: `${(507/2816)*100}%`, height: `${(189/1536)*100}%` } },
+  { id: 'philotimo', name: 'Philotimo', subtitle: 'Love of Honor & Civic Pride', description: 'A uniquely Greek concept meaning "love of honor" or "friend of honor." Philotimo embodies doing right by your community not for personal gain, but because you love being an honorable member of your society. It\'s civic virtue made personal.', position: { left: `${(837/2816)*100}%`, top: `${(786/1536)*100}%`, width: `${(507/2816)*100}%`, height: `${(189/1536)*100}%` } },
+  { id: 'prc', name: 'Plato\'s "Roll Call"', subtitle: 'The Duty to Participate', description: 'The duty to participate in governance or be ruled by those worse. Based on Plato\'s Republic 347c: "The greatest penalty for refusing to rule is to be ruled by someone worse."', position: { left: `${(1476/2816)*100}%`, top: `${(786/1536)*100}%`, width: `${(507/2816)*100}%`, height: `${(189/1536)*100}%` } },
+  { id: 'aletheia', name: 'Alētheia', subtitle: 'Truth & Unconcealment', description: 'Ancient Greek concept of truth as "unconcealment" or "disclosure"—not just factual accuracy, but the revealing of reality as it truly is. Alētheia demands intellectual honesty, the courage to face uncomfortable truths, and the wisdom to see through deception.', position: { left: `${(2109/2816)*100}%`, top: `${(786/1536)*100}%`, width: `${(507/2816)*100}%`, height: `${(189/1536)*100}%` } }
 ];
 
-// Isotímia - The Foundation
 const isotimiaData = {
   id: 'isotimia',
   name: 'Isotímia',
   subtitle: 'Equal Standing & Equal Honor',
   description: 'The foundational principle that all citizens possess equal standing and deserve equal honor in the eyes of the polis. Isotímia is the bedrock upon which all four Isótēs rest, and from which the four Aretai emerge. It represents the fundamental democratic commitment that no citizen is inherently superior to another.',
-  position: {
-    left: `${(201/2816)*100}%`,
-    top: `${(1001/1536)*100}%`,
-    width: `${(2415/2816)*100}%`,
-    height: `${(322/1536)*100}%`
-  }
+  position: { left: `${(201/2816)*100}%`, top: `${(1001/1536)*100}%`, width: `${(2415/2816)*100}%`, height: `${(322/1536)*100}%` }
 };
 
-// Data for the 16 Pillars - 8 upper, 8 lower
 const pillarsData = [
-  // Upper Colonnade
   { id: 'paideia', name: 'Paideia', subtitle: 'Education & Civic Formation', description: 'The comprehensive education of citizens in virtue, culture, and civic responsibility. A democracy is only as strong as the wisdom of its people.', position: { left: `${(90/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isonomia', 'isegoria'] },
   { id: 'hephaistia', name: 'Hephaistia', subtitle: 'Craft, Work & Productivity', description: 'For IsoEudaimonia to exist, people must have gainful work. This pillar encourages small businesses, cooperatives, and workshop industriousness while discouraging overly large oligopolies.', position: { left: `${(185/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isonomia', 'isegoria'] },
-  { id: 'asphaleia', name: 'Asphaleia', subtitle: 'Security & Stability', description: 'Citizens must feel secure in their persons, property, and community. Without basic security, no flourishing is possible.', position: { left: `${(280/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isegoria', 'isopoliteia'] },
+  { id: 'asphaleia', name: 'Asphaleia', subtitle: 'Security & Stability', description: 'Citizens must feel secure in their persons, property, and community. Without basic security, no flourishing is possible.', position: { left: `${(280/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isegoria', 'isarchia'] },
   { id: 'logodosia', name: 'Logodosia', subtitle: 'Truth & Transparency', description: 'Quis custōdiet ipsōs custōdēs? Let the private citizen have privacy; let the public servant be publicly transparent. Truth is the bedrock of trust.', position: { left: `${(375/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isonomia', 'isegoria'] },
-  { id: 'glaukos-mati', name: 'Glaukós Mati', subtitle: 'Wise Observation', description: 'The owl-eyed vision to see clearly through complexity and deception. A democracy must be vigilant and perceptive.', position: { left: `${(470/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isegoria', 'isopoliteia'] },
-  { id: 'therapon', name: 'Therapons', subtitle: 'Service & Stewardship', description: 'Those who govern are servants of the people, not masters. Public office is a sacred trust, not a path to personal enrichment.', position: { left: `${(565/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isopoliteia', 'isoeudaimonia'] },
-  { id: 'axia', name: 'Axia', subtitle: 'Worth & Dignity', description: 'Every citizen possesses inherent worth and deserves to be treated with dignity. This pillar guards against dehumanization and exploitation.', position: { left: `${(655/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isopoliteia', 'isoeudaimonia'] },
+  { id: 'glaukos-mati', name: 'Glaukós Mati', subtitle: 'Wise Observation', description: 'The owl-eyed vision to see clearly through complexity and deception. A democracy must be vigilant and perceptive.', position: { left: `${(470/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isegoria', 'isarchia'] },
+  { id: 'therapon', name: 'Therapons', subtitle: 'Service & Stewardship', description: 'Those who govern are servants of the people, not masters. Public office is a sacred trust, not a path to personal enrichment.', position: { left: `${(565/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isarchia', 'isoeudaimonia'] },
+  { id: 'axia', name: 'Axia', subtitle: 'Worth & Dignity', description: 'Every citizen possesses inherent worth and deserves to be treated with dignity. This pillar guards against dehumanization and exploitation.', position: { left: `${(655/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isarchia', 'isoeudaimonia'] },
   { id: 'generational-fairness', name: 'Generational Fairness', subtitle: 'Intergenerational Justice', description: 'We are stewards, not owners, of our society. Our choices today must not rob future generations of their chance to flourish.', position: { left: `${(745/896)*100}%`, top: `${(429/1200)*100}%`, width: `${(70/896)*100}%`, height: `${(232/1200)*100}%` }, tier: 'upper', restsOn: ['isoeudaimonia'] },
-  // Lower Colonnade
-  { id: 'ekklesia', name: 'Ekklesia', subtitle: 'Assembly & Direct Democracy', description: 'There are no career politicians in AreTéCracy. The will of the people is determined literally by the people themselves through direct governance accessible to all citizens.', position: { left: `${(55/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isegoria', 'isopoliteia'] },
+  { id: 'ekklesia', name: 'Ekklesia', subtitle: 'Assembly & Direct Democracy', description: 'There are no career politicians in AreTéCracy. The will of the people is determined literally by the people themselves through direct governance accessible to all citizens.', position: { left: `${(55/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isegoria', 'isarchia'] },
   { id: 'pnyx', name: 'Pnyx', subtitle: 'The Democratic Forum', description: 'The physical and digital spaces where citizens gather to deliberate. Democracy requires real forums for genuine dialogue.', position: { left: `${(156/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isonomia', 'isegoria'] },
-  { id: 'isokratos', name: 'IsoKratOS', subtitle: 'Equal Power', description: 'Power must be distributed equally among citizens. No individual or faction should accumulate disproportionate influence over the demos.', position: { left: `${(262/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isegoria', 'isopoliteia'] },
+  { id: 'isokratos', name: 'IsoKratOS', subtitle: 'Equal Power', description: 'Power must be distributed equally among citizens. No individual or faction should accumulate disproportionate influence over the demos.', position: { left: `${(262/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isegoria', 'isarchia'] },
   { id: 'homonia', name: 'Homonia', subtitle: 'Concord & Supermajority', description: 'Policies should reflect the will of an overwhelming portion of the population, not just 51%. A law that half the population intensely disagrees with is inherently a bad law.', position: { left: `${(367/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isonomia', 'isegoria'] },
-  { id: 'aegis', name: 'Aegis', subtitle: 'Protection & Defense', description: 'The shield that protects the democracy from external threats and internal corruption. Vigilance is the price of freedom.', position: { left: `${(471/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isegoria', 'isopoliteia'] },
+  { id: 'aegis', name: 'Aegis', subtitle: 'Protection & Defense', description: 'The shield that protects the democracy from external threats and internal corruption. Vigilance is the price of freedom.', position: { left: `${(471/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isegoria', 'isarchia'] },
   { id: 'dikaios', name: 'DikaiOS', subtitle: 'Justice & Fairness', description: 'True justice goes beyond mere legality—it seeks fairness, equity, and restoration. The law must serve justice, not replace it.', position: { left: `${(571/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isonomia', 'isegoria'] },
-  { id: 'thermansis', name: 'Thérmansis', subtitle: 'Care & Nurture', description: 'A society that cares for its most vulnerable members—children, elderly, disabled, and disadvantaged. Strength is measured by how we treat the least among us.', position: { left: `${(670/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isopoliteia', 'isoeudaimonia'] },
+  { id: 'thermansis', name: 'Thérmansis', subtitle: 'Care & Nurture', description: 'A society that cares for its most vulnerable members—children, elderly, disabled, and disadvantaged. Strength is measured by how we treat the least among us.', position: { left: `${(670/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isarchia', 'isoeudaimonia'] },
   { id: 'nomothetesis', name: 'Nomothetesis', subtitle: 'Lawmaking & Legislation', description: 'The structured process by which the people create, amend, and refine their laws. Good laws emerge from deliberate, transparent processes.', position: { left: `${(769/896)*100}%`, top: `${(690/1200)*100}%`, width: `${(80/896)*100}%`, height: `${(254/1200)*100}%` }, tier: 'lower', restsOn: ['isoeudaimonia'] }
 ];
 
@@ -215,17 +76,13 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
   const [completedElements, setCompletedElements] = useState<Set<string>>(new Set());
   const [hoveredSeal, setHoveredSeal] = useState<string | null>(null);
   const [cardOrigin, setCardOrigin] = useState<{ x: number; y: number } | null>(null);
-  const [loadedMarkdownContent, setLoadedMarkdownContent] = useState<Record<string, any>>({});
-  
+  const [loadedMarkdownContent, setLoadedMarkdownContent] = useState<Record<string, unknown>>({});
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (hoveredSeal && !(event.target as HTMLElement).closest('[data-seal-container]')) {
-        setHoveredSeal(null);
-      }
+      if (hoveredSeal && !(event.target as HTMLElement).closest('[data-seal-container]')) setHoveredSeal(null);
     };
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && hoveredSeal) setHoveredSeal(null);
-    };
+    const handleEscape = (event: KeyboardEvent) => { if (event.key === 'Escape' && hoveredSeal) setHoveredSeal(null); };
     if (hoveredSeal) {
       document.addEventListener('mousedown', handleClickOutside);
       document.addEventListener('keydown', handleEscape);
@@ -235,7 +92,7 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
       document.removeEventListener('keydown', handleEscape);
     };
   }, [hoveredSeal]);
-  
+
   const aretaiRef = useRef<HTMLDivElement>(null);
   const pillarsRef = useRef<HTMLDivElement>(null);
 
@@ -300,7 +157,8 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
   }, [currentElement?.id]);
 
   const markdownContent = currentElement ? (getGlossaryContent(currentElement.id) || loadedMarkdownContent[currentElement.id]) : null;
-  const contentBody = markdownContent?.body || glossaryTerm?.fullDescription || currentElement?.description || '';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const contentBody = (markdownContent as any)?.body || glossaryTerm?.fullDescription || currentElement?.description || '';
 
   useEffect(() => {
     if (selectedElement) {
@@ -333,7 +191,6 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
     return Array.isArray((el as { restsOn: unknown }).restsOn);
   };
 
-  // Shared seal renderer
   const renderSeal = (element: { id: string; position: { left: string; top: string; width: string; height: string } }, imageWidth: number, imageHeight: number, keyPrefix: string) => {
     if (!completedElements.has(element.id)) return null;
     const leftPercent = parseFloat(element.position.left);
@@ -379,7 +236,6 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
     );
   };
 
-  // Shared level indicator arrow
   const renderArrow = (floor: number) => {
     if (!PILLAR_LEVELS[floor]) return null;
     return (
@@ -398,9 +254,8 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
   };
 
   return (
-    // w-full min-w-0: flex descendants must shrink below intrinsic image width (Firefox zoom / min-width:auto)
     <div className="relative w-full min-w-0 max-w-6xl mx-auto py-16 overflow-x-hidden">
-      
+
       {/* Full Temple Structure */}
       <motion.div ref={pillarsRef} initial={{ opacity: 0.2 }} animate={{ opacity: pillarsConstructed ? 1 : 0.2 }} transition={{ duration: 1.5, ease: 'easeOut' }} className="mb-12">
         <div className="text-center mb-12">
@@ -416,7 +271,6 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
             animate={{ y: pillarsConstructed ? 0 : 40, opacity: pillarsConstructed ? 1 : 0.2, scale: pillarsConstructed ? 1 : 0.95 }}
             transition={{ duration: 1.2, delay: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }}
           >
-            {/* Roof/Pediment message */}
             {(currentFloor === 0 || currentFloor === 1) && pillarsConstructed && (
               <div className="absolute inset-x-0 top-0 flex items-center justify-center pointer-events-none" style={{ height: '22%' }} aria-hidden>
                 <div className={`rounded-2xl border-2 shadow-2xl p-6 md:p-10 max-w-xl mx-4 text-center pointer-events-auto ${darkMode ? 'bg-gray-800/95 border-cyan-500/50 text-amber-100' : 'bg-white/95 border-amber-800/50 text-stone-900'}`} style={{ fontFamily: 'Georgia, serif' }}>
@@ -434,7 +288,6 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
 
             <img src={architectureDiagram} srcSet={getResponsiveSrcset('architecture-diagram', 'webp')} sizes="(max-width: 600px) 100vw, (max-width: 1200px) 90vw, 1200px" alt="AreTéCracy temple architecture" className="block w-full max-w-full h-auto shadow-2xl" loading="lazy" style={{ maxWidth: '100%' }} />
 
-            {/* Isótēs overlays */}
             {pillarsConstructed && isotesData.map((isotes) => (
               <button key={isotes.id} onClick={(e) => { const r = e.currentTarget.getBoundingClientRect(); setCardOrigin({ x: r.left + r.width / 2, y: r.top + r.height / 2 }); setSelectedElement(isotes.id); if (hoveredSeal === isotes.id) setHoveredSeal(null); }} onMouseEnter={() => setHoveredElement(isotes.id)} onMouseLeave={() => setHoveredElement(null)} className="absolute cursor-pointer transition-all duration-300" style={{ left: isotes.position.left, top: isotes.position.top, width: isotes.position.width, height: isotes.position.height }} aria-label={`Explore ${isotes.name}`}>
                 <div className={`absolute inset-0 rounded-lg transition-all duration-300 ${hoveredElement === isotes.id || selectedElement === isotes.id ? 'bg-cyan-400/30 shadow-[0_0_30px_rgba(34,211,238,0.6)] border-2 border-cyan-400' : 'bg-transparent border-2 border-transparent'}`} />
@@ -442,7 +295,6 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
               </button>
             ))}
 
-            {/* Pillar overlays */}
             {pillarsConstructed && pillarsData.map((pillar) => (
               <button key={pillar.id} onClick={(e) => { const r = e.currentTarget.getBoundingClientRect(); setCardOrigin({ x: r.left + r.width / 2, y: r.top + r.height / 2 }); setSelectedElement(pillar.id); if (hoveredSeal === pillar.id) setHoveredSeal(null); if (onNavigateToPillar) onNavigateToPillar(pillar.id); }} onMouseEnter={() => setHoveredElement(pillar.id)} onMouseLeave={() => setHoveredElement(null)} className="absolute cursor-pointer transition-all duration-300" style={{ left: pillar.position.left, top: pillar.position.top, width: pillar.position.width, height: pillar.position.height }} aria-label={`Explore ${pillar.name}`}>
                 <div className={`absolute inset-0 rounded-lg transition-all duration-300 ${hoveredElement === pillar.id || selectedElement === pillar.id ? 'bg-cyan-400/20 shadow-[0_0_40px_rgba(34,211,238,0.8),inset_0_0_20px_rgba(34,211,238,0.3)] border-2 border-cyan-300 animate-pulse' : 'bg-transparent border-2 border-transparent'}`} />
@@ -450,10 +302,7 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
               </button>
             ))}
 
-            {/* Completion seals - temple image */}
             {pillarsConstructed && [...isotesData, ...pillarsData].map(el => renderSeal(el, 896, 1200, 'seal'))}
-
-            {/* Level indicator arrow - temple image */}
             {(currentFloor === 0 || currentFloor === 1 || currentFloor === 2 || currentFloor === 3) && renderArrow(currentFloor)}
           </motion.div>
         </div>
@@ -482,12 +331,12 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
         <div className={`h-px transition-colors duration-300 ${darkMode ? 'bg-amber-700/40' : 'bg-stone-300'}`} />
       </div>
 
-      {/* Euthynteria */}
+      {/* Stereobate section */}
       <motion.div ref={aretaiRef} initial={{ opacity: 0.2 }} animate={{ opacity: aretaiConstructed ? 1 : 0.2 }} transition={{ duration: 1.5, ease: 'easeOut' }} className="mb-16">
         <div className="text-center mb-12">
-          <h2 className={`text-5xl mb-6 transition-colors duration-300 ${darkMode ? 'text-amber-100' : 'text-stone-900'}`}>The Euthynteria</h2>
-          <p className={`text-xl max-w-3xl mx-auto mb-3 transition-colors duration-300 ${darkMode ? 'text-amber-200/80' : 'text-stone-700'}`} style={{ fontFamily: 'Georgia, serif' }}>The foundational substrate upon which all else rests</p>
-          <p className={`text-lg max-w-2xl mx-auto transition-colors duration-300 ${darkMode ? 'text-amber-200/60' : 'text-stone-600'}`} style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>Isotímia — Equal Standing — composed of the Four Aretai virtues</p>
+          <h2 className={`text-5xl mb-6 transition-colors duration-300 ${darkMode ? 'text-amber-100' : 'text-stone-900'}`}>The Stereobate</h2>
+          <p className={`text-xl max-w-3xl mx-auto mb-3 transition-colors duration-300 ${darkMode ? 'text-amber-200/80' : 'text-stone-700'}`} style={{ fontFamily: 'Georgia, serif' }}>The foundation courses upon which all else rests</p>
+          <p className={`text-lg max-w-2xl mx-auto transition-colors duration-300 ${darkMode ? 'text-amber-200/60' : 'text-stone-600'}`} style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>Isotímia — Equal Standing — composed of the Four Isótēs and Four Aretai</p>
         </div>
 
         <div className="flex justify-center mb-8 w-full min-w-0">
@@ -497,12 +346,10 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
             animate={{ y: aretaiConstructed ? 0 : 50, opacity: aretaiConstructed ? 1 : 0.2, scale: aretaiConstructed ? 1 : 0.9 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.43, 0.13, 0.23, 0.96] }}
           >
-            <img src={euthynteriaImage} srcSet={getResponsiveSrcset('temple-euthynteria', 'webp')} sizes="(max-width: 600px) 100vw, (max-width: 1200px) 90vw, 1200px" alt="Euthynteria foundation" className="block w-full max-w-full h-auto shadow-2xl" loading="lazy" style={{ maxWidth: '100%' }} />
+            <img src={euthynteriaImage} srcSet={getResponsiveSrcset('temple-euthynteria', 'webp')} sizes="(max-width: 600px) 100vw, (max-width: 1200px) 90vw, 1200px" alt="Stereobate foundation" className="block w-full max-w-full h-auto shadow-2xl" loading="lazy" style={{ maxWidth: '100%' }} />
 
-            {/* Level indicator arrow - euthynteria image */}
             {(currentFloor === 4 || currentFloor === 5) && renderArrow(currentFloor)}
 
-            {/* Euthynteria isotes overlays */}
             {aretaiConstructed && euthynteriaIsotesData.map((isotes) => (
               <button key={`euth-${isotes.id}`} onClick={(e) => { const r = e.currentTarget.getBoundingClientRect(); setCardOrigin({ x: r.left + r.width / 2, y: r.top + r.height / 2 }); setSelectedElement(isotes.id); if (hoveredSeal === isotes.id) setHoveredSeal(null); }} onMouseEnter={() => setHoveredElement(isotes.id)} onMouseLeave={() => setHoveredElement(null)} className="absolute cursor-pointer transition-all duration-300" style={{ left: isotes.position.left, top: isotes.position.top, width: isotes.position.width, height: isotes.position.height }} aria-label={`Explore ${isotes.name}`}>
                 <div className={`absolute inset-0 rounded-lg transition-all duration-300 ${hoveredElement === isotes.id || selectedElement === isotes.id ? 'bg-cyan-400/30 shadow-[0_0_30px_rgba(34,211,238,0.6)] border-2 border-cyan-400' : 'bg-transparent border-2 border-transparent'}`} />
@@ -510,7 +357,6 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
               </button>
             ))}
 
-            {/* Aretai overlays */}
             {aretaiConstructed && aretaiData.map((arete) => (
               <button key={arete.id} onClick={(e) => { const r = e.currentTarget.getBoundingClientRect(); setCardOrigin({ x: r.left + r.width / 2, y: r.top + r.height / 2 }); setSelectedElement(arete.id); if (hoveredSeal === arete.id) setHoveredSeal(null); }} onMouseEnter={() => setHoveredElement(arete.id)} onMouseLeave={() => setHoveredElement(null)} className="absolute cursor-pointer transition-all duration-300" style={{ left: arete.position.left, top: arete.position.top, width: arete.position.width, height: arete.position.height }} aria-label={`Explore ${arete.name}`}>
                 <div className={`absolute inset-0 rounded-lg transition-all duration-300 ${hoveredElement === arete.id || selectedElement === arete.id ? 'bg-amber-400/30 shadow-[0_0_30px_rgba(251,191,36,0.6)] border-2 border-amber-400' : 'bg-transparent border-2 border-transparent'}`} />
@@ -518,7 +364,6 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
               </button>
             ))}
 
-            {/* Isotímia overlay */}
             {aretaiConstructed && (
               <button onClick={(e) => { const r = e.currentTarget.getBoundingClientRect(); setCardOrigin({ x: r.left + r.width / 2, y: r.top + r.height / 2 }); setSelectedElement(isotimiaData.id); if (hoveredSeal === isotimiaData.id) setHoveredSeal(null); }} onMouseEnter={() => setHoveredElement(isotimiaData.id)} onMouseLeave={() => setHoveredElement(null)} className="absolute cursor-pointer transition-all duration-300" style={{ left: isotimiaData.position.left, top: isotimiaData.position.top, width: isotimiaData.position.width, height: isotimiaData.position.height }} aria-label={`Explore ${isotimiaData.name}`}>
                 <div className={`absolute inset-0 rounded-lg transition-all duration-300 ${hoveredElement === isotimiaData.id || selectedElement === isotimiaData.id ? 'bg-amber-500/30 shadow-[0_0_40px_rgba(245,158,11,0.8)] border-2 border-amber-500' : 'bg-transparent border-2 border-transparent'}`} />
@@ -526,7 +371,6 @@ export function TempleArchitecture({ darkMode, onNavigateToPillar, currentFloor,
               </button>
             )}
 
-            {/* Completion seals - euthynteria image */}
             {aretaiConstructed && [...euthynteriaIsotesData, ...aretaiData, isotimiaData].map(el => renderSeal(el, 2816, 1536, 'seal-euth'))}
           </motion.div>
         </div>

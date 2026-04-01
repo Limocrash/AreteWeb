@@ -272,10 +272,13 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
                 {/* Alpha / Omega tooltip triggers */}
                 {tooltips.map((tip) => (
                   <div key={tip.id} className="absolute -translate-x-1/2 -translate-y-1/2"
-                    style={{ left: `${tip.leftPercent}%`, top: `${tip.topPercent}%`, zIndex: 10 }}>
+                    style={{ left: `${tip.leftPercent}%`, top: `${tip.topPercent}%`, zIndex: 10,
+                      width: `${tip.widthPercent}%`,
+                      height: `${tip.heightPercent ?? tip.widthPercent * 2}%`,
+                    }}>
                     <button type="button"
-                      className={`text-xl font-bold transition-all duration-200 ${
-                        darkMode ? 'text-cyan-400 hover:text-cyan-300' : 'text-cyan-600 hover:text-cyan-500'
+                      className={`w-full h-full flex items-center justify-center text-xl font-bold transition-all duration-200 rounded ${
+                        darkMode ? 'text-cyan-400 hover:text-cyan-300 hover:bg-cyan-400/10' : 'text-cyan-600 hover:text-cyan-500 hover:bg-cyan-600/10'
                       }`}
                       style={{ fontFamily: 'Georgia, serif', background: 'transparent', border: 'none', cursor: 'default' }}
                       onMouseEnter={() => setActiveTooltip(tip.id)}
@@ -285,7 +288,7 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
                     {activeTooltip === tip.id && (
                       <div className={`absolute z-30 w-48 p-2 rounded-lg text-xs shadow-xl pointer-events-none ${
                         darkMode ? 'bg-stone-900/95 text-amber-100 border border-amber-700/50' : 'bg-white/95 text-stone-800 border border-amber-400/50'
-                      }`} style={{ top: '120%', left: tip.leftPercent > 50 ? 'auto' : '0', right: tip.leftPercent > 50 ? '0' : 'auto' }}>
+                      }`} style={{ top: '110%', left: tip.leftPercent > 50 ? 'auto' : '0', right: tip.leftPercent > 50 ? '0' : 'auto' }}>
                         {tip.text}
                       </div>
                     )}

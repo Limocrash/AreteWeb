@@ -47,6 +47,7 @@ export interface BlueprintHubTooltip {
   leftPercent: number;
   topPercent: number;
   widthPercent: number;
+  heightPercent?: number;
 }
 
 export interface BlueprintHub {

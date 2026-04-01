@@ -1,1 +1,251 @@
-{"hubs":[{"id":"ekklesia","name":"Ekklesia","position":"center","type":"central","contentFile":"ekklesia/ekklesia.md","hotspots":[]},{"id":"nomothesia","name":"Nomothesia","position":"north","type":"process","contentFile":"nomothesia/overview.md","hotspots":[{"id":"hypothesis","file":"01-hypothesis.md","order":0,"leftPercent":25.83,"topPercent":37.71},{"id":"thermansis","file":"02-thermansis.md","order":1,"leftPercent":19.17,"topPercent":81.92},{"id":"deliberation","file":"03-deliberation.md","order":2,"leftPercent":37.5,"topPercent":62.42},{"id":"aegides-drafting","file":"04-aegides-drafting.md","order":3,"leftPercent":68.33,"topPercent":42.26},{"id":"ratification","file":"05-ratification.md","order":4,"leftPercent":72.5,"topPercent":81.92},{"id":"iteration","file":"06-iteration.md","order":5,"leftPercent":51.5,"topPercent":65.02},{"id":"dikaios","file":"07-dikaios.md","order":6,"leftPercent":50,"topPercent":50},{"id":"psephisma-nomos","file":"08-psephisma-nomos.md","order":7,"leftPercent":50,"topPercent":50},{"id":"isoKratOS-platform","file":"09-isoKratOS-platform.md","order":8,"leftPercent":50,"topPercent":50},{"id":"other-outcomes","file":"10-other-outcomes.md","order":9,"leftPercent":50,"topPercent":50}]},{"id":"therapon-dokimazo","name":"Therapon / Dokimazo","position":"east","type":"process","contentFile":"therapon-dokimazo/overview.md","hotspots":[]},{"id":"glaukos-mati","name":"GlaukÓS Mati","position":"south","type":"process","contentFile":"glaukos-mati/overview.md","hotspots":[]},{"id":"paideia","name":"Paideia","position":"west","type":"process","contentFile":"paideia/overview.md","hotspots":[]}]}
+{
+  "hubs": [
+    {
+      "id": "ekklesia",
+      "name": "Ekklesia",
+      "position": "center",
+      "type": "plaque-hub",
+      "contentFile": "ekklesia/ekklesia.md",
+      "imageFile": "ekklesia-map",
+      "imageWidth": 5439,
+      "imageHeight": 3318,
+      "tooltips": [
+        {
+          "id": "alpha-tooltip",
+          "label": "α",
+          "text": "The new beginning — how AreTéCracy works, what it is, and the tools that make it possible.",
+          "leftPercent": 4.87,
+          "topPercent": 50.41,
+          "widthPercent": 3.0
+        },
+        {
+          "id": "omega-tooltip",
+          "label": "Ω",
+          "text": "The old ending — why what came before failed, and why this moment demands something different.",
+          "leftPercent": 95.04,
+          "topPercent": 50.53,
+          "widthPercent": 3.89
+        }
+      ],
+      "hotspots": [
+        {
+          "id": "ekklesia-what-it-is",
+          "file": "01-what-it-is.md",
+          "order": 0,
+          "column": "left",
+          "leftPercent": 22.46,
+          "topPercent": 58.94,
+          "widthPercent": 38.78,
+          "heightPercent": 9.01,
+          "shape": "rect"
+        },
+        {
+          "id": "ekklesia-no-rulers",
+          "file": "02-no-rulers.md",
+          "order": 1,
+          "column": "left",
+          "leftPercent": 22.46,
+          "topPercent": 69.88,
+          "widthPercent": 38.78,
+          "heightPercent": 9.01,
+          "shape": "rect"
+        },
+        {
+          "id": "ekklesia-diy-lawmaking",
+          "file": "03-diy-lawmaking.md",
+          "order": 2,
+          "column": "left",
+          "leftPercent": 22.46,
+          "topPercent": 80.79,
+          "widthPercent": 38.78,
+          "heightPercent": 9.01,
+          "shape": "rect"
+        },
+        {
+          "id": "ekklesia-isokratos",
+          "file": "04-isokratos.md",
+          "order": 3,
+          "column": "left",
+          "leftPercent": 22.46,
+          "topPercent": 91.70,
+          "widthPercent": 38.78,
+          "heightPercent": 9.01,
+          "shape": "rect"
+        },
+        {
+          "id": "ekklesia-homonoia",
+          "file": "05-homonoia.md",
+          "order": 4,
+          "column": "right",
+          "leftPercent": 77.56,
+          "topPercent": 58.94,
+          "widthPercent": 38.78,
+          "heightPercent": 9.01,
+          "shape": "rect"
+        },
+        {
+          "id": "ekklesia-not-democracy",
+          "file": "06-not-democracy.md",
+          "order": 5,
+          "column": "right",
+          "leftPercent": 77.56,
+          "topPercent": 69.88,
+          "widthPercent": 38.78,
+          "heightPercent": 9.01,
+          "shape": "rect"
+        },
+        {
+          "id": "ekklesia-kairos",
+          "file": "07-kairos.md",
+          "order": 6,
+          "column": "right",
+          "doubleHeight": true,
+          "leftPercent": 77.56,
+          "topPercent": 86.56,
+          "widthPercent": 38.78,
+          "heightPercent": 20.55,
+          "shape": "rect"
+        }
+      ]
+    },
+    {
+      "id": "nomothesia",
+      "name": "Nomothesia",
+      "position": "north",
+      "type": "process",
+      "contentFile": "nomothesia/overview.md",
+      "imageFile": "nomothesia-map",
+      "imageWidth": 4400,
+      "imageHeight": 2750,
+      "hotspots": [
+        { "id": "hypothesis",       "file": "01-hypothesis.md",    "order": 0, "leftPercent": 25.34, "topPercent": 37.89, "widthPercent": 4.09, "shape": "circle" },
+        { "id": "isokratos",        "file": "02-thermansis.md",    "order": 1, "leftPercent": 17.11, "topPercent": 62.65, "widthPercent": 4.09, "shape": "circle" },
+        { "id": "coordinator",      "file": "03-deliberation.md",  "order": 2, "leftPercent": 39.17, "topPercent": 63.07, "widthPercent": 4.11, "shape": "circle" },
+        { "id": "ekklesia-delib",   "file": "04-aegides-drafting.md", "order": 3, "leftPercent": 48.80, "topPercent": 35.89, "widthPercent": 4.09, "shape": "circle" },
+        { "id": "psephisma",        "file": "05-ratification.md",  "order": 4, "leftPercent": 68.91, "topPercent": 41.69, "widthPercent": 4.09, "shape": "circle" },
+        { "id": "dikaios",          "file": "06-iteration.md",     "order": 5, "leftPercent": 75.18, "topPercent": 59.73, "widthPercent": 4.09, "shape": "circle" },
+        { "id": "new-law",          "file": "07-dikaios.md",       "order": 6, "leftPercent": 51.30, "topPercent": 65.69, "widthPercent": 4.09, "shape": "circle" },
+        { "id": "other-options",    "file": "08-psephisma-nomos.md", "order": 7, "leftPercent": 59.64, "topPercent": 65.65, "widthPercent": 4.09, "shape": "circle" }
+      ]
+    },
+    {
+      "id": "therapon-dokimazo",
+      "name": "Therapon / Dokimazo",
+      "position": "east",
+      "type": "process",
+      "contentFile": "therapon-dokimazo/overview.md",
+      "imageFile": "dokimazo-map",
+      "imageWidth": 4400,
+      "imageHeight": 2818,
+      "hotspots": [
+        {
+          "id": "nixor",
+          "file": "minotaur-nixor.md",
+          "order": 0,
+          "leftPercent": 50.05,
+          "topPercent": 49.22,
+          "widthPercent": 16.32,
+          "shape": "circle",
+          "navigateTo": "dokimazo-nixor"
+        },
+        {
+          "id": "the-registry",
+          "file": "the-registry.md",
+          "order": 1,
+          "leftPercent": 15.92,
+          "topPercent": 32.77,
+          "widthPercent": 14.93,
+          "shape": "circle"
+        },
+        {
+          "id": "the-cut",
+          "file": "the-cut.md",
+          "order": 2,
+          "leftPercent": 35.81,
+          "topPercent": 23.86,
+          "widthPercent": 14.52,
+          "shape": "circle"
+        },
+        {
+          "id": "brillianteering",
+          "file": "brillianteering.md",
+          "order": 3,
+          "leftPercent": 62.28,
+          "topPercent": 24.10,
+          "widthPercent": 14.84,
+          "shape": "circle"
+        },
+        {
+          "id": "masterstones",
+          "file": "masterstones.md",
+          "order": 4,
+          "leftPercent": 82.23,
+          "topPercent": 32.61,
+          "widthPercent": 14.45,
+          "shape": "circle"
+        },
+        {
+          "id": "the-lever-pull",
+          "file": "the-lever-pull.md",
+          "order": 5,
+          "leftPercent": 82.16,
+          "topPercent": 66.02,
+          "widthPercent": 14.27,
+          "shape": "circle"
+        },
+        {
+          "id": "the-mandate",
+          "file": "the-mandate.md",
+          "order": 6,
+          "leftPercent": 62.27,
+          "topPercent": 74.96,
+          "widthPercent": 14.82,
+          "shape": "circle"
+        },
+        {
+          "id": "the-vow",
+          "file": "the-vow.md",
+          "order": 7,
+          "leftPercent": 35.68,
+          "topPercent": 74.93,
+          "widthPercent": 14.77,
+          "shape": "circle"
+        },
+        {
+          "id": "the-reality",
+          "file": "the-reality.md",
+          "order": 8,
+          "leftPercent": 16.06,
+          "topPercent": 65.84,
+          "widthPercent": 14.89,
+          "heightPercent": 19.34,
+          "shape": "rect"
+        }
+      ]
+    },
+    {
+      "id": "dokimazo-nixor",
+      "name": "The Nixor — Asterion Barred",
+      "position": "east-detail",
+      "type": "full-page",
+      "contentFile": "therapon-dokimazo/minotaur-nixor.md",
+      "hotspots": []
+    },
+    {
+      "id": "glaukos-mati",
+      "name": "GlaukÓS Mati",
+      "position": "south",
+      "type": "process",
+      "contentFile": "glaukos-mati/overview.md",
+      "hotspots": []
+    },
+    {
+      "id": "paideia",
+      "name": "Paideia",
+      "position": "west",
+      "type": "process",
+      "contentFile": "paideia/overview.md",
+      "hotspots": []
+    }
+  ]
+}

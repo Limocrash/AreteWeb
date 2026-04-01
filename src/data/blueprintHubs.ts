@@ -2,14 +2,17 @@
 // Coordinates from Measure-It screenshots; reference 2117×1064 for landing image
 
 /** Aspect ratio (width/height) of landing image - must match actual image file so hotspots stay aligned.
- *  blueprint-ekklesia-hub-owl.webp is 1200×686. Update if image changes. */
-export const BLUEPRINT_LANDING_ASPECT_RATIO = 1200 / 686;
+ *  blueprint-landing-map.png is 2724×1682. */
+export const BLUEPRINT_LANDING_ASPECT_RATIO = 2724 / 1682;
 
 /** Aspect ratio (width/height) of blueprint scroll background */
 export const BLUEPRINT_SCROLL_ASPECT_RATIO = '2/3';
 
-/** Aspect ratio of nomothesia map - must match blueprint-map-nomothetesis image (1200×769) for hotspot alignment */
-export const NOMOTHESIA_MAP_ASPECT_RATIO = 1200 / 769;
+/** Aspect ratio of nomothesia map - must match nomothesia-map image (1200×750) for hotspot alignment */
+export const NOMOTHESIA_MAP_ASPECT_RATIO = 1200 / 750;
+
+/** Aspect ratio of Dokimazo map — native image is 4400×2818 */
+export const DOKIMAZO_MAP_ASPECT_RATIO = 4400 / 2818;
 
 export interface BlueprintHubButton {
   id: string;
@@ -19,10 +22,15 @@ export interface BlueprintHubButton {
   hasMap: boolean; // true if blueprint map image exists for this hub
 }
 
+// Landing map image: 2724×1682
+// Coordinates from Blueprint Landing Map Node Coordinates.xlsx
+// Note: Photoshop canvas has Y=11 offset — all topPercent values subtract 11px before dividing by image height (1682)
+// topPercent = (Y_canvas + Height/2 - 11) / 1682
+// leftPercent = (X_canvas + Width/2) / 2724
 export const BLUEPRINT_HUB_BUTTONS: BlueprintHubButton[] = [
-  { id: 'ekklesia',         label: "The People's Assembly",       leftPercent: 47.7, topPercent: 38.6, hasMap: false },
-  { id: 'nomothesia',       label: 'Nomothesia',                  leftPercent: 20.5, topPercent: 11.3, hasMap: true  },
-  { id: 'therapon-dokimazo',label: 'Competent Execution',         leftPercent: 86.7, topPercent:  9.6, hasMap: false },
-  { id: 'paideia',          label: 'Generational Fairness',       leftPercent: 78.0, topPercent: 85.5, hasMap: false },
-  { id: 'glaukos-mati',     label: 'Accountability & Transparency',leftPercent: 22.6, topPercent: 61.1, hasMap: false },
+  { id: 'ekklesia',         label: "The People's Assembly",        leftPercent: 50.02, topPercent: 50.03, hasMap: true  },
+  { id: 'nomothesia',       label: "The People's Laws",           leftPercent: 14.04, topPercent: 19.77, hasMap: true  },
+  { id: 'therapon-dokimazo',label: "The People's Government",      leftPercent: 86.23, topPercent: 20.07, hasMap: true  },
+  { id: 'glaukos-mati',     label: 'Accountability & Transparency',leftPercent: 14.04, topPercent: 80.20, hasMap: false },
+  { id: 'paideia',          label: 'Generational Fairness',        leftPercent: 86.15, topPercent: 80.23, hasMap: false },
 ];

@@ -54,7 +54,7 @@ export function Navigation(props: NavigationProps) {
                 className={`h-8 w-auto transition-all duration-300 hover:scale-105 ${logoLoaded ? 'opacity-100' : 'opacity-0'}`}
                 style={{ border: darkMode ? '1px solid #0a0a0a' : 'none' }}
                 loading="eager"
-                fetchPriority="high"
+                fetchpriority="high"
               />
             ) : (
               <span className={`text-lg font-bold ${darkMode ? 'text-amber-300' : 'text-slate-800'}`}

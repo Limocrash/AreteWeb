@@ -40,13 +40,38 @@ async function loadByPath(relativePath: string): Promise<ContentFile | undefined
   }
 }
 
+export interface BlueprintHubTooltip {
+  id: string;
+  label: string;
+  text: string;
+  leftPercent: number;
+  topPercent: number;
+  widthPercent: number;
+}
+
 export interface BlueprintHub {
   id: string;
   name: string;
   position: string;
   type: string;
   contentFile: string;
-  hotspots: { id: string; file: string; order: number; leftPercent?: number; topPercent?: number }[];
+  imageFile?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  tooltips?: BlueprintHubTooltip[];
+  hotspots: {
+    id: string;
+    file: string;
+    order: number;
+    column?: string;
+    leftPercent?: number;
+    topPercent?: number;
+    widthPercent?: number;
+    heightPercent?: number;
+    shape?: string;
+    navigateTo?: string;
+    doubleHeight?: boolean;
+  }[];
 }
 
 export const blueprintHubs: BlueprintHub[] = manifest.hubs as BlueprintHub[];

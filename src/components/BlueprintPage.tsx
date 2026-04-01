@@ -277,17 +277,27 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
                       height: `${tip.heightPercent ?? tip.widthPercent * 2}%`,
                     }}>
                     <button type="button"
-                      className={`w-full h-full flex items-center justify-center text-xl font-bold transition-all duration-200 rounded ${
-                        darkMode ? 'text-cyan-400 hover:text-cyan-300 hover:bg-cyan-400/10' : 'text-cyan-600 hover:text-cyan-500 hover:bg-cyan-600/10'
-                      }`}
-                      style={{ fontFamily: 'Georgia, serif', background: 'transparent', border: 'none', cursor: 'default' }}
-                      onMouseEnter={() => setActiveTooltip(tip.id)}
-                      onMouseLeave={() => setActiveTooltip(null)}
+                      className="w-full h-full rounded transition-all duration-300"
+                      style={{ background: 'transparent', border: '2px solid transparent' }}
+                      onMouseEnter={(e) => {
+                        const el = e.currentTarget as HTMLButtonElement;
+                        el.style.background = 'rgba(34,211,238,0.12)';
+                        el.style.border = '2px solid rgba(34,211,238,0.60)';
+                        el.style.boxShadow = '0 0 8px 2px rgba(34,211,238,0.70), 0 0 24px 6px rgba(34,211,238,0.35), inset 0 0 12px rgba(34,211,238,0.15)';
+                        setActiveTooltip(tip.id);
+                      }}
+                      onMouseLeave={(e) => {
+                        const el = e.currentTarget as HTMLButtonElement;
+                        el.style.background = 'transparent';
+                        el.style.border = '2px solid transparent';
+                        el.style.boxShadow = '';
+                        setActiveTooltip(null);
+                      }}
                       aria-label={tip.text}
-                    >{tip.label}</button>
+                    />
                     {activeTooltip === tip.id && (
-                      <div className={`absolute z-30 w-48 p-2 rounded-lg text-xs shadow-xl pointer-events-none ${
-                        darkMode ? 'bg-stone-900/95 text-amber-100 border border-amber-700/50' : 'bg-white/95 text-stone-800 border border-amber-400/50'
+                      <div className={`absolute z-30 w-52 p-2 rounded-lg text-xs shadow-xl pointer-events-none ${
+                        darkMode ? 'bg-stone-900/95 text-amber-100 border border-cyan-700/50' : 'bg-white/95 text-stone-800 border border-cyan-400/50'
                       }`} style={{ top: '110%', left: tip.leftPercent > 50 ? 'auto' : '0', right: tip.leftPercent > 50 ? '0' : 'auto' }}>
                         {tip.text}
                       </div>

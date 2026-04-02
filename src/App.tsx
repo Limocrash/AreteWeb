@@ -20,13 +20,23 @@ const lightParchment = import.meta.env.BASE_URL + 'images/LightParchment.jpg';
 const darkParchment = import.meta.env.BASE_URL + 'images/DarkmodeParchment.png';
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    try {
+      const saved = localStorage.getItem('aretecracy-dark-mode');
+      return saved !== null ? saved === 'true' : true; // default dark
+    } catch { return true; }
+  });
+
+  // Persist dark mode preference
+  useEffect(() => {
+    try { localStorage.setItem('aretecracy-dark-mode', String(darkMode)); } catch {}
+  }, [darkMode]);
   const [settingsOpen, setSettingsOpen] = useState(false);
   
   const getPageFromUrl = (): string => {
     const h = window.location.hash;
     if (h === '#/glossary') return 'glossary';
-    if (h === '#/pillars') return 'pillars';
+    if (h === '#/pillars' || h === '#/pillars/tour') return 'pillars';
     if (h.startsWith('#/blueprint')) return 'blueprint';
     if (h === '#/etc') return 'etc';
     if (h === '#/legal') return 'legal';
@@ -67,13 +77,20 @@ export default function App() {
   }, [darkMode]);
 
   useEffect(() => {
-    const sync = () => {
-      setCurrentPage(getPageFromUrl());
+    const sync = (e?: PopStateEvent) => {
+      const page = getPageFromUrl();
+      setCurrentPage(page);
       setHash(window.location.hash);
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Restore intro state based on history entry or hash
+      if (page === 'pillars') {
+        const introState = e?.state?.intro;
+        const isTourHash = window.location.hash === '#/pillars/tour';
+        setShowPillarsIntro(introState === true || (!isTourHash && introState === undefined));
+      }
     };
     window.addEventListener('popstate', sync);
-    window.addEventListener('hashchange', sync);
+    window.addEventListener('hashchange', sync as EventListener);
     return () => {
       window.removeEventListener('popstate', sync);
       window.removeEventListener('hashchange', sync);
@@ -95,6 +112,8 @@ export default function App() {
     setCurrentPage(page);
     setHash(newHash);
     window.history.pushState({ page }, '', newHash || window.location.pathname);
+    // Dispatch popstate so BlueprintPage resets to landing when navbar 'blueprint' is clicked
+    window.dispatchEvent(new PopStateEvent('popstate'));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -190,6 +209,11 @@ export default function App() {
               darkMode={darkMode}
               onNavigateToPillar={handleNavigateToPillar}
               introVisible={showPillarsIntro}
+              onRestartIntro={() => {
+                setShowPillarsIntro(true);
+                // Push a history entry so back button returns to intro state
+                window.history.pushState({ page: 'pillars', intro: true }, '', '#/pillars');
+              }}
             />
             {showPillarsIntro && (
               <AnimatePresence>
@@ -199,6 +223,8 @@ export default function App() {
                   onBeginConstruction={() => {
                     markVisited();
                     setShowPillarsIntro(false);
+                    // Push a new history entry so back button returns to the intro
+                    window.history.pushState({ page: 'pillars', intro: false }, '', '#/pillars/tour');
                   }}
                   onOpenSettings={() => setSettingsOpen(true)}
                 />

@@ -307,8 +307,8 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
           </div>
           <div className="relative w-full" style={{ background: 'transparent' }}>
             <button type="button" onClick={handleBackToLanding}
-              className={`fixed top-16 left-4 z-20 text-sm font-medium hover:underline ${
-                darkMode ? 'text-amber-300' : 'text-amber-700'
+              className={`fixed top-24 left-4 z-40 text-sm font-medium hover:underline px-2 py-1 rounded ${
+                darkMode ? 'text-amber-300 bg-black/40' : 'text-amber-700 bg-white/60'
               }`}>← Back to The Blueprint</button>
             <div
               className="relative w-full"

@@ -64,6 +64,7 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
       return;
     }
     if ((hubId === 'nomothesia' || hubId === 'therapon-dokimazo' || hubId === 'ekklesia') && selectedHotspotId) {
+      // bitmapped map hubs load hotspot content on click
       // all three hubs use bitmapped approach with DetailCard
       let cancelled = false;
       setLoading(true);
@@ -85,6 +86,7 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
   const handleHubClick = useCallback((id: string) => {
     navigateToBlueprintHub(id);
     setHubId(id);
+    setPnyxBloomOpen(false);
   }, []);
 
   const handleBackFromNixor = useCallback(() => {
@@ -151,6 +153,55 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
             <p style={{ fontFamily: 'Georgia, serif' }}>Content loading…</p>
           )}
         </div>
+      );
+    }
+
+    // Text hubs: full scrollable page — same pattern as Nixor
+    const isTextHub = hubId === 'glaukos-mati' || hubId === 'paideia';
+    if (isTextHub) {
+      return (
+        <>
+          <div className="fixed inset-0 pointer-events-none" style={{ zIndex: -5 }}>
+            <img
+              src={darkMode ? `${base}images/blueprint/BlueprintMarbleDark.webp` : `${base}images/blueprint/BlueprintMarbleLight.webp`}
+              alt="" className="w-full h-full object-cover"
+            />
+          </div>
+          <div className={`relative w-full min-h-screen px-6 py-12 max-w-3xl mx-auto ${
+            darkMode ? 'text-amber-100' : 'text-stone-900'
+          }`}>
+            <button
+              type="button"
+              onClick={handleBackToLanding}
+              className={`text-sm font-medium hover:underline mb-8 block ${
+                darkMode ? 'text-amber-300' : 'text-amber-700'
+              }`}
+            >
+              ← Back to The Blueprint
+            </button>
+            {loading ? (
+              <div className="flex justify-center py-16">
+                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-amber-700" />
+              </div>
+            ) : content ? (
+              <div className={`rounded-lg border-2 p-6 md:p-10 ${
+                darkMode ? 'border-amber-700/50 bg-stone-900/70' : 'border-amber-600/50 bg-stone-50/90'
+              }`}>
+                <h1 className="text-3xl md:text-4xl font-bold mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+                  {content.metadata.name}
+                </h1>
+                {content.metadata.greekName && (
+                  <p className={`text-lg italic mb-6 ${
+                    darkMode ? 'text-amber-400' : 'text-amber-700'
+                  }`}>{content.metadata.greekName}</p>
+                )}
+                <MarkdownContent content={content.body} darkMode={darkMode} />
+              </div>
+            ) : (
+              <p style={{ fontFamily: 'Georgia, serif' }}>Content loading…</p>
+            )}
+          </div>
+        </>
       );
     }
 

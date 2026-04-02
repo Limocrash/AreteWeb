@@ -306,14 +306,14 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
             />
           </div>
           <div className="relative w-full" style={{ background: 'transparent' }}>
-            <button type="button" onClick={handleBackToLanding}
-              className={`fixed top-24 left-4 z-40 text-sm font-medium hover:underline px-2 py-1 rounded ${
-                darkMode ? 'text-amber-300 bg-black/40' : 'text-amber-700 bg-white/60'
-              }`}>← Back to The Blueprint</button>
             <div
               className="relative w-full"
               style={{ aspectRatio: `${ekkAspect}` }}
             >
+                <button type="button" onClick={handleBackToLanding}
+                  className={`absolute bottom-[2%] left-[1%] z-20 text-xs font-medium hover:underline px-2 py-1 rounded ${
+                    darkMode ? 'text-white/80 bg-black/40 hover:text-white' : 'text-stone-700 bg-white/50 hover:text-stone-900'
+                  }`} style={{ backdropFilter: 'blur(3px)' }}>← Back to The Blueprint</button>
                 <img
                   src={`${base}images/blueprint/ekklesia-map-large.webp`}
                   srcSet={`${base}images/blueprint/ekklesia-map-small.webp 400w, ${base}images/blueprint/ekklesia-map-medium.webp 800w, ${base}images/blueprint/ekklesia-map-large.webp 1200w`}

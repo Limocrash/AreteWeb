@@ -12,7 +12,7 @@ interface MarkdownContentProps {
   isTriadMode?: boolean;
 }
 
-export function MarkdownContent({ content, className = '', darkMode = false, fontFamily = 'Georgia, serif', isTriadMode = false }: MarkdownContentProps) {
+export function MarkdownContent({ content, className = '', darkMode = false, fontFamily = '"Crimson Text", Georgia, serif', isTriadMode = false }: MarkdownContentProps) {
   const markdownClasses = useMemo(() => {
     const baseClasses = 'prose prose-lg max-w-none';
     const darkClasses = darkMode 
@@ -29,10 +29,10 @@ export function MarkdownContent({ content, className = '', darkMode = false, fon
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          h1: ({ ...props }) => <h1 className="text-3xl md:text-4xl font-bold mb-4 mt-6 first:mt-0" {...props} />,
-          h2: ({ ...props }) => <h2 className="text-2xl md:text-3xl font-bold mb-3 mt-6" {...props} />,
-          h3: ({ ...props }) => <h3 className="text-xl md:text-2xl font-semibold mb-2 mt-5" {...props} />,
-          h4: ({ ...props }) => <h4 className="text-lg md:text-xl font-semibold mb-2 mt-4" {...props} />,
+          h1: ({ ...props }) => <h1 className="text-3xl md:text-4xl font-semibold mb-4 mt-6 first:mt-0" style={{ fontFamily: '"Crimson Text", Georgia, serif' }} {...props} />,
+          h2: ({ ...props }) => <h2 className="text-2xl md:text-3xl font-semibold mb-3 mt-8" style={{ fontFamily: '"Crimson Text", Georgia, serif' }} {...props} />,
+          h3: ({ ...props }) => <h3 className="text-xl md:text-2xl font-normal mb-2 mt-6" style={{ fontFamily: '"Trebuchet MS", system-ui, sans-serif', letterSpacing: '0.04em' }} {...props} />,
+          h4: ({ ...props }) => <h4 className="text-lg md:text-xl font-normal mb-2 mt-4" style={{ fontFamily: '"Trebuchet MS", system-ui, sans-serif', letterSpacing: '0.03em' }} {...props} />,
           h5: ({ ...props }) => <h5 className="text-base md:text-lg font-semibold mb-2 mt-3 italic" {...props} />,
           h6: ({ ...props }) => <h6 className="text-sm md:text-base font-semibold mb-2 mt-3 italic" {...props} />,
           p: ({ ...props }) => <p className="mb-4 leading-relaxed" {...props} />,

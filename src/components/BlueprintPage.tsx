@@ -184,16 +184,16 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
                 <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-amber-700" />
               </div>
             ) : content ? (
-              <div className={`rounded-lg border-2 p-6 md:p-10 ${
-                darkMode ? 'border-amber-700/50 bg-stone-900/70' : 'border-amber-600/50 bg-stone-50/90'
-              }`}>
-                <h1 className="text-3xl md:text-4xl font-bold mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              <div className="py-4">
+                <h1 className={`text-3xl md:text-4xl font-semibold mb-1 ${
+                  darkMode ? 'text-amber-100' : 'text-stone-900'
+                }`} style={{ fontFamily: '"Crimson Text", Georgia, serif' }}>
                   {content.metadata.name}
                 </h1>
                 {content.metadata.greekName && (
-                  <p className={`text-lg italic mb-6 ${
-                    darkMode ? 'text-amber-400' : 'text-amber-700'
-                  }`}>{content.metadata.greekName}</p>
+                  <p className={`text-base italic mb-8 ${
+                    darkMode ? 'text-amber-400/70' : 'text-stone-500'
+                  }`} style={{ fontFamily: '"Crimson Text", Georgia, serif' }}>{content.metadata.greekName}</p>
                 )}
                 <MarkdownContent content={content.body} darkMode={darkMode} />
               </div>

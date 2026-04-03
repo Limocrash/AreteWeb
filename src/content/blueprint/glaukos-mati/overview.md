@@ -5,10 +5,6 @@ greekName: "Λογοδοσία / Ἀσφάλεια"
 blurb: "Private citizens should have reasonable privacy, but the lives of public servants must be publicly transparent. We point the cameras UP."
 ---
 
-# We point the cameras UP.
-
-*Logodosia / Accountability & Transparency*
-
 The advent of inexpensive computing and pervasive network infrastructure has led to a dramatic increase in digital surveillance, almost eliminating personal privacy for the average citizen. AreTéCracy addresses this imbalance through the Logodosia motto: private citizens should have reasonable privacy, but the lives of public servants must be publicly transparent.
 
 In the United States, federal agencies aggregate bulk communication metadata and financial records under broad national security authorities, while local law enforcement increasingly deploys automated license plate readers and facial recognition networks. Singapore has integrated its "Smart Nation" initiative into a seamless grid of sensors and digital identities that track movement and transactions with near-total coverage. Across the United Kingdom and Europe, the proliferation of public CCTV is now augmented by live biometric scanning and the legislative push for "client-side scanning" of encrypted messages. This expansion is powered by rapid strides in high-density data storage, computer vision, and predictive analytics, turning once-passive infrastructure into an active, constant record of private behavior.
@@ -29,7 +25,7 @@ The accountability failure is systemic, resting on the premise that power operat
 
 ### Reverse Surveillance
 
-**GlaukÓS Mati**
+#### GlaukÓS Mati
 
 GlaukÓS Mati is the core, non-stop digital watchdog for public service activity. The name, like all our other AI models, carries a lot of symbology. "ÓS" is the standard suffix of every model, indicating that they help AreTéCracy create a new operating system for self-governance in the 21st century. The *Glaux*, or "bright-eyed owl," was the symbol of wisdom and watchfulness that guarded the Athenian people, and which our mascot Nyctimene embodies. And the *mati* is the Greek name for the nazar, an amulet popular throughout the eastern Mediterranean and Middle East that protects its wearer from the "evil eye."
 
@@ -39,15 +35,15 @@ GlaukÓS Mati is the AI system that monitors the actions of every public servant
 
 Asphaleia is the system of regular review by the Ekklesia of all Therapon activity. This three-part process ensures comprehensive oversight, moving from mandatory reporting (**Sentilea**) to structured investigation (**Peira**), and concluding with a final public judgment (**Euthynia**).
 
-**Sentilea**
+#### Sentilea
 
 Sentilea is the structured, scheduled reporting requirement that every Therapon owes the Assembly — a formal accounting of what they did, why they did it, and what it cost. For magistrate Therapons with higher authority, this will normally be done on whatever schedule the Ekklesia chooses, such as weekly, monthly, or quarterly. For clerical-level Therapons, Sentilea review is conducted through reporting from the GlaukÓS Mati system, their superior magistrates, peers, and the Axia system.
 
-**Peira**
+#### Peira
 
 Peira is the structured investigation that convenes when GlaukÓS Mati, Sentilea, or even a complaint from a whistleblower surfaces cause for concern. This proceeding has teeth, wielding the power to veto a Therapon's decisions or even ostracize the Therapon immediately — remove them from office and temporarily revoke rights of citizenship — if the offense warrants it. This process is the Ekklesia's direct, non-judicial mechanism for immediate accountability, designed not to punish behavior (that is for the court system) but to protect the polis.
 
-**Euthynia**
+#### Euthynia
 
 The terminal evaluation at the close of every term of service — the honest, comprehensive, publicly available verdict on whether this Therapon served well or didn't. The record created by this session will impact the Therapon's future opportunities for service and their Axia score, which influences their opportunities in the Ekklesia itself.
 

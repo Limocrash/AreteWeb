@@ -137,11 +137,11 @@ export function PillarsMainView({ darkMode, onNavigateToPillar, introVisible = f
         </div>
 
         {/* Restart Tour button */}
-        {onRestartIntro && (
+        {_onRestartIntro && (
           <div className="flex-shrink-0 w-full">
             <button
               type="button"
-              onClick={onRestartIntro}
+              onClick={_onRestartIntro}
               className={`w-full py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all duration-300 ${
                 darkMode
                   ? 'bg-amber-900/30 text-amber-200 border-amber-700/60 hover:bg-amber-800/50 hover:border-amber-500'

@@ -29,7 +29,6 @@ export function MarkdownContent({ content, className = '', darkMode = false, fon
     <div className={markdownClasses} style={{ fontFamily }}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-
         components={{
           h1: ({ ...props }) => <h1 className="text-3xl md:text-4xl font-semibold mb-4 mt-6 first:mt-0" style={{ fontFamily: '"Crimson Text", Georgia, serif' }} {...props} />,
           h2: ({ ...props }) => <h2 className="text-2xl md:text-3xl font-semibold mb-3 mt-8" style={{ fontFamily: '"Crimson Text", Georgia, serif' }} {...props} />,
@@ -37,13 +36,15 @@ export function MarkdownContent({ content, className = '', darkMode = false, fon
           h4: ({ ...props }) => <h4 className="text-lg md:text-xl font-normal mb-2 mt-4" style={{ fontFamily: '"Trebuchet MS", system-ui, sans-serif', letterSpacing: '0.03em' }} {...props} />,
           h5: ({ ...props }) => <h5 className="text-base md:text-lg font-semibold mb-2 mt-3 italic" {...props} />,
           h6: ({ ...props }) => <h6 className="text-sm md:text-base font-semibold mb-2 mt-3 italic" {...props} />,
-          p: ({ children, ...props }) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          p: (props: any) => {
+            const children = props.children;
             const text = typeof children === 'string' ? children : Array.isArray(children) ? children.join('') : '';
             const isAttribution = text.startsWith('\u2014 ') || text.startsWith('-- ');
             if (isAttribution) {
-              return <p className="mb-4 leading-relaxed italic" style={{ color: '#22d3ee', textShadow: '0 0 8px rgba(34,211,238,0.5)' }} {...props}>{children}</p>;
+              return <p className="mb-4 leading-relaxed italic" style={{ color: '#22d3ee', textShadow: '0 0 8px rgba(34,211,238,0.5)' }}>{children}</p>;
             }
-            return <p className="mb-4 leading-relaxed" {...props}>{children}</p>;
+            return <p className="mb-4 leading-relaxed" {...props} />;
           },
           ul: ({ ...props }) => <ul className="list-disc list-inside mb-4 space-y-2 ml-4" {...props} />,
           ol: ({ ...props }) => <ol className="list-decimal list-inside mb-4 space-y-2 ml-4" {...props} />,

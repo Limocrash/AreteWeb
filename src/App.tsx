@@ -77,14 +77,14 @@ export default function App() {
   }, [darkMode]);
 
   useEffect(() => {
-    const sync = (e?: PopStateEvent) => {
+    const sync = (e?: Event) => {
       const page = getPageFromUrl();
       setCurrentPage(page);
       setHash(window.location.hash);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       // Restore intro state based on history entry or hash
       if (page === 'pillars') {
-        const introState = e?.state?.intro;
+        const introState = (e as PopStateEvent)?.state?.intro;
         const isTourHash = window.location.hash === '#/pillars/tour';
         setShowPillarsIntro(introState === true || (!isTourHash && introState === undefined));
       }

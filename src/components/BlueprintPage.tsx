@@ -141,7 +141,12 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
             <div className={`rounded-lg border-2 p-6 md:p-10 ${
               darkMode ? 'border-amber-700/50 bg-stone-900/70' : 'border-amber-600/50 bg-stone-50/90'
             }`}>
-              <h1 className="text-3xl md:text-4xl font-bold mb-2" style={{ fontFamily: 'Georgia, serif' }}>
+              <img src={`${base}images/blueprint/nixor-header.webp`}
+                alt="MINOTAURE — A Classical Fragment from the AreTéCracy excavations"
+                className="w-full rounded-lg mb-8 shadow-md" />
+              <h1 className={`text-3xl md:text-4xl font-semibold mb-2 ${
+                darkMode ? 'text-amber-100' : 'text-stone-900'
+              }`} style={{ fontFamily: '"Crimson Text", Georgia, serif' }}>
                 {content.metadata.name}
               </h1>
               {content.metadata.greekName && (
@@ -185,6 +190,14 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
               </div>
             ) : content ? (
               <div className="py-4">
+                {hubId === 'glaukos-mati' && (
+                  <img src={`${base}images/blueprint/Logodosia-header.webp`}
+                    alt="Nyctimene watching over Athens" className="w-full rounded-lg mb-8 shadow-md" />
+                )}
+                {hubId === 'paideia' && (
+                  <img src={`${base}images/blueprint/gff-header.webp`}
+                    alt="Passing the flame across generations" className="w-full rounded-lg mb-8 shadow-md" />
+                )}
                 <h1 className={`text-3xl md:text-4xl font-semibold mb-1 ${
                   darkMode ? 'text-amber-100' : 'text-stone-900'
                 }`} style={{ fontFamily: '"Crimson Text", Georgia, serif' }}>

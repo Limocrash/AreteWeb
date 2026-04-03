@@ -2,7 +2,6 @@
 
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-
 import { useMemo } from 'react';
 
 interface MarkdownContentProps {
@@ -25,8 +24,28 @@ export function MarkdownContent({ content, className = '', darkMode = false, fon
     return `${baseClasses} ${darkClasses} ${className}`;
   }, [darkMode, className, isTriadMode]);
 
+  // Pre-process content to wrap attribution lines (starting with — ) in a span
+  // This avoids needing a custom p component and keeps TypeScript happy
+  const processedContent = useMemo(() => {
+    return content.split('\n').map(line => {
+      if (line.startsWith('\u2014 ') || line.startsWith('-- ')) {
+        return `<span class="attribution-line">${line}</span>`;
+      }
+      return line;
+    }).join('\n');
+  }, [content]);
+
   return (
     <div className={markdownClasses} style={{ fontFamily }}>
+      <style>{`
+        .attribution-line {
+          display: block;
+          color: #22d3ee;
+          font-style: italic;
+          text-shadow: 0 0 8px rgba(34,211,238,0.5);
+          margin-bottom: 1rem;
+        }
+      `}</style>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
@@ -36,16 +55,7 @@ export function MarkdownContent({ content, className = '', darkMode = false, fon
           h4: ({ ...props }) => <h4 className="text-lg md:text-xl font-normal mb-2 mt-4" style={{ fontFamily: '"Trebuchet MS", system-ui, sans-serif', letterSpacing: '0.03em' }} {...props} />,
           h5: ({ ...props }) => <h5 className="text-base md:text-lg font-semibold mb-2 mt-3 italic" {...props} />,
           h6: ({ ...props }) => <h6 className="text-sm md:text-base font-semibold mb-2 mt-3 italic" {...props} />,
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          p: (props: any) => {
-            const children = props.children;
-            const text = typeof children === 'string' ? children : Array.isArray(children) ? children.join('') : '';
-            const isAttribution = text.startsWith('\u2014 ') || text.startsWith('-- ');
-            if (isAttribution) {
-              return <p className="mb-4 leading-relaxed italic" style={{ color: '#22d3ee', textShadow: '0 0 8px rgba(34,211,238,0.5)' }}>{children}</p>;
-            }
-            return <p className="mb-4 leading-relaxed" {...props} />;
-          },
+          p: ({ ...props }) => <p className="mb-4 leading-relaxed" {...props} />,
           ul: ({ ...props }) => <ul className="list-disc list-inside mb-4 space-y-2 ml-4" {...props} />,
           ol: ({ ...props }) => <ol className="list-decimal list-inside mb-4 space-y-2 ml-4" {...props} />,
           li: ({ ...props }) => <li className="leading-relaxed" {...props} />,
@@ -93,7 +103,7 @@ export function MarkdownContent({ content, className = '', darkMode = false, fon
           ),
         }}
       >
-        {content}
+        {processedContent}
       </ReactMarkdown>
     </div>
   );

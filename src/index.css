@@ -86,6 +86,13 @@ html {
   font-size: calc(1em + 2pt);
 }
 
+/* Attribution line inside blockquotes — Nyctimene cyan glow for — Speaker credits */
+.prose blockquote p:last-child em {
+  color: #22d3ee;
+  text-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
+  font-style: italic;
+}
+
 /* Blueprint landing: object-position controlled by aspect-ratio.
    TRIANGULATION: Laptop (16:10) looked good with bottom; TV (16:9) looked worse with top.
    Reverted to object-bottom for all - prioritize Generational Fairness (user: tops less critical).

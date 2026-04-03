@@ -1,5 +1,5 @@
 ---
-id: nomothetesis-overview
+id: nomothesia-overview
 name: "Nomothesia"
 greekName: "Νομοθεσία (Nomothesia)"
 blurb: "The lawmaking pathway from citizen idea to enacted law."

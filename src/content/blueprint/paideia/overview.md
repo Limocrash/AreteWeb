@@ -6,8 +6,8 @@ blurb: "Every generation inherits the accumulated productivity of every generati
 ---
 
 > *"Our path from here is beyond the stars. Let us always pass the flame with honor, dignity, and respect, leaving behind every blessing we can; that they may remember us for the good we have done and not the harm."*
-
-— Theseus
+>
+> *— Theseus*
 
 You were born into the richest, most technologically advanced civilization in human history. The generations before you built it — through their labor, their ingenuity, their sacrifice — and left it to you. That is how inheritance is supposed to work. Instead, what you received was a structural debt load imposed by people who were guaranteed to never pay it. This is taxation without representation, and it is the single greatest betrayal of the social contract since the rise of absolute monarchy.
 

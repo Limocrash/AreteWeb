@@ -170,7 +170,7 @@ export default function App() {
         } ${
           currentPage === 'pillars' ? 'max-h-[100vh] min-h-0 overflow-y-hidden' : ''
         } ${
-          currentPage === 'blueprint' ? 'min-h-0 overflow-y-hidden flex flex-col' : ''
+          currentPage === 'blueprint' ? 'min-h-0 flex flex-col' : ''
         }`}
       >
         {currentPage === 'home' && (

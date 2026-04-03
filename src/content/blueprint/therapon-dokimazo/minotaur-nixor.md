@@ -1,11 +1,15 @@
 ---
 id: minotaur-nixor
-name: "The Nixor — Asterion Barred"
-greekName: "Ὁ Νίξωρ"
+name: "Asterion Doesn't Live Here Anymore."
+greekName: "Ὁ Νίξωρ / The Nixor"
 blurb: "The career politician archetype — and why AreTéCracy refuses to build the conditions that create one."
 ---
 
-## Asterion Barred
+> *"Would you believe it, Ariadne? The Minotaur scarcely defended himself."*
+>
+> *— Theseus,* The House of Asterion*, Jorge Luis Borges, 1947*
+
+## Asterion Doesn't Live Here Anymore.
 
 As the first civilized society to experiment with real democracy, the Athenians knew exactly what they didn't want, ever again: Rulers with the power to decide their combined fates against their will. And they also knew that the road to such "strongmen" was the path of the career politician. It was the one gate to the city that they clearly understood they could never let open again.
 

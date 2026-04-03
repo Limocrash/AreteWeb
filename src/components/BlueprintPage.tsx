@@ -204,8 +204,8 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
                   {content.metadata.name}
                 </h1>
                 {content.metadata.greekName && (
-                  <p className={`text-base italic mb-8 ${
-                    darkMode ? 'text-amber-400/70' : 'text-stone-500'
+                  <p className={`text-lg italic mb-8 ${
+                    darkMode ? 'text-amber-400/80' : 'text-stone-500'
                   }`} style={{ fontFamily: '"Crimson Text", Georgia, serif' }}>{content.metadata.greekName}</p>
                 )}
                 <MarkdownContent content={content.body} darkMode={darkMode} />

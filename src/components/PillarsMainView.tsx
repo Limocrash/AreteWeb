@@ -12,9 +12,11 @@ interface PillarsMainViewProps {
   onNavigateToPillar?: (pillarId: string) => void;
   /** True while PillarsIntro overlay is showing; main view scrolls to bottom when this becomes false */
   introVisible?: boolean;
+  /** Restart the Pillars intro from the beginning */
+  onRestartIntro?: () => void;
 }
 
-export function PillarsMainView({ darkMode, onNavigateToPillar, introVisible = false }: PillarsMainViewProps) {
+export function PillarsMainView({ darkMode, onNavigateToPillar, introVisible = false, onRestartIntro: _onRestartIntro }: PillarsMainViewProps) {
   const [floorIndex, setFloorIndex] = useState(5); // Bedrock = bottom; elevator starts here
   const contentScrollRef = useRef<HTMLDivElement>(null);
   const prevIntroVisible = useRef(introVisible);
@@ -99,10 +101,10 @@ export function PillarsMainView({ darkMode, onNavigateToPillar, introVisible = f
       {/* Elevator sidebar - fills available height; extra top padding so "Architekton Elevator" clears nav buttons */}
       <aside className="pillars-elevator-sidebar w-44 md:w-52 flex-shrink-0 h-full flex flex-col items-center pt-6 pb-4 px-3 gap-2 border-l border-gray-600/50 overflow-hidden">
         <div className="flex flex-col items-center w-full gap-1 flex-shrink-0">
-          <span className="text-[10px] md:text-xs font-bold leading-tight text-center elevator-menu-item elevator-panel-dark-text">
-            Architekton<br />Elevator
+          <span className="font-bold leading-tight text-center elevator-menu-item elevator-panel-dark-text block" style={{ fontSize: 'clamp(11px, 1vw, 13px)' }}>
+            Architekton Elevator
           </span>
-          <span className="text-lg md:text-xl font-bold uppercase tracking-wide w-full text-center elevator-menu-item text-cyan-200">
+          <span className="font-bold uppercase tracking-wide w-full text-center elevator-menu-item text-cyan-200 block" style={{ fontSize: 'clamp(13px, 1.2vw, 16px)' }}>
             Levels
           </span>
         </div>
@@ -133,6 +135,24 @@ export function PillarsMainView({ darkMode, onNavigateToPillar, introVisible = f
             );
           })}
         </div>
+
+        {/* Restart Tour button */}
+        {onRestartIntro && (
+          <div className="flex-shrink-0 w-full">
+            <button
+              type="button"
+              onClick={onRestartIntro}
+              className={`w-full py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all duration-300 ${
+                darkMode
+                  ? 'bg-amber-900/30 text-amber-200 border-amber-700/60 hover:bg-amber-800/50 hover:border-amber-500'
+                  : 'bg-amber-50 text-amber-800 border-amber-400 hover:bg-amber-100'
+              }`}
+              style={{ fontFamily: 'Georgia, serif' }}
+            >
+              ↩ Restart Tour
+            </button>
+          </div>
+        )}
 
         {/* Tour instruction frame */}
         <div className="flex-shrink-0 w-full">

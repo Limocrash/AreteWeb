@@ -5,7 +5,7 @@ greekName: "Παιδεία / Generational Fairness"
 blurb: "Every generation inherits the accumulated productivity of every generation before it. What you received instead was a structural debt load imposed by people who were guaranteed never to pay it. AreTéCracy is how you get it back."
 ---
 
-> *"Our path from here is beyond the stars. Let us always pass the flame with honor, dignity, and respect, leaving behind every blessing we can; that they may remember us for the good we have done and not the harm."*
+> *"Our path from here is beyond the stars. Let us always pass the flame with honor, dignity, and respect, leaving behind every blessing we can; that they may remember us for the good we have done and not for harm."*
 >
 > *— Theseus*
 

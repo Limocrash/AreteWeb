@@ -5,6 +5,8 @@ export interface ContentMetadata {
   name: string;
   greekName?: string;
   blurb: string;
+  headline?: string;
+  order?: number;
   complexity?: 1 | 2 | 3;
   category?: 'pillar' | 'virtue' | 'equality' | 'process' | 'institution' | 'concept' | 'article' | 'announcement';
   hasFullPage?: boolean;

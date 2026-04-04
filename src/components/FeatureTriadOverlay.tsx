@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronRight } from 'lucide-react';
 import { DetailCard } from './DetailCard';
+import { parseContentFile } from '../utils/contentLoader';
 
 interface FeatureTriadOverlayProps {
   darkMode?: boolean;
@@ -15,20 +16,41 @@ interface TriadItem {
   reveal: string;
 }
 
-const triadItems: TriadItem[] = [
-  { id: 'no-politicians', headline: 'NO POLITICIANS. NOT ONE.', reveal: 'We don\'t hire rulers; we hire public servants. In AreTéCracy, all officials are functionaries, not commanders. There are no career politicians, no dynasties, and no permanent ruling class.\n\nFor high-level offices, citizens are selected from a refined list of highly qualified individuals based on proven merit, skills, and knowledge. This list must be approved by at least 70% of the Ekklesia, and the final magistrate is chosen by Sortition (random lot). This ensures competence while preventing any single political bias from capturing the system. This is Plato\'s Roll Call: the duty to participate or be ruled by your inferiors.' },
-  { id: 'no-billionaires', headline: 'BILLIONAIRES CAN\'T BUY VOTES. OR LAWS.', reveal: 'In the current system, money buys access, and access buys laws. We end this with Isotímia (Equal Honor). We don\'t disparage wealth, but we recognize that the Pleonektai (those who seek more than their share) often use it to extract opportunity from the community.\n\nHere, lobbying is impossible because there are no politicians to lobby. Campaign donations are impossible because there are no campaigns. Your voice is weighted by your citizenship, not your net worth. A teacher\'s vote on education policy counts exactly as much as a hedge fund manager\'s—actually, if the teacher has more proven merit in that field, it might count more.' },
-  { id: 'future-has-vote', headline: 'THE FUTURE GETS TO VOTE, TOO.', reveal: 'Every generation is tempted to live large and hand the bill to people who can\'t vote yet. We stop this practice of "taxation without representation" against our own descendants.\n\nEvery proposed law is stress-tested for its long-term impact. If a policy creates short-term gain at a future cost, the Generational Fairness Fund and Horizon Clauses intervene. They require that the ROI for future generations exceeds the tax burden—meaning we must invest enough today to ensure our children inherit assets, not just debts. We are the first system to give the unborn a seat at the table.' },
-  { id: 'workshop-economy', headline: 'AN ECONOMY THAT REMEMBERS EVERYONE.', reveal: 'You cannot have a free vote if you are a serf in the marketplace. Today, a handful of "Too Big to Fail" monopolies control the survival stack—from food to payments. That isn\'t capitalism; it\'s corporate feudalism.\n\nHephaistia breaks the "Infinity Gauntlet." We stop subsidizing giants and start funding the little guy. By partnering with AI and advanced tooling, we empower a new class of artisan-citizens to build, repair, and trade locally. We replace fragile supply chains with resilient, distributed workshops. It is the return of real capitalism: many hands, fair competition, and no overlords.' },
-  { id: 'watch-watchers', headline: 'WHO WATCHES THE WATCHMEN? YOU DO.', reveal: 'Transparency usually means the government watching you. We flip the cameras. GlaukÓS Mati (The Bright-Eyed Guardian) is a system of "Reverse Surveillance" where transparency flows upward.\n\nLike the owl of Athens, it is a watcher in the night. Every action, transaction, and decision made by a public servant is recorded on an immutable public ledger. There are no backroom deals because there are no backrooms. If you serve the public, you live in a glass house.' },
-  { id: 'no-51-tyranny', headline: 'THE FIVE-ONE IS A COP-OUT.', reveal: 'Modern democracy is often a civil war fought with ballots, where 51% of the people try to crush the other 49%. This creates division, hate, and policy whiplash.\n\nWe believe that any law which half the population hates is, by definition, a bad law. We require Homonoia (Like-mindedness). Major legislation requires broad consensus (often supermajorities of 60-70%) to pass. If a proposal can\'t earn broad agreement, it goes back to the workshop. We don\'t move forward until we move forward together.' },
-  { id: 'civility-default', headline: 'THE THEATER GETS ITS FINAL CURTAIN CALL.', reveal: 'Modern politics is theater: scripted performances, fake outrage, and shouting matches designed to entertain, not govern. We end the spectacle.\n\n**IsoKratÓS** is our AI moderator that replaces the stage with a workshop. It coaches citizens to turn rants into proposals. It enforces the "Steel Man Rule": you cannot criticize an argument until you restate it to your opponent\'s satisfaction. No more straw men, no more performative anger.\n\nWe don\'t just hope for better discourse; we engineered it. The theater burns so real governance can rise from the ashes.' },
-  { id: 'self-destruct', headline: 'IF ALL ELSE FAILS, SELF DESTRUCT.', reveal: 'In most systems, removing a failed government requires a revolution or a civil war. We built a safety valve instead.\n\nAxioktonia (The Worthy Death) is the ultimate guarantee of freedom. If a hypermajority of citizens agree the system has fundamentally failed, they can trigger a peaceful, orderly "uninstall and reinstall" of the government. It wipes the slate clean, removes all current leaders, and patches the Constitution.\n\nIdeally, this button is never pressed. It acts as a nuclear deterrent against tyranny—because a government that knows it can be uninstalled at any moment is a government that listens.' }
-];
+// Load feature octet content from markdown files
+const octetModules = import.meta.glob<string>('../content/home/feature-octet/*.md', {
+  eager: false,
+  query: '?raw',
+  import: 'default'
+});
+
+async function loadOctetItems(): Promise<TriadItem[]> {
+  const items: TriadItem[] = [];
+  for (const path of Object.keys(octetModules).sort()) {
+    try {
+      const raw = await octetModules[path]();
+      const content = parseContentFile(typeof raw === 'string' ? raw : (raw as { default: string }).default);
+      items.push({
+        id: content.metadata.id,
+        headline: content.metadata.headline ?? '',
+        reveal: content.body.trim(),
+      });
+    } catch { /* skip malformed files */ }
+  }
+  return items.sort((a, b) => {
+    const aPath = Object.keys(octetModules).find(p => p.includes(a.id)) ?? '';
+    const bPath = Object.keys(octetModules).find(p => p.includes(b.id)) ?? '';
+    return aPath.localeCompare(bPath);
+  });
+}
 
 export function FeatureTriadOverlay({ darkMode = true, onNavigate }: FeatureTriadOverlayProps) {
   const [selectedItem, setSelectedItem] = useState<TriadItem | null>(null);
   const [cardOrigin, setCardOrigin] = useState<{ x: number; y: number } | null>(null);
+  const [items, setItems] = useState<TriadItem[]>([]);
+
+  useEffect(() => {
+    loadOctetItems().then(setItems);
+  }, []);
 
   const handleTileClick = (item: TriadItem, e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -55,7 +77,7 @@ export function FeatureTriadOverlay({ darkMode = true, onNavigate }: FeatureTria
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
-            {triadItems.map((item) => (
+            {items.map((item) => (
               <motion.button
                 key={item.id}
                 onClick={(e) => handleTileClick(item, e)}
@@ -85,7 +107,7 @@ export function FeatureTriadOverlay({ darkMode = true, onNavigate }: FeatureTria
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
             <button
-              onClick={() => onNavigate?.('pillars')}
+              onClick={() => onNavigate?.('blueprint')}
               className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#D4AF37] to-[#B4941F] text-black font-bold rounded-sm shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all flex items-center justify-center gap-2"
             >
               SEE THE BLUEPRINT <ChevronRight size={20} />

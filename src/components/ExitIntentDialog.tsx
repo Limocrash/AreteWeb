@@ -51,13 +51,14 @@ export function ExitIntentDialog({ darkMode, onClose, onGoToEightWays }: ExitInt
           Before you go…
         </h2>
         <p id="exit-dialog-desc" className={`text-base md:text-lg mb-6 ${darkMode ? 'text-gray-300' : 'text-stone-700'}`}>
-          We noticed you left without looking at how AreTéCracy is different from anything you've seen before… How about: &quot;No Politicians. Not even one,&quot; or &quot;$1 Billion still gets just one vote,&quot; or &quot;The future gets a vote, too?&quot; Aren't you curious to know more?
+          You haven't seen the eight reasons yet. How about: &quot;Politicians can't be bought — there aren't any,&quot; or &quot;No billionaire is rich enough to buy even one law,&quot; or &quot;The young and the unborn finally have a voice?&quot; Aren't you curious?
         </p>
         <div className="flex flex-col sm:flex-row gap-3">
           <a
             href="#eight-ways"
             onClick={(e) => {
               e.preventDefault();
+              document.getElementById('eight-ways')?.scrollIntoView({ behavior: 'smooth' });
               onGoToEightWays();
             }}
             className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-bold rounded transition-all ${

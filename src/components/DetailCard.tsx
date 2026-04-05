@@ -28,12 +28,13 @@ interface DetailCardProps {
   restsOn?: string[];
   mode?: 'pillar' | 'glossary' | 'triad';
   hasFullPage?: boolean;
+  blueprintLink?: string;
 }
 
 export function DetailCard({
   element, glossaryTerm, contentBody, darkMode, completed = false,
   cardOrigin, onClose, onComplete, onNavigateToPillar, restsOn,
-  mode = 'pillar', hasFullPage = false
+  mode = 'pillar', hasFullPage = false, blueprintLink
 }: DetailCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showCompletionPill, setShowCompletionPill] = useState(false);
@@ -331,6 +332,21 @@ export function DetailCard({
               <div className="space-y-4">
                 <div className={contentBoxClass}><MarkdownContent content={contentBody} darkMode={darkMode} fontFamily={fontFamilyProp} isTriadMode={isTriadMode} /></div>
                 {completePill()}
+                {isTriadMode && blueprintLink && (
+                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="flex justify-center pt-2">
+                    <a
+                      href={blueprintLink}
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); onClose(); setTimeout(() => { window.location.hash = blueprintLink.slice(1); }, 50); }}
+                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:scale-105 ${
+                        darkMode ? 'bg-amber-700/40 text-amber-200 hover:bg-amber-700/60 border border-amber-600/50' : 'bg-amber-100 text-amber-800 hover:bg-amber-200 border border-amber-400'
+                      }`}
+                      style={{ fontFamily: '"Trebuchet MS", "Trebuchet", sans-serif' }}
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Read more in the Blueprint →
+                    </a>
+                  </motion.div>
+                )}
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex justify-center pt-4">
                   {backBtn()}
                 </motion.div>

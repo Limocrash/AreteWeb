@@ -14,6 +14,7 @@ interface TriadItem {
   id: string;
   headline: string;
   reveal: string;
+  blueprintLink?: string;
 }
 
 // Load feature octet content from markdown files
@@ -33,6 +34,7 @@ async function loadOctetItems(): Promise<TriadItem[]> {
         id: content.metadata.id,
         headline: content.metadata.headline ?? '',
         reveal: content.body.trim(),
+        blueprintLink: content.metadata.blueprintLink,
       });
     } catch { /* skip malformed files */ }
   }
@@ -135,6 +137,7 @@ export function FeatureTriadOverlay({ darkMode = true, onNavigate }: FeatureTria
             cardOrigin={cardOrigin}
             onClose={handleClose}
             mode="triad"
+            blueprintLink={selectedItem.blueprintLink}
           />
         )}
       </AnimatePresence>

@@ -1,6 +1,7 @@
 ---
 id: no-politicians
 order: 1
+blueprintLink: "#/blueprint/therapon-dokimazo"
 headline: "POLITICIANS CAN'T BE BOUGHT. (THERE AREN'T ANY.)"
 ---
 

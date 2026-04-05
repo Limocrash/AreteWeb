@@ -27,8 +27,10 @@ export function ExitIntentDialog({ darkMode, onClose, onGoToEightWays }: ExitInt
   }, [onClose]);
 
   const handleHeadlineClick = () => {
-    onGoToEightWays();
-    window.location.hash = 'eight-ways';
+    onClose();
+    setTimeout(() => {
+      document.getElementById('eight-ways')?.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
   };
 
   return (

@@ -1,6 +1,7 @@
 ---
 id: future-has-vote
 order: 3
+blueprintLink: "#/blueprint/paideia"
 headline: "THE YOUNG AND THE UNBORN FINALLY HAVE A VOICE"
 ---
 

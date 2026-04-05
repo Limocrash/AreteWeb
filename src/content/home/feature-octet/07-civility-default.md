@@ -1,6 +1,7 @@
 ---
 id: civility-default
 order: 7
+blueprintLink: "#/blueprint/ekklesia"
 headline: "GOVERNMENT IS NEITHER A SPORT NOR THEATER. IT'S TEAMWORK."
 ---
 

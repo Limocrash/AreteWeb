@@ -1,6 +1,7 @@
 ---
 id: watch-watchers
 order: 5
+blueprintLink: "#/blueprint/glaukos-mati"
 headline: "THE CAMERAS POINT UP. NOT AT YOU."
 ---
 

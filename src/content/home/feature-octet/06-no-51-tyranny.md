@@ -1,6 +1,7 @@
 ---
 id: no-51-tyranny
 order: 6
+blueprintLink: "#/blueprint/ekklesia"
 headline: "MAJORITIES DON'T GET TO HAVE TYRANNY."
 ---
 

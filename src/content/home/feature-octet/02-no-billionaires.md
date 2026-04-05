@@ -1,6 +1,7 @@
 ---
 id: no-billionaires
 order: 2
+blueprintLink: "#/blueprint/ekklesia"
 headline: "NO BILLIONAIRE IS RICH ENOUGH TO BUY EVEN ONE LAW"
 ---
 

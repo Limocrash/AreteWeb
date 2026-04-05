@@ -37,12 +37,7 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar: _o
       if (e.clientY > 0) return;
       if (exitIntentFiredRef.current || clickedScrollPrompt || scrolledToEightWays) return;
       exitIntentFiredRef.current = true;
-      const el = document.getElementById('eight-ways');
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-      setTimeout(() => setShowExitDialog(true), 300);
+      setShowExitDialog(true);
     };
     document.addEventListener('mouseout', handleExitIntent);
     return () => document.removeEventListener('mouseout', handleExitIntent);

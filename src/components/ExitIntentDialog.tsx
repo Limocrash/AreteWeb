@@ -58,8 +58,8 @@ export function ExitIntentDialog({ darkMode, onClose, onGoToEightWays }: ExitInt
             href="#eight-ways"
             onClick={(e) => {
               e.preventDefault();
-              document.getElementById('eight-ways')?.scrollIntoView({ behavior: 'smooth' });
               onGoToEightWays();
+              window.location.hash = 'eight-ways';
             }}
             className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-bold rounded transition-all ${
               darkMode

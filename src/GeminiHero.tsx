@@ -89,7 +89,8 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar: _o
                     bannerLoaded ? "opacity-100" : "opacity-0 absolute"
                   }`}
                   loading="eager"
-                  fetchpriority="high"
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  {...{ fetchpriority: 'high' } as any}
                   decoding="async"
                   onLoad={() => setBannerLoaded(true)}
                 />

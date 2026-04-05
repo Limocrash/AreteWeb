@@ -50,9 +50,15 @@ export function ExitIntentDialog({ darkMode, onClose, onGoToEightWays }: ExitInt
         <h2 id="exit-dialog-title" className="text-xl font-bold mb-4 pr-8">
           Before you go…
         </h2>
-        <p id="exit-dialog-desc" className={`text-base md:text-lg mb-6 ${darkMode ? 'text-gray-300' : 'text-stone-700'}`}>
-          You haven't seen the eight reasons yet. How about: &quot;Politicians can't be bought — there aren't any,&quot; or &quot;No billionaire is rich enough to buy even one law,&quot; or &quot;The young and the unborn finally have a voice?&quot; Aren't you curious?
+        <p id="exit-dialog-desc" className={`text-base mb-4 ${darkMode ? 'text-gray-300' : 'text-stone-700'}`}>
+          You haven't seen the eight reasons yet. Here are three of them:
         </p>
+        <ul className={`text-sm mb-6 space-y-2 ${darkMode ? 'text-cyan-300' : 'text-cyan-700'}`}>
+          <li className="font-bold">POLITICIANS CAN'T BE BOUGHT. (THERE AREN'T ANY.)</li>
+          <li className="font-bold">NO BILLIONAIRE IS RICH ENOUGH TO BUY EVEN ONE LAW</li>
+          <li className="font-bold">THE YOUNG AND THE UNBORN FINALLY HAVE A VOICE</li>
+        </ul>
+        <p className={`text-sm mb-6 ${darkMode ? 'text-gray-400' : 'text-stone-500'}`}>Aren't you curious about the other five?</p>
         <div className="flex flex-col sm:flex-row gap-3">
           <a
             href="#eight-ways"

@@ -6,6 +6,17 @@ interface ExitIntentDialogProps {
   onGoToEightWays: () => void;
 }
 
+const octetHeadlines = [
+  "POLITICIANS CAN'T BE BOUGHT. (THERE AREN'T ANY.)",
+  "NO BILLIONAIRE IS RICH ENOUGH TO BUY EVEN ONE LAW",
+  "THE YOUNG AND THE UNBORN FINALLY HAVE A VOICE",
+  "THE ECONOMY NEVER FORGETS. ANYONE.",
+  "THE CAMERAS POINT UP. NOT AT YOU.",
+  "MAJORITIES DON'T GET TO HAVE TYRANNY.",
+  "GOVERNMENT IS NEITHER A SPORT NOR THEATER. IT'S TEAMWORK.",
+  "FORGET UBI. THERE'S ONE JOB AI CAN NEVER TAKE AWAY: YOURS.",
+];
+
 export function ExitIntentDialog({ darkMode, onClose, onGoToEightWays }: ExitIntentDialogProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -15,18 +26,22 @@ export function ExitIntentDialog({ darkMode, onClose, onGoToEightWays }: ExitInt
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
+  const handleHeadlineClick = () => {
+    onGoToEightWays();
+    window.location.hash = 'eight-ways';
+  };
+
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby="exit-dialog-title"
-      aria-describedby="exit-dialog-desc"
     >
       <button
         type="button"
         onClick={onClose}
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-inset"
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm focus:outline-none"
         aria-label="Close dialog"
       />
       <div
@@ -47,47 +62,43 @@ export function ExitIntentDialog({ darkMode, onClose, onGoToEightWays }: ExitInt
         >
           <span className="text-xl leading-none">×</span>
         </button>
-        <h2 id="exit-dialog-title" className="text-xl font-bold mb-4 pr-8">
+
+        <h2 id="exit-dialog-title" className="text-lg font-bold mb-1 pr-8">
           Before you go…
         </h2>
-        <p id="exit-dialog-desc" className={`text-base mb-4 ${darkMode ? 'text-gray-300' : 'text-stone-700'}`}>
-          You haven't seen the eight reasons yet. Here are three of them:
+        <p className={`text-sm mb-4 ${darkMode ? 'text-gray-400' : 'text-stone-500'}`}>
+          You haven't seen the eight reasons yet:
         </p>
-        <ul className={`text-sm mb-6 space-y-2 ${darkMode ? 'text-cyan-300' : 'text-cyan-700'}`}>
-          <li className="font-bold">POLITICIANS CAN'T BE BOUGHT. (THERE AREN'T ANY.)</li>
-          <li className="font-bold">NO BILLIONAIRE IS RICH ENOUGH TO BUY EVEN ONE LAW</li>
-          <li className="font-bold">THE YOUNG AND THE UNBORN FINALLY HAVE A VOICE</li>
-        </ul>
-        <p className={`text-sm mb-6 ${darkMode ? 'text-gray-400' : 'text-stone-500'}`}>Aren't you curious about the other five?</p>
-        <div className="flex flex-col sm:flex-row gap-3">
-          <a
-            href="#eight-ways"
-            onClick={(e) => {
-              e.preventDefault();
-              onGoToEightWays();
-              window.location.hash = 'eight-ways';
-            }}
-            className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-bold rounded transition-all ${
-              darkMode
-                ? 'bg-cyan-500 text-black hover:bg-cyan-400'
-                : 'bg-cyan-600 text-white hover:bg-cyan-500'
-            }`}
-          >
-            See the eight ways
-            <span className="inline-block translate-y-0.5" aria-hidden="true">↓</span>
-          </a>
-          <button
-            type="button"
-            onClick={onClose}
-            className={`px-6 py-3 font-semibold rounded border-2 transition-colors ${
-              darkMode
-                ? 'border-gray-500 text-gray-300 hover:border-gray-400 hover:text-white'
-                : 'border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-900'
-            }`}
-          >
-            Maybe later
-          </button>
+
+        <div className="flex flex-col gap-2 mb-4">
+          {octetHeadlines.map((headline) => (
+            <button
+              key={headline}
+              type="button"
+              onClick={handleHeadlineClick}
+              className={`w-full text-left px-3 py-2 rounded text-xs font-bold tracking-wide transition-all duration-200 ${
+                darkMode
+                  ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 hover:border-cyan-400'
+                  : 'bg-cyan-50 text-cyan-700 border border-cyan-300 hover:bg-cyan-100 hover:border-cyan-500'
+              }`}
+            >
+              {headline}
+            </button>
+          ))}
         </div>
+
+        <button
+          type="button"
+          onClick={onClose}
+          className="w-full px-6 py-3 font-semibold rounded border-2 transition-colors text-sm"
+          style={{
+            backgroundColor: darkMode ? '#0d2e71' : '#BFDBFE',
+            borderColor: darkMode ? '#51dff1' : '#2563EB',
+            color: darkMode ? '#e2e8f0' : '#1e3a5f',
+          }}
+        >
+          Maybe later
+        </button>
       </div>
     </div>
   );

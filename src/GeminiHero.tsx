@@ -37,6 +37,7 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar: _o
       if (e.clientY > 0) return;
       if (exitIntentFiredRef.current || clickedScrollPrompt || scrolledToEightWays) return;
       exitIntentFiredRef.current = true;
+      document.getElementById('eight-ways')?.scrollIntoView({ behavior: 'smooth' });
       setShowExitDialog(true);
     };
     document.addEventListener('mouseout', handleExitIntent);
@@ -89,7 +90,7 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar: _o
                     bannerLoaded ? "opacity-100" : "opacity-0 absolute"
                   }`}
                   loading="eager"
-                  fetchPriority="high"
+                  fetchpriority="high"
                   decoding="async"
                   onLoad={() => setBannerLoaded(true)}
                 />
@@ -179,7 +180,7 @@ export function GeminiHero({ darkMode = true, onNavigate, onNavigateToPillar: _o
             Just citizens, virtue, and the power to govern ourselves.
           </p>
           <button
-            onClick={() => onNavigate?.('pillars')}
+            onClick={() => onNavigate?.('blueprint')}
             className="inline-block px-10 py-5 bg-[#D4AF37] text-black text-lg font-bold tracking-widest hover:bg-[#F9E076] transition-colors shadow-lg transform hover:-translate-y-1"
           >
             SEE THE BLUEPRINT

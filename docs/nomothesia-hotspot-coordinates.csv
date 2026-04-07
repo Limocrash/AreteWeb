@@ -1,0 +1,14 @@
+,,,,,,,,,,
+,Caption,Width,Height,X Coordinate,Y Coordinate,Left%,Top%,Width%,Height%,Notes
+Image Size,,4400,2750,,,,,,,
+,,,,,,,,,,
+NODE 1,Hypothesis Submission,180,180,1025,952,25.34%,37.89%,4.09%,,Circle
+NODE 2,IsoKratÓS,180,182,663,1632,17.11%,62.65%,4.09%,,Circle
+NODE 3,Coordinator to EK,181,179,1633,1645,39.17%,63.07%,4.11%,,Circle
+NODE 4,Ekklesia deliberation,180,182,2057,896,48.80%,35.89%,4.09%,,Circle
+NODE 5,Creating Psephisma,180,183,2942,1055,68.91%,41.69%,4.09%,,Circle
+NODE 6,DikaiÓS,180,183,3218,1551,75.18%,59.73%,4.09%,,Circle
+NODE 7,New Law passed,180,185,2167,1714,51.30%,65.69%,4.09%,,Circle
+NODE 8,Other options,180,183,2534,1714,59.64%,65.65%,4.09%,6.65%,Rect (wider)
+,,,,,,,,,,
+Top of Gold Meander,,,,,45,,1.64%,,,

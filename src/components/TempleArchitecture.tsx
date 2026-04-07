@@ -29,17 +29,17 @@ const isotesData = [
 ];
 
 const euthynteriaIsotesData = [
-  { id: 'isonomia', name: 'Isonomia', position: { left: `${(473/2816)*100}%`, top: `${(270/1536)*100}%`, width: `${(437/2816)*100}%`, height: `${(270/1536)*100}%` } },
-  { id: 'isegoria', name: 'Isegoria', position: { left: `${(957/2816)*100}%`, top: `${(270/1536)*100}%`, width: `${(437/2816)*100}%`, height: `${(270/1536)*100}%` } },
-  { id: 'isarchia', name: 'Isarchia', position: { left: `${(1432/2816)*100}%`, top: `${(270/1536)*100}%`, width: `${(437/2816)*100}%`, height: `${(270/1536)*100}%` } },
-  { id: 'isoeudaimonia', name: 'IsoEudaimonia', position: { left: `${(1906/2816)*100}%`, top: `${(270/1536)*100}%`, width: `${(437/2816)*100}%`, height: `${(270/1536)*100}%` } }
+  { id: 'isonomia', name: 'Isonomia', position: { left: `${(466/2760)*100}%`, top: `${(354/1504)*100}%`, width: `${(464/2760)*100}%`, height: `${(285/1504)*100}%` } },
+  { id: 'isegoria', name: 'Isegoria', position: { left: `${(939/2760)*100}%`, top: `${(354/1504)*100}%`, width: `${(464/2760)*100}%`, height: `${(285/1504)*100}%` } },
+  { id: 'isarchia', name: 'Isarchia', position: { left: `${(1404/2760)*100}%`, top: `${(354/1504)*100}%`, width: `${(464/2760)*100}%`, height: `${(285/1504)*100}%` } },
+  { id: 'isoeudaimonia', name: 'IsoEudaimonia', position: { left: `${(1869/2760)*100}%`, top: `${(354/1504)*100}%`, width: `${(464/2760)*100}%`, height: `${(285/1504)*100}%` } }
 ];
 
 const aretaiData = [
-  { id: 'sonder', name: 'Sonder', subtitle: 'Recognition of Others\' Inner Lives', description: 'The profound realization that every person you pass has a life as vivid and complex as your own. Sonder is the empathetic understanding that every citizen has hopes, dreams, struggles, and stories—recognizing the full humanity in others.', position: { left: `${(198/2816)*100}%`, top: `${(786/1536)*100}%`, width: `${(507/2816)*100}%`, height: `${(189/1536)*100}%` } },
-  { id: 'philotimo', name: 'Philotimo', subtitle: 'Love of Honor & Civic Pride', description: 'A uniquely Greek concept meaning "love of honor" or "friend of honor." Philotimo embodies doing right by your community not for personal gain, but because you love being an honorable member of your society. It\'s civic virtue made personal.', position: { left: `${(837/2816)*100}%`, top: `${(786/1536)*100}%`, width: `${(507/2816)*100}%`, height: `${(189/1536)*100}%` } },
-  { id: 'prc', name: 'Plato\'s "Roll Call"', subtitle: 'The Duty to Participate', description: 'The duty to participate in governance or be ruled by those worse. Based on Plato\'s Republic 347c: "The greatest penalty for refusing to rule is to be ruled by someone worse."', position: { left: `${(1476/2816)*100}%`, top: `${(786/1536)*100}%`, width: `${(507/2816)*100}%`, height: `${(189/1536)*100}%` } },
-  { id: 'aletheia', name: 'Alētheia', subtitle: 'Truth & Unconcealment', description: 'Ancient Greek concept of truth as "unconcealment" or "disclosure"—not just factual accuracy, but the revealing of reality as it truly is. Alētheia demands intellectual honesty, the courage to face uncomfortable truths, and the wisdom to see through deception.', position: { left: `${(2109/2816)*100}%`, top: `${(786/1536)*100}%`, width: `${(507/2816)*100}%`, height: `${(189/1536)*100}%` } }
+  { id: 'sonder', name: 'Sonder', subtitle: 'Recognition of Others\' Inner Lives', description: 'The profound realization that every person you pass has a life as vivid and complex as your own. Sonder is the empathetic understanding that every citizen has hopes, dreams, struggles, and stories—recognizing the full humanity in others.', position: { left: `${(194/2760)*100}%`, top: `${(882/1504)*100}%`, width: `${(527/2760)*100}%`, height: `${(185/1504)*100}%` } },
+  { id: 'philotimo', name: 'Philotimo', subtitle: 'Love of Honor & Civic Pride', description: 'A uniquely Greek concept meaning "love of honor" or "friend of honor." Philotimo embodies doing right by your community not for personal gain, but because you love being an honorable member of your society. It\'s civic virtue made personal.', position: { left: `${(819/2760)*100}%`, top: `${(882/1504)*100}%`, width: `${(545/2760)*100}%`, height: `${(185/1504)*100}%` } },
+  { id: 'prc', name: 'Plato\'s "Roll Call"', subtitle: 'The Duty to Participate', description: 'The duty to participate in governance or be ruled by those worse. Based on Plato\'s Republic 347c: "The greatest penalty for refusing to rule is to be ruled by someone worse."', position: { left: `${(1444/2760)*100}%`, top: `${(882/1504)*100}%`, width: `${(546/2760)*100}%`, height: `${(185/1504)*100}%` } },
+  { id: 'aletheia', name: 'Alētheia', subtitle: 'Truth & Unconcealment', description: 'Ancient Greek concept of truth as "unconcealment" or "disclosure"—not just factual accuracy, but the revealing of reality as it truly is. Alētheia demands intellectual honesty, the courage to face uncomfortable truths, and the wisdom to see through deception.', position: { left: `${(2069/2760)*100}%`, top: `${(882/1504)*100}%`, width: `${(550/2760)*100}%`, height: `${(185/1504)*100}%` } }
 ];
 
 const isotimiaData = {
@@ -47,7 +47,7 @@ const isotimiaData = {
   name: 'Isotímia',
   subtitle: 'Equal Standing & Equal Honor',
   description: 'The foundational principle that all citizens possess equal standing and deserve equal honor in the eyes of the polis. Isotímia is the bedrock upon which all four Isótēs rest, and from which the four Aretai emerge. It represents the fundamental democratic commitment that no citizen is inherently superior to another.',
-  position: { left: `${(201/2816)*100}%`, top: `${(1001/1536)*100}%`, width: `${(2415/2816)*100}%`, height: `${(322/1536)*100}%` }
+  position: { left: `${(243/2760)*100}%`, top: `${(1087/1504)*100}%`, width: `${(2291/2760)*100}%`, height: `${(322/1504)*100}%` }
 };
 
 const pillarsData = [

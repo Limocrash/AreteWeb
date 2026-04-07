@@ -13,7 +13,7 @@ export default defineConfig({
       credentials: true,
     },
   },
-  // Use '/AreteWeb/' for GitHub Pages (project site); '/' for local dev
-  base: process.env.GITHUB_ACTIONS ? '/AreteWeb/' : '/',
+  // Base path: '/' for custom domain (aretecracy.org) and local dev
+  base: process.env.GITHUB_ACTIONS ? '/' : '/',
   publicDir: path.resolve(__dirname, 'public'),
 });

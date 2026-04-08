@@ -77,6 +77,20 @@ export default function App() {
   }, [darkMode]);
 
   useEffect(() => {
+    const pageTitles: Record<string, string> = {
+      'home':    'AreTéCracy',
+      'blueprint': 'The Blueprint | AreTéCracy',
+      'pillars':   'The Pillars | AreTéCracy',
+      'glossary':  'Glossary | AreTéCracy',
+      'etc':       'κ.τ.λ. | AreTéCracy',
+      'legal':     'Legal Notices | AreTéCracy',
+      'privacy':   'Privacy Policy | AreTéCracy',
+      'terms':     'Terms of Use | AreTéCracy',
+    };
+    document.title = pageTitles[currentPage] ?? 'AreTéCracy';
+  }, [currentPage]);
+
+  useEffect(() => {
     const sync = (e?: Event) => {
       const page = getPageFromUrl();
       setCurrentPage(page);

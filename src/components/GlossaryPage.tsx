@@ -4,7 +4,8 @@ import { Search, X, Filter, BookOpen } from 'lucide-react';
 import { glossaryTerms, GlossaryTerm, searchTerms } from '../data/glossary';
 import { DetailCard } from './DetailCard';
 import { RulesLine } from './RulesLine';
-import { getGlossaryContent } from '../data/content';
+import { getGlossaryContent, preloadGlossaryContent } from '../data/content';
+import { ContentFile } from '../utils/contentLoader';
 import { isSectionConstructed, markSectionConstructed } from '../utils/templeProgress';
 import { WhyGreekBanner } from './WhyGreekBanner';
 
@@ -22,6 +23,7 @@ export function GlossaryPage({ darkMode, onNavigateToPillar }: GlossaryPageProps
   const [cardOrigin, setCardOrigin] = useState<{ x: number; y: number } | null>(null);
   const [filterCategory, setFilterCategory] = useState<string | null>(null);
   const [completedTerms, setCompletedTerms] = useState<Set<string>>(new Set());
+  const [loadedContent, setLoadedContent] = useState<Partial<Record<string, ContentFile>>>({});
 
   const loadCompletedTerms = () => {
     const completed = glossaryTerms.filter(term => isSectionConstructed(term.id)).map(term => term.id);
@@ -145,7 +147,14 @@ export function GlossaryPage({ darkMode, onNavigateToPillar }: GlossaryPageProps
             return (
               <motion.button key={term.id} data-term-id={term.id}
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 * index }}
-                onClick={(e) => { const r = e.currentTarget.getBoundingClientRect(); setCardOrigin({ x: r.left + r.width / 2, y: r.top + r.height / 2 }); setSelectedTerm(term); }}
+                onClick={(e) => {
+                  const r = e.currentTarget.getBoundingClientRect();
+                  setCardOrigin({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
+                  setSelectedTerm(term);
+                  preloadGlossaryContent(term.id).then(content => {
+                    if (content) setLoadedContent(prev => ({ ...prev, [term.id]: content }));
+                  }).catch(() => {});
+                }}
                 className={`text-left p-6 rounded-xl transition-all duration-300 relative hover:scale-105 hover:shadow-xl ${
                   darkMode ? 'bg-stone-800/70 hover:bg-stone-700 border-2 border-amber-700/40 hover:border-amber-500' : 'bg-white hover:bg-stone-50 border-2 border-stone-300 hover:border-amber-500'
                 }`}
@@ -194,7 +203,7 @@ export function GlossaryPage({ darkMode, onNavigateToPillar }: GlossaryPageProps
 
       <AnimatePresence>
         {selectedTerm && cardOrigin && (() => {
-          const markdownContent = getGlossaryContent(selectedTerm.id);
+          const markdownContent = loadedContent[selectedTerm.id] || getGlossaryContent(selectedTerm.id);
           const contentBody = markdownContent?.body || selectedTerm.fullDescription || selectedTerm.blurb;
           return (
             <DetailCard

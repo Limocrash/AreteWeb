@@ -15,7 +15,7 @@ tags: []
 
 The foundational principle that every citizen has the same civic worth and the same right to shape the shared world—not equal outcomes, but equal **standing** and access to self‑governance.
 
-Isotimía is the bedrock beneath the **Four Isótēs** (Isegoria, Isonomia, Isopoliteia, IsoEudaimonia), and that bedrock's geology, or mineral makeup, are the **Four Aretai** (PRC, Philotimo, Sonder, Alētheia).
+Isotimía is the bedrock beneath the **Four Isótēs** (Isegoria, Isonomia, Isarchia, IsoEudaimonia), and that bedrock's geology, or mineral makeup, are the **Four Aretai** (PRC, Philotimo, Sonder, Alētheia).
 
 Without Isotimía, human rights disintegrate and people with less wealth or status are quietly treated as less real.
 

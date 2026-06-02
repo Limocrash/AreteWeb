@@ -17,9 +17,9 @@ The four equalities that institutionalize Isotimía into structural guarantees. 
 
 1. **Isegoria** (Ἰσηγορία) - Equal voice: Right to speak and be heard in civic deliberation
 2. **Isonomia** (Ἰσονομία) - Equal law: Same rules apply to everyone, justice cannot be bought
-3. **Isopoliteia** (Ἰσοπολιτεία) - Equal citizenship: Rights and duties distributed equally
+3. **Isarchia** (Ἰσαρχία) - Equal command: Equal ability and obligation to participate in and serve governance
 4. **IsoEudaimonia** (Ἰσοευδαιμονία) - Equal flourishing: Material conditions enabling genuine participation
 
-**See also:** Isotimía, Isegoria, Isonomia, Isopoliteia, IsoEudaimonia
+**See also:** Isotimía, Isegoria, Isonomia, Isarchia, IsoEudaimonia
 
 ---

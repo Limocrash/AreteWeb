@@ -17,7 +17,7 @@ Let's rewind for a moment. When the people of Athens invited Cleisthenes back fr
 
 After nearly a century of what History would remember as the Era of the Tyrants, the Attic Greeks had finally risen up to oust the unashamedly corrupt and kleptocratic Isagoras, along with the 300 or so of his closest — well, if the Greeks had invented the game 2000 years before the Scots did — wealthy "golf buddies" and co-plunderers. You could think of it as Athens' own "Mediterranean Spring."
 
-And it had been quite a century. Before Isagoras (and his coup against the newly installed Cleisthenes' first "term"), there had been the murderous horrors of Hippias, so frightened of losing power that he had hundreds of "potential threats" executed, and before that his father Peisistratus, who rose to power through deception and an army of mercenaries he hired to lead his coup.
+And it had been quite a century. Before Isagoras (and his coup against the newly installed Cleisthenes' first "term"), there had been the murderous horrors of Hippias, so frightened of losing power that he had hundreds of "potential threats" executed, and before that his father Peisistratus, who rose to power through deception and an army of mercenaries he hired to lead his coup — events that might feel familiar to many in the modern world.
 
 And there had been many more. It had been 90 years of constant *stasis*, or civil strife, centered around never-ending battles between the wealthy aristocrats and the common people, and between the clan-based factions that dominated the city's "tribes."
 

@@ -6,6 +6,7 @@ import { DetailCard } from './DetailCard';
 import { RulesLine } from './RulesLine';
 import { getGlossaryContent } from '../data/content';
 import { isSectionConstructed, markSectionConstructed } from '../utils/templeProgress';
+import { WhyGreekBanner } from './WhyGreekBanner';
 
 const COMPLETION_FEATHER_DEBUG = true;
 const completionFeatherSrc = (import.meta.env.BASE_URL || '/') + 'completion-feather.png';
@@ -65,6 +66,7 @@ export function GlossaryPage({ darkMode, onNavigateToPillar }: GlossaryPageProps
 
   return (
     <div className="min-h-screen pt-20 md:pt-24 pb-16 px-4 transition-colors duration-300">
+      <WhyGreekBanner darkMode={darkMode} />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

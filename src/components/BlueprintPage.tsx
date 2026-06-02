@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { loadBlueprintHubContent, loadBlueprintHotspotContent, blueprintHubs } from '../data/blueprint';
+import { WhyGreekBanner } from './WhyGreekBanner';
 import { BLUEPRINT_HUB_BUTTONS, BLUEPRINT_LANDING_ASPECT_RATIO, NOMOTHESIA_MAP_ASPECT_RATIO, DOKIMAZO_MAP_ASPECT_RATIO } from '../data/blueprintHubs';
 import { DetailCard } from './DetailCard';
 import { MarkdownContent } from './MarkdownContent';
@@ -826,6 +827,7 @@ export function BlueprintPage({ darkMode }: BlueprintPageProps) {
     <div
       className={`relative min-h-0 ${darkMode ? 'text-amber-100' : 'text-stone-900'}`}
     >
+      <WhyGreekBanner darkMode={darkMode} />
       <div className={`relative z-0 w-full ${darkMode ? 'bg-stone-900' : 'bg-stone-200'}`}>
         <div
           className="relative w-full bg-stone-900"

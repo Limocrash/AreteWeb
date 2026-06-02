@@ -11,6 +11,7 @@ import { PillarsMainView } from './components/PillarsMainView';
 import { HomeIntro } from './components/HomeIntro';
 import { EtcPage } from './components/EtcPage';
 import { BlueprintPage } from './components/BlueprintPage';
+import { WhyGreekPage } from './components/WhyGreekPage';
 import { BLUEPRINT_HUB_BUTTONS } from './data/blueprintHubs';
 import { getSkipWelcomeIntro, getSkipPillarsIntro } from './components/Settings';
 import { isReturningVisitor, markVisited } from './utils/templeProgress';
@@ -42,6 +43,7 @@ export default function App() {
     if (h === '#/legal') return 'legal';
     if (h === '#/privacy') return 'privacy';
     if (h === '#/terms') return 'terms';
+    if (h === '#/why-greek') return 'why-greek';
     return 'home';
   };
 
@@ -86,6 +88,7 @@ export default function App() {
       'legal':     'Legal Notices | AreTéCracy',
       'privacy':   'Privacy Policy | AreTéCracy',
       'terms':     'Terms of Use | AreTéCracy',
+      'why-greek': 'Why Greek? | AreTéCracy',
     };
     document.title = pageTitles[currentPage] ?? 'AreTéCracy';
   }, [currentPage]);
@@ -121,6 +124,7 @@ export default function App() {
       'legal': '#/legal',
       'privacy': '#/privacy',
       'terms': '#/terms',
+      'why-greek': '#/why-greek',
     };
     const newHash = hashMap[page] || '';
     setCurrentPage(page);
@@ -257,6 +261,10 @@ export default function App() {
 
         {currentPage === 'blueprint' && (
           <BlueprintPage darkMode={darkMode} />
+        )}
+
+        {currentPage === 'why-greek' && (
+          <WhyGreekPage darkMode={darkMode} />
         )}
       </div>
 

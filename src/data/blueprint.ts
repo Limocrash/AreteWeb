@@ -77,8 +77,14 @@ export interface BlueprintHub {
 
 export const blueprintHubs: BlueprintHub[] = manifest.hubs as BlueprintHub[];
 
+// Sub-pages that are not top-level hubs in the manifest
+const subPagePaths: Record<string, string> = {
+  'dokimazo-nixor': 'therapon-dokimazo/minotaur-nixor.md',
+};
+
 /** Load central hub or process hub content */
 export async function loadBlueprintHubContent(hubId: string): Promise<ContentFile | undefined> {
+  if (subPagePaths[hubId]) return loadByPath(subPagePaths[hubId]);
   const hub = blueprintHubs.find((h) => h.id === hubId);
   if (!hub) return undefined;
   return loadByPath(hub.contentFile);

@@ -14,7 +14,9 @@ This is not a petition. It is not a suggestion box. It is the actual mechanism b
 
 When assigned to a Session, a Hypothesis is presented either by its Proponents or a proxy they choose to speak on their behalf. If the general reception is favorable, the Assembly shapes it through deliberation into a precise set of requirements. Those requirements are then handed to the **Aegis**.
 
-The Aegis is a corps of domain experts whose composition is matched to whatever the Assembly is responsible for. Law is always included, but depending on the subject there may be advisors on healthcare, energy, science, engineering, finance, technology, education, or any other discipline the Hypothesis demands. Their sole function is to convert the Assembly's intent into a precisely drafted legal instrument — without editorializing, interpreting, or expanding it. The Ekklesia then holds a final vote to ratify the result.
+The Aegis is a corps of domain experts whose composition is matched to whatever the Assembly is responsible for. Law is always included, but depending on the subject there may be advisors on healthcare, energy, science, engineering, finance, technology, education, or any other discipline the Hypothesis demands. Their sole function is to convert the Assembly's intent into a precisely drafted legal instrument — without editorializing, interpreting, or expanding it. The Ekklesia then holds a **Psephisma** — a final ratification vote — on the result. Attendance at prior sessions is not required to vote on a Psephisma, though you are expected to have reviewed the session summaries.
+
+To make participation economically viable for every citizen — not only those who can afford the time — AreTéCracy provides **Misthos**: civic compensation for attending sessions. The Pnyx is open to everyone. Misthos removes the last barrier to making that mean something.
 
 The Aegis serves the Assembly's will. It has no authority of its own.
 

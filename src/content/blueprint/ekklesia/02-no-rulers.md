@@ -17,7 +17,9 @@ In an AreTéCracy, that cannot happen. Every mandate the Ekklesia writes precise
 
 More than any other mechanism in AreTéCracy, the Ekklesia is the home of **Isegoria**: the equal right to have a voice in government. Every citizen has a vote and the right to speak in the Assembly. No single citizen's vote carries more weight than any other's. AreTéCracy takes extensive steps to prevent social status, money, secret alliances, or factional politics from influencing how laws are made.
 
-Isegoria is not "free speech" in the modern sense. It applies to all aspects of government work, especially the Ekklesia, where strictly enforced rules of discourse apply. The rules are designed to make governments run well in any conditions and achieve the goal of a prosperous polis through fair and virtuous governance. Discourse must be civil, serious, respectful of every other citizen's rights, and focused on finding strong consensus for the good of the entire polis.
+Isegoria is not "free speech" in the modern sense, and the distinction matters. Modern free speech doctrine protects your right to say things *outside of* and *to* government — the right to criticize a law, organize a protest, write a pamphlet. It does not guarantee that government will hear you, consult you, or give your opinion any weight at all. Isegoria operates in a different place entirely: *inside* the halls of governance. It means that within the Ekklesia, your voice carries equal standing to every other citizen's. Your vote counts the same. Your Hypothesis receives the same process. No one's money, title, or connections give them more access to the floor than you have.
+
+Outside the Assembly, AreTéCracy makes no claim on your speech. Inside it, strictly enforced rules of discourse apply — designed not to restrict but to make governing work. Discourse must be civil, serious, respectful of every other citizen's rights, and focused on finding strong consensus for the good of the entire polis. These are the conditions under which Isegoria means something real.
 
 There are no rulers here. Only citizens — some of whom are currently serving.
 
